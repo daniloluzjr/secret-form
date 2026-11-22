@@ -82,6 +82,7 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
             </div>
             <h3>PDF Generated Successfully!</h3>
             <div class="pdf-modal-filename">${fileName}</div>
+            <div id="downloadNotice" style="font-size:12px;color:#005952;font-weight:600;min-height:16px;margin:2px 0 8px 0;"></div>
 
             <!-- PRIMARY ACTIONS: Explicit Download and Share -->
             <div class="pdf-modal-actions">
@@ -91,7 +92,7 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
                         <polyline points="7 10 12 15 17 10"></polyline>
                         <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    <span id="btnModalDownloadLabel">Download PDF</span>
+                    <span>Download PDF</span>
                 </button>
 
                 <button type="button" class="pdf-modal-btn pdf-btn-primary" id="btnModalShare">
@@ -142,10 +143,10 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
                 document.body.removeChild(a);
                 setTimeout(() => URL.revokeObjectURL(url), 5000);
 
-                const label = document.getElementById('btnModalDownloadLabel');
-                if (label) {
-                    label.textContent = 'PDF Downloaded! ✓';
-                    setTimeout(() => { label.textContent = 'Download PDF'; }, 2500);
+                const notice = document.getElementById('downloadNotice');
+                if (notice) {
+                    notice.textContent = 'Your download will start shortly...';
+                    setTimeout(() => { if (notice) notice.textContent = ''; }, 3000);
                 }
             } catch (e) {
                 console.warn('Download handler error:', e);
