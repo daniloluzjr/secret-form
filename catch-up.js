@@ -128,29 +128,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 794px x 1120px = Strict A4 Portrait (Single Page Guaranteed)
         const html = `
-        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:22px 34px 16px 34px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;background:#fff;margin:0;overflow:hidden;position:relative;">
+        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:26px 36px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;margin:0;overflow:hidden;position:relative;">
             <div>
                 <!-- Logo -->
-                <div style="display:flex;justify-content:flex-end;margin-bottom:4px;">
-                    <img src="InisCare-logo.png" style="height:34px;width:auto;object-fit:contain;">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
+                    <img src="InisCare-logo.png" style="height:36px;width:auto;object-fit:contain;">
                 </div>
 
                 <!-- Title Banner -->
-                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:13.5px;font-weight:700;padding:4px 8px;margin-bottom:7px;border-radius:2px;">
+                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:14px;font-weight:700;padding:5px 8px;margin-bottom:8px;border-radius:2px;">
                     Care Assistant Catch Up
                 </div>
 
                 <!-- Top Details Table (2x2 grid) -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3px 6px;font-size:9.5px;">Carer</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(carerVal)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3px 6px;font-size:9.5px;">Completed By</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(completedByVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3.5px 6px;font-size:10px;">Carer</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(carerVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3.5px 6px;font-size:10px;">Completed By</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(completedByVal)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:600;font-size:9.5px;">Date of Assessment</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(answersMap['q1']?.answer || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:600;font-size:10px;">Date of Assessment</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(answersMap['q1']?.answer || formattedToday)}</td>
                     </tr>
                 </table>
 
@@ -158,28 +158,28 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${questionsHtml}
             </div>
 
-            <!-- Signatures & Official A4 Footer -->
-            <div>
-                <div style="${BASE}font-weight:bold;color:#005952;font-size:10px;margin-top:4px;margin-bottom:3px;border-bottom:1px solid #005952;padding-bottom:1px;">
+            <!-- Signatures & Official A4 Footer (Directly below questions) -->
+            <div style="margin-top:14px;">
+                <div style="${BASE}font-weight:bold;color:#005952;font-size:10.5px;margin-bottom:4px;border-bottom:1px solid #005952;padding-bottom:1px;">
                     Signatures &amp; Acknowledgement
                 </div>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:140px;font-weight:bold;padding:3px 6px;font-size:9px;">Care Assistant Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:36px;">${carerSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:130px;font-weight:bold;padding:3px 6px;font-size:9px;">Supervisor Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:36px;">${supervisorSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:140px;font-weight:bold;padding:3.5px 6px;font-size:9.5px;">Care Assistant Signature</td>
+                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${carerSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:130px;font-weight:bold;padding:3.5px 6px;font-size:9.5px;">Supervisor Signature</td>
+                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${supervisorSigHtml}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9px;font-weight:bold;">Date</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9px;">${esc(carerDateVal || formattedToday)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9px;font-weight:bold;">Date</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9px;">${esc(supDateVal || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9.5px;font-weight:bold;">Date</td>
+                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9.5px;">${esc(carerDateVal || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9.5px;font-weight:bold;">Date</td>
+                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9.5px;">${esc(supDateVal || formattedToday)}</td>
                     </tr>
                 </table>
 
-                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:3px;">
+                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:4px;">
                     <span>InisCare Catch Up Assessment &bull; Confidential</span>
                     <span>Official Record &bull; Page 1 of 1</span>
                 </div>

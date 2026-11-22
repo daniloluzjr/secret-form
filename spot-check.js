@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
             : '<span style="${BASE}color:#aaa;font-size:10px;">(no signature)</span>';
 
         const html = `
-        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:34px 46px 26px 46px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;background:#fff;margin:0;overflow:hidden;position:relative;">
+        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:34px 46px 26px 46px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;margin:0;overflow:hidden;position:relative;">
             <div>
                 <!-- Logo -->
                 <div style="display:flex;justify-content:flex-end;margin-bottom:8px;">
@@ -204,8 +204,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
 
-            <!-- Signatures & Official A4 Footer -->
-            <div>
+            <!-- Signatures & Official A4 Footer (Directly below comments) -->
+            <div style="margin-top:14px;">
                 <div style="${BASE}font-weight:bold;color:#005952;font-size:11.5px;margin-bottom:5px;border-bottom:1.5px solid #005952;padding-bottom:3px;">
                     Signatures &amp; Acknowledgement
                 </div>
