@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/\n/g, '<br>');
     }
 
-    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:10px;line-height:1.25;color:#000;box-sizing:border-box;';
+    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:11px;line-height:1.35;color:#000;box-sizing:border-box;';
     const YELLOW = 'background-color:#f9e493;';
     const BORDER = 'border:0.5px solid #444;';
 
@@ -179,10 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const na = tasksState[`na_${num}`] ? '&#10003;' : '';
             taskRowsHtml += `
             <tr>
-                <td style="${BASE}${BORDER}padding:2px 5px;font-size:9.5px;">${t}</td>
-                <td style="${BASE}${BORDER}width:55px;text-align:center;font-weight:bold;color:#005952;font-size:10px;">${obs}</td>
-                <td style="${BASE}${BORDER}width:55px;text-align:center;font-weight:bold;color:#005952;font-size:10px;">${comp}</td>
-                <td style="${BASE}${BORDER}width:45px;text-align:center;font-weight:bold;color:#005952;font-size:10px;">${na}</td>
+                <td style="${BASE}${BORDER}padding:4.5px 8px;font-size:10.5px;">${t}</td>
+                <td style="${BASE}${BORDER}width:55px;text-align:center;font-weight:bold;color:#005952;font-size:11px;">${obs}</td>
+                <td style="${BASE}${BORDER}width:55px;text-align:center;font-weight:bold;color:#005952;font-size:11px;">${comp}</td>
+                <td style="${BASE}${BORDER}width:45px;text-align:center;font-weight:bold;color:#005952;font-size:11px;">${na}</td>
             </tr>`;
         });
 
@@ -195,60 +195,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
             evalRowsHtml += `
             <tr>
-                <td style="${BASE}${BORDER}padding:2px 5px;font-size:9.5px;">${q.text}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:10px;">${checkY}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:10px;">${checkN}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:10px;">${checkNa}</td>
+                <td style="${BASE}${BORDER}padding:4.5px 8px;font-size:10.5px;">${q.text}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:11px;">${checkY}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:11px;">${checkN}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:45px;font-weight:bold;color:#005952;font-size:11px;">${checkNa}</td>
             </tr>`;
         });
 
         const careSigHtml = careSigDataUrl
-            ? `<img src="${careSigDataUrl}" style="height:36px;max-height:36px;width:auto;object-fit:contain;display:block;">`
-            : '<span style="${BASE}color:#aaa;font-size:9px;">(no signature)</span>';
+            ? `<img src="${careSigDataUrl}" style="height:40px;max-height:40px;width:auto;object-fit:contain;display:block;">`
+            : '<span style="${BASE}color:#aaa;font-size:10px;">(no signature)</span>';
 
         const supSigHtml = supSigDataUrl
-            ? `<img src="${supSigDataUrl}" style="height:36px;max-height:36px;width:auto;object-fit:contain;display:block;">`
-            : '<span style="${BASE}color:#aaa;font-size:9px;">(no signature)</span>';
+            ? `<img src="${supSigDataUrl}" style="height:40px;max-height:40px;width:auto;object-fit:contain;display:block;">`
+            : '<span style="${BASE}color:#aaa;font-size:10px;">(no signature)</span>';
 
         // 794px x 1120px = Strict A4 Portrait (Single Page Guaranteed with natural top-to-bottom flow)
         const html = `
-        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:20px 34px 16px 34px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;margin:0;overflow:hidden;position:relative;">
+        <div style="${BASE}width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:26px 40px 22px 40px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;margin:0;overflow:hidden;position:relative;">
             <div>
                 <!-- Logo -->
-                <div style="display:flex;justify-content:flex-end;margin-bottom:4px;">
-                    <img src="InisCare-logo.png" style="height:36px;width:auto;object-fit:contain;">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
+                    <img src="InisCare-logo.png" style="height:38px;width:auto;object-fit:contain;">
                 </div>
 
                 <!-- Banner -->
-                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:13.5px;font-weight:700;padding:4px 8px;margin-bottom:7px;border-radius:2px;">
+                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:15px;font-weight:700;padding:6px 10px;margin-bottom:10px;border-radius:2px;">
                     Care Assistant Shadow Shift
                 </div>
 
                 <!-- Top Metadata Table (2x2 grid) -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:10px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:160px;padding:3px 6px;font-weight:600;font-size:9.5px;">Name of Care Assistant</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(data.careName)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:120px;padding:3px 6px;font-weight:600;font-size:9.5px;">Supervisor</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(data.supName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:160px;padding:5px 8px;font-weight:600;font-size:10.5px;">Name of Care Assistant</td>
+                        <td style="${BASE}${BORDER}padding:5px 8px;font-size:10.5px;">${esc(data.careName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:120px;padding:5px 8px;font-weight:600;font-size:10.5px;">Supervisor</td>
+                        <td style="${BASE}${BORDER}padding:5px 8px;font-size:10.5px;">${esc(data.supName)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:600;font-size:9.5px;">Customer / Client</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(data.clientName)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:600;font-size:9.5px;">Shift Hours</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(data.shiftHours)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:5px 8px;font-weight:600;font-size:10.5px;">Customer / Client</td>
+                        <td style="${BASE}${BORDER}padding:5px 8px;font-size:10.5px;">${esc(data.clientName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:5px 8px;font-weight:600;font-size:10.5px;">Shift Hours</td>
+                        <td style="${BASE}${BORDER}padding:5px 8px;font-size:10.5px;">${esc(data.shiftHours)}</td>
                     </tr>
                 </table>
 
                 <!-- Core Tasks Table -->
-                <div style="${BASE}font-weight:bold;margin-bottom:2px;color:#005952;font-size:10px;">Tasks Observed / Completed:</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <div style="${BASE}font-weight:bold;margin-bottom:4px;color:#005952;font-size:11.5px;">Tasks Observed / Completed:</div>
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:11px;">
                     <thead>
                         <tr>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:2.5px 5px;font-size:9px;">Task</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:55px;text-align:center;padding:2.5px 2px;font-size:8.5px;">Observed</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:55px;text-align:center;padding:2.5px 2px;font-size:8.5px;">Completed</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:2.5px 2px;font-size:8.5px;">N/A</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:5px 8px;font-size:10.5px;">Task</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:55px;text-align:center;padding:5px 3px;font-size:10px;">Observed</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:55px;text-align:center;padding:5px 3px;font-size:10px;">Completed</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:5px 3px;font-size:10px;">N/A</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -257,14 +257,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <!-- Performance & Compliance Review Table -->
-                <div style="${BASE}font-weight:bold;margin-bottom:2px;color:#005952;font-size:10px;">Performance &amp; Compliance Review:</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <div style="${BASE}font-weight:bold;margin-bottom:4px;color:#005952;font-size:11.5px;">Performance &amp; Compliance Review:</div>
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:11px;">
                     <thead>
                         <tr>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:2.5px 5px;font-size:9px;">Evaluation Question</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:2.5px 2px;font-size:8.5px;">Yes</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:2.5px 2px;font-size:8.5px;">No</th>
-                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:2.5px 2px;font-size:8.5px;">N/A</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:5px 8px;font-size:10.5px;">Evaluation Question</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:5px 3px;font-size:10px;">Yes</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:5px 3px;font-size:10px;">No</th>
+                            <th style="${BASE}${YELLOW}${BORDER}width:45px;text-align:center;padding:5px 3px;font-size:10px;">N/A</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -273,36 +273,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <!-- Additional Comments -->
-                <div style="${BASE}margin-bottom:6px;">
-                    <div style="${BASE}font-weight:600;font-size:9.5px;margin-bottom:2px;">Additional Comments:</div>
-                    <div style="${BASE}${BORDER}padding:3px 6px;min-height:26px;max-height:40px;overflow:hidden;background:#fff;font-size:8.5px;">
+                <div style="${BASE}margin-bottom:9px;">
+                    <div style="${BASE}font-weight:600;font-size:11px;margin-bottom:3px;">Additional Comments:</div>
+                    <div style="${BASE}${BORDER}padding:6px 8px;min-height:36px;max-height:55px;overflow:hidden;background:#fff;font-size:10.5px;">
                         ${esc(data.additional) || '&nbsp;'}
                     </div>
                 </div>
             </div>
 
             <!-- Signatures & Official A4 Footer (Directly below comments) -->
-            <div style="margin-top:10px;">
-                <div style="${BASE}font-weight:bold;color:#005952;font-size:10px;margin-bottom:3px;border-bottom:1px solid #005952;padding-bottom:1px;">
+            <div style="margin-top:14px;">
+                <div style="${BASE}font-weight:bold;color:#005952;font-size:11.5px;margin-bottom:4px;border-bottom:1px solid #005952;padding-bottom:2px;">
                     Signatures &amp; Acknowledgement
                 </div>
 
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:150px;font-weight:bold;padding:3px 6px;font-size:9px;">Care Assistant Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:36px;">${careSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:45px;font-weight:bold;padding:3px 6px;font-size:9px;">Date</td>
-                        <td style="${BASE}${BORDER}width:85px;padding:3px 6px;font-size:9px;">${esc(data.dateVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:150px;font-weight:bold;padding:5px 8px;font-size:10.5px;">Care Assistant Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 8px;background:#fff;height:40px;">${careSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:45px;font-weight:bold;padding:5px 8px;font-size:10.5px;">Date</td>
+                        <td style="${BASE}${BORDER}width:85px;padding:5px 8px;font-size:10.5px;">${esc(data.dateVal)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:3px 6px;font-size:9px;">Supervisor Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:36px;">${supSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:3px 6px;font-size:9px;">Date</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9px;">${esc(data.dateVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:5px 8px;font-size:10.5px;">Supervisor Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 8px;background:#fff;height:40px;">${supSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:5px 8px;font-size:10.5px;">Date</td>
+                        <td style="${BASE}${BORDER}padding:5px 8px;font-size:10.5px;">${esc(data.dateVal)}</td>
                     </tr>
                 </table>
 
-                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:3px;">
+                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:4px;">
+                    <span>InisCare Care Assistant Shadow Shift &bull; Confidential</span>
+                    <span>Official Record &bull; Page 1 of 1</span>
+                </div>
+            </div>
+        </div>`;
+
+                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:4px;">
                     <span>InisCare Care Assistant Shadow Shift &bull; Confidential</span>
                     <span>Official Record &bull; Page 1 of 1</span>
                 </div>

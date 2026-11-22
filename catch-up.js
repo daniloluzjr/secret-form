@@ -95,14 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const YELLOW = 'background-color:#f9e493;';
     const BORDER = 'border:0.5px solid #444;';
 
-    // Build question block HTML for PDF (Compact 1-Page Layout)
+    // Build question block HTML for PDF (Spacious & Clean 1-Page Layout)
     function buildQuestionRow(q, answerText) {
         return `
-        <div style="margin-bottom:5px;border:0.5px solid #444;border-radius:2px;overflow:hidden;">
-            <div style="${BASE}${YELLOW}padding:2px 6px;border-bottom:0.5px solid #444;">
-                <span style="font-weight:700;font-size:9px;color:#000;">${q.title}</span>
+        <div style="margin-bottom:7px;border:0.6px solid #444;border-radius:2px;overflow:hidden;">
+            <div style="${BASE}${YELLOW}padding:3.5px 8px;border-bottom:0.6px solid #444;">
+                <span style="font-weight:700;font-size:10.5px;color:#000;">${q.title}</span>
             </div>
-            <div style="${BASE}padding:3px 6px;background:#fff;min-height:16px;max-height:50px;overflow:hidden;white-space:pre-wrap;color:#222;font-size:8.5px;line-height:1.25;">
+            <div style="${BASE}padding:5px 8px;background:#fff;min-height:22px;max-height:58px;overflow:hidden;white-space:pre-wrap;color:#222;font-size:10px;line-height:1.35;">
                 ${esc(answerText) || '<em style="color:#888;">(No answer provided)</em>'}
             </div>
         </div>`;
@@ -111,12 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Build the Single-page A4 PDF container
     async function buildPdfContainer(carerVal, completedByVal, answersMap, carerSigUrl, supervisorSigUrl, carerDateVal, supDateVal) {
         const carerSigHtml = carerSigUrl
-            ? `<img src="${carerSigUrl}" style="height:34px;max-height:34px;width:auto;object-fit:contain;display:block;">`
-            : `<span style="${BASE}color:#aaa;font-size:9px;">(no signature)</span>`;
+            ? `<img src="${carerSigUrl}" style="height:38px;max-height:38px;width:auto;object-fit:contain;display:block;">`
+            : `<span style="${BASE}color:#aaa;font-size:9.5px;">(no signature)</span>`;
 
         const supervisorSigHtml = supervisorSigUrl
-            ? `<img src="${supervisorSigUrl}" style="height:34px;max-height:34px;width:auto;object-fit:contain;display:block;">`
-            : `<span style="${BASE}color:#aaa;font-size:9px;">(no signature)</span>`;
+            ? `<img src="${supervisorSigUrl}" style="height:38px;max-height:38px;width:auto;object-fit:contain;display:block;">`
+            : `<span style="${BASE}color:#aaa;font-size:9.5px;">(no signature)</span>`;
 
         // Render questions (q1 is already displayed in top metadata table)
         let questionsHtml = '';
@@ -143,14 +143,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- Top Details Table (2x2 grid) -->
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3.5px 6px;font-size:10px;">Carer</td>
-                        <td style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(carerVal)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:3.5px 6px;font-size:10px;">Completed By</td>
-                        <td style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(completedByVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:4.5px 8px;font-size:10.5px;">Carer</td>
+                        <td style="${BASE}${BORDER}padding:4.5px 8px;font-size:10.5px;">${esc(carerVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:145px;font-weight:600;padding:4.5px 8px;font-size:10.5px;">Completed By</td>
+                        <td style="${BASE}${BORDER}padding:4.5px 8px;font-size:10.5px;">${esc(completedByVal)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:600;font-size:10px;">Date of Assessment</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;font-size:10px;">${esc(answersMap['q1']?.answer || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:4.5px 8px;font-weight:600;font-size:10.5px;">Date of Assessment</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:4.5px 8px;font-size:10.5px;">${esc(answersMap['q1']?.answer || formattedToday)}</td>
                     </tr>
                 </table>
 
@@ -160,22 +160,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <!-- Signatures & Official A4 Footer (Directly below questions) -->
             <div style="margin-top:14px;">
-                <div style="${BASE}font-weight:bold;color:#005952;font-size:10.5px;margin-bottom:4px;border-bottom:1px solid #005952;padding-bottom:1px;">
+                <div style="${BASE}font-weight:bold;color:#005952;font-size:11px;margin-bottom:4px;border-bottom:1px solid #005952;padding-bottom:1px;">
                     Signatures &amp; Acknowledgement
                 </div>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:140px;font-weight:bold;padding:3.5px 6px;font-size:9.5px;">Care Assistant Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${carerSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:130px;font-weight:bold;padding:3.5px 6px;font-size:9.5px;">Supervisor Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${supervisorSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:140px;font-weight:bold;padding:4px 8px;font-size:10px;">Care Assistant Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 8px;background:#fff;height:40px;">${carerSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:130px;font-weight:bold;padding:4px 8px;font-size:10px;">Supervisor Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 8px;background:#fff;height:40px;">${supervisorSigHtml}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9.5px;font-weight:bold;">Date</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9.5px;">${esc(carerDateVal || formattedToday)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-size:9.5px;font-weight:bold;">Date</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;font-size:9.5px;">${esc(supDateVal || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 8px;font-size:10px;font-weight:bold;">Date</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 8px;font-size:10px;">${esc(carerDateVal || formattedToday)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 8px;font-size:10px;font-weight:bold;">Date</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 8px;font-size:10px;">${esc(supDateVal || formattedToday)}</td>
                     </tr>
                 </table>
 

@@ -140,12 +140,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             html += `
             <tr>
-                <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9.5px;">${item.text}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:55px;font-weight:bold;color:#005952;font-size:10.5px;">${cEx}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:55px;font-weight:bold;color:#005952;font-size:10.5px;">${cMe}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:65px;font-weight:bold;color:#005952;font-size:10.5px;">${cNo}</td>
-                <td style="${BASE}${BORDER}text-align:center;width:50px;font-weight:bold;color:#005952;font-size:10.5px;">${cOb}</td>
-                <td style="${BASE}${BORDER}padding:2.5px 5px;width:155px;font-size:9px;">${esc(c)}</td>
+                <td style="${BASE}${BORDER}padding:3.5px 7px;font-size:10px;">${item.text}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:55px;font-weight:bold;color:#005952;font-size:11px;">${cEx}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:55px;font-weight:bold;color:#005952;font-size:11px;">${cMe}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:65px;font-weight:bold;color:#005952;font-size:11px;">${cNo}</td>
+                <td style="${BASE}${BORDER}text-align:center;width:50px;font-weight:bold;color:#005952;font-size:11px;">${cOb}</td>
+                <td style="${BASE}${BORDER}padding:3.5px 7px;width:155px;font-size:9.5px;">${esc(c)}</td>
             </tr>`;
         });
         return html;
@@ -170,77 +170,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <!-- Banner -->
-                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:13.5px;font-weight:700;padding:4px 8px;margin-bottom:8px;border-radius:2px;">
+                <div style="${BASE}background-color:#005952;color:#fff;text-align:center;font-family:Outfit,sans-serif;font-size:14.5px;font-weight:700;padding:5px 10px;margin-bottom:10px;border-radius:2px;">
                     Healthcare Assistant Supervision Checklist
                 </div>
 
                 <!-- Details Table (2x2 grid) -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:9px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:145px;padding:3px 6px;font-weight:600;font-size:9.5px;">Name of Customer</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(formData.custName)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:160px;padding:3px 6px;font-weight:600;font-size:9.5px;">Name of Staff Member</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(formData.staffName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:145px;padding:4px 7px;font-weight:600;font-size:10px;">Name of Customer</td>
+                        <td style="${BASE}${BORDER}padding:4px 7px;font-size:10px;">${esc(formData.custName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:160px;padding:4px 7px;font-weight:600;font-size:10px;">Name of Staff Member</td>
+                        <td style="${BASE}${BORDER}padding:4px 7px;font-size:10px;">${esc(formData.staffName)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:600;font-size:9.5px;">Supervisor</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(formData.supName)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:600;font-size:9.5px;">Date</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9.5px;">${esc(formData.checkDate)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:4px 7px;font-weight:600;font-size:10px;">Supervisor</td>
+                        <td style="${BASE}${BORDER}padding:4px 7px;font-size:10px;">${esc(formData.supName)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:4px 7px;font-weight:600;font-size:10px;">Date</td>
+                        <td style="${BASE}${BORDER}padding:4px 7px;font-size:10px;">${esc(formData.checkDate)}</td>
                     </tr>
                 </table>
 
                 <!-- Evaluation Criteria Table (All 13 items unified) -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:9px;">
                     <thead>
                         <tr>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:3px 5px;font-size:9.5px;">Evaluation Criteria</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Exceeds<br>req.</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Meets<br>req.</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:65px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Does not<br>meet req.</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:50px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Not<br>obs.</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:3px 5px;width:155px;font-size:9.5px;">Comments</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:4px 7px;font-size:10px;">Evaluation Criteria</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:4px 3px;font-size:9px;line-height:1.2;">Exceeds<br>req.</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:4px 3px;font-size:9px;line-height:1.2;">Meets<br>req.</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:65px;padding:4px 3px;font-size:9px;line-height:1.2;">Does not<br>meet req.</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:50px;padding:4px 3px;font-size:9px;line-height:1.2;">Not<br>obs.</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:4px 7px;width:155px;font-size:10px;">Comments</th>
                         </tr>
                         <tr style="${BASE}${YELLOW}">
-                            <td colspan="6" style="${BASE}${YELLOW}${BORDER}font-weight:700;font-size:9px;padding:2px 5px;color:#005952;text-transform:uppercase;">Part 1 - Performance Criteria</td>
+                            <td colspan="6" style="${BASE}${YELLOW}${BORDER}font-weight:700;font-size:9.5px;padding:3px 7px;color:#005952;text-transform:uppercase;">Part 1 - Performance Criteria</td>
                         </tr>
                     </thead>
                     <tbody>
                         ${renderTableRows(itemsPart1, ratings, commentsMap)}
                         <tr style="${BASE}${YELLOW}">
-                            <td colspan="6" style="${BASE}${YELLOW}${BORDER}font-weight:700;font-size:9px;padding:2px 5px;color:#005952;text-transform:uppercase;">Part 2 - Compliance &amp; Procedures</td>
+                            <td colspan="6" style="${BASE}${YELLOW}${BORDER}font-weight:700;font-size:9.5px;padding:3px 7px;color:#005952;text-transform:uppercase;">Part 2 - Compliance &amp; Procedures</td>
                         </tr>
                         ${renderTableRows(itemsPart2, ratings, commentsMap)}
                     </tbody>
                 </table>
 
                 <!-- Any other comments -->
-                <div style="${BASE}margin-bottom:6px;">
-                    <div style="${BASE}font-weight:600;font-size:9.5px;margin-bottom:2px;">Any other comments:</div>
-                    <div style="${BASE}${BORDER}padding:3px 6px;min-height:30px;max-height:45px;overflow:hidden;background:#fff;font-size:9px;">
+                <div style="${BASE}margin-bottom:8px;">
+                    <div style="${BASE}font-weight:600;font-size:10px;margin-bottom:3px;">Any other comments:</div>
+                    <div style="${BASE}${BORDER}padding:4px 7px;min-height:32px;max-height:48px;overflow:hidden;background:#fff;font-size:9.5px;">
                         ${esc(formData.otherComments) || '&nbsp;'}
                     </div>
                 </div>
             </div>
 
             <!-- Signatures & Official A4 Footer (Directly below comments) -->
-            <div style="margin-top:10px;">
-                <div style="${BASE}font-weight:bold;color:#005952;font-size:10px;margin-bottom:3px;border-bottom:1px solid #005952;padding-bottom:1px;">
+            <div style="margin-top:12px;">
+                <div style="${BASE}font-weight:bold;color:#005952;font-size:10.5px;margin-bottom:4px;border-bottom:1px solid #005952;padding-bottom:1px;">
                     Signatures &amp; Acknowledgement
                 </div>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:150px;font-weight:bold;padding:3px 6px;font-size:9px;">Care Assistant Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${careSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:45px;font-weight:bold;padding:3px 6px;font-size:9px;">Date</td>
-                        <td style="${BASE}${BORDER}width:85px;padding:3px 6px;font-size:9px;">${esc(formData.checkDate)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:150px;font-weight:bold;padding:4px 7px;font-size:9.5px;">Care Assistant Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 7px;background:#fff;height:38px;">${careSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:45px;font-weight:bold;padding:4px 7px;font-size:9.5px;">Date</td>
+                        <td style="${BASE}${BORDER}width:85px;padding:4px 7px;font-size:9.5px;">${esc(formData.checkDate)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:3px 6px;font-size:9px;">Supervisor Signature</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;background:#fff;height:38px;">${supSigHtml}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:3px 6px;font-size:9px;">Date</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:9px;">${esc(formData.checkDate)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:4px 7px;font-size:9.5px;">Supervisor Signature</td>
+                        <td style="${BASE}${BORDER}padding:3px 7px;background:#fff;height:38px;">${supSigHtml}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}font-weight:bold;padding:4px 7px;font-size:9.5px;">Date</td>
+                        <td style="${BASE}${BORDER}padding:4px 7px;font-size:9.5px;">${esc(formData.checkDate)}</td>
                     </tr>
                 </table>
 
