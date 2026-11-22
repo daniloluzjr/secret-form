@@ -880,10 +880,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">6A. Person Moving &amp; Handling (PM&amp;H) Risk Assessment</div>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">Clinical &amp; Environmental PM&amp;H Audit Checklist</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Current Mobility:</td>
-                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Current Mobility:</td>
+                        <td style="${BASE}${BORDER}width:80%;padding:2.8px 6px;font-size:9.5px;">
                             Stand indep: ${checkMark(getCheck('pmhStandInd'))} &bull; Walk indep: ${checkMark(getCheck('pmhWalkInd'))} &bull; Assistance: ${checkMark(getCheck('pmhAssistReq'))} ${getVal('pmhCarersNum') ? `(Carers: ${esc(getVal('pmhCarersNum'))})` : ''} &bull; Aids: ${checkMark(getCheck('pmhAidsUsed'))} ${getVal('pmhAidsInUse') ? `(${esc(getVal('pmhAidsInUse'))})` : ''}
                         </td>
                     </tr>
@@ -915,7 +915,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">PM&amp;H Risk Management Action Plan</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Office: <strong>${esc(getVal('pmhOffice'))}</strong></td>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Source: <strong>${esc(getVal('pmhSource'))}</strong></td>
@@ -961,7 +961,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">6B. Falls Risk Assessment</div>
 
                 <!-- Falls History -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Previous Falls:</td>
                         <td style="${BASE}${BORDER}width:30%;padding:2.8px 6px;font-size:9.5px;"><strong>${esc(getRadio('prevFalls'))}</strong></td>
@@ -1000,10 +1000,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 ${getVal('fmOtherDesc') ? `<div style="${BASE}font-size:8.5px;margin-bottom:4px;"><strong>Other Medical:</strong> ${esc(getVal('fmOtherDesc'))}</div>` : ''}
 
                 <!-- Medication & Environmental -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Medications:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
+                        <td style="${BASE}${BORDER}width:80%;padding:2.8px 6px;font-size:9.5px;">
                             ${checkBadge(getCheck('fMedAnxiety'), 'Antianxiety')} 
                             ${checkBadge(getCheck('fMedNarcotic'), 'Narcotic')} 
                             ${checkBadge(getCheck('fMedAntidep'), 'Antidepressants')} 
@@ -1019,7 +1019,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Environment:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Trip hazards: <strong>${esc(getRadio('feTrip'))}</strong>${getVal('feTripComm') ? ` (${esc(getVal('feTripComm'))})` : ''} &bull; 
                             Pets: <strong>${esc(getRadio('fePets'))}</strong>${getVal('fePetsComm') ? ` (${esc(getVal('fePetsComm'))})` : ''} &bull; 
                             Appropriate footwear: <strong>${esc(getRadio('feFootwear'))}</strong>${getVal('feFootwearComm') ? ` (${esc(getVal('feFootwearComm'))})` : ''}
@@ -1028,7 +1028,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Actions Taken &amp; Rating:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Actions: ${esc(getVal('feActionsTaken')) || 'Risk assessed and preventative measures implemented.'}<br>
                             Falls Risk Rating: <strong>${esc(getRadio('fallsRatingOverall') || 'Low')} Risk</strong>
                             ${getVal('fallsRatingReason') ? ` &bull; <em>Reason: ${esc(getVal('fallsRatingReason'))}` : ''}
@@ -1037,7 +1037,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;color:#005952;">Falls Risk Management Action Plan</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Office: <strong>${esc(getVal('fallsOffice'))}</strong></td>
                         <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Source: <strong>${esc(getVal('fallsSource'))}</strong></td>
