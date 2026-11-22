@@ -43,24 +43,6 @@ window.deliverPdf = async function(options) {
         origBtn.disabled = false;
     }
 
-    // 3. Desktop browser auto-download
-    const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '');
-    if (!isMobile) {
-        try {
-            const url = URL.createObjectURL(pdfBlob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = fileName;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            setTimeout(() => URL.revokeObjectURL(url), 5000);
-        } catch (e) {
-            console.warn('Desktop auto-download notice:', e);
-        }
-    }
-
-    // 4. Try opening the device's native Sharesheet immediately on mobile while gesture is fresh
     const shareTitle = fileName.replace(/\.pdf$/i, '').replace(/_/g, ' ');
     const shareText = `InisCare: ${shareTitle}`;
     let file = null;
@@ -68,34 +50,7 @@ window.deliverPdf = async function(options) {
         file = new File([pdfBlob], fileName, { type: 'application/pdf' });
     } catch (e) {}
 
-    let sharedDirectly = false;
-    if (isMobile && navigator.share) {
-        try {
-            if (file && navigator.canShare && navigator.canShare({ files: [file] })) {
-                await navigator.share({
-                    files: [file],
-                    title: shareTitle,
-                    text: shareText
-                });
-                sharedDirectly = true;
-            } else {
-                await navigator.share({
-                    title: shareTitle,
-                    text: shareText,
-                    url: window.location.href
-                });
-                sharedDirectly = true;
-            }
-        } catch (err) {
-            if (err.name === 'AbortError') {
-                sharedDirectly = true;
-            } else {
-                console.warn('Direct share attempt notice:', err);
-            }
-        }
-    }
-
-    // 5. Show clean delivery modal (no invented buttons, only native share + open/save + close)
+    // 3. Show clean delivery modal with explicit Download and Share options
     const downloadUrl = await downloadUrlPromise;
     showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file);
 };
@@ -128,19 +83,18 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
             <h3>PDF Generated Successfully!</h3>
             <div class="pdf-modal-filename">${fileName}</div>
 
-            <!-- PRIMARY ACTIONS -->
+            <!-- PRIMARY ACTIONS: Explicit Download and Share -->
             <div class="pdf-modal-actions">
-                ${googleViewerUrl ? `
-                <button type="button" class="pdf-modal-btn pdf-btn-viewer" id="btnModalGoogleViewer">
+                <button type="button" class="pdf-modal-btn pdf-btn-share" id="btnModalDownload">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
-                    <span>View Document</span>
+                    <span id="btnModalDownloadLabel">Download PDF</span>
                 </button>
-                ` : ''}
 
-                <button type="button" class="pdf-modal-btn pdf-btn-share" id="btnModalShare">
+                <button type="button" class="pdf-modal-btn pdf-btn-primary" id="btnModalShare">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="18" cy="5" r="3"></circle>
                         <circle cx="6" cy="12" r="3"></circle>
@@ -150,6 +104,16 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
                     </svg>
                     <span>Share Document</span>
                 </button>
+
+                ${googleViewerUrl ? `
+                <button type="button" class="pdf-modal-btn pdf-btn-viewer" id="btnModalGoogleViewer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>View Document</span>
+                </button>
+                ` : ''}
 
                 <button type="button" class="pdf-modal-btn pdf-btn-close" id="btnModalClose">
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -163,6 +127,31 @@ function showPdfDeliveryModal(fileName, pdfBlob, downloadUrl, file) {
     `;
 
     document.body.appendChild(backdrop);
+
+    // Download PDF Handler
+    const dlBtn = document.getElementById('btnModalDownload');
+    if (dlBtn) {
+        dlBtn.addEventListener('click', () => {
+            try {
+                const url = URL.createObjectURL(pdfBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = fileName;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                setTimeout(() => URL.revokeObjectURL(url), 5000);
+
+                const label = document.getElementById('btnModalDownloadLabel');
+                if (label) {
+                    label.textContent = 'PDF Downloaded! ✓';
+                    setTimeout(() => { label.textContent = 'Download PDF'; }, 2500);
+                }
+            } catch (e) {
+                console.warn('Download handler error:', e);
+            }
+        });
+    }
 
     // Share Document Handler: tries Web Share API first, or slides up native-style share sheet
     const sysShareBtn = document.getElementById('btnModalShare');
