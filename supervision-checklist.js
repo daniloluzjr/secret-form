@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:3px 5px;font-size:9.5px;">Evaluation Criteria</th>
                             <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Exceeds<br>req.</th>
                             <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:55px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Meets<br>req.</th>
-                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:65px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Does not meet</th>
+                            <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:65px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Does not<br>meet req.</th>
                             <th style="${BASE}${YELLOW}${BORDER}text-align:center;width:50px;padding:3px 2px;font-size:8.5px;line-height:1.2;">Not<br>obs.</th>
                             <th style="${BASE}${YELLOW}${BORDER}text-align:left;padding:3px 5px;width:155px;font-size:9.5px;">Comments</th>
                         </tr>
