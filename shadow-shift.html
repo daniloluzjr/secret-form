@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Assistant Shadow Shift - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <div class="form-paper" id="shadowShiftDocument">
+            
+            <!-- Header Logo -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Banner Title -->
+            <div class="doc-banner-title">
+                Care Assistant Shadow Shift
+            </div>
+
+            <!-- Top Details Table (2 rows x 4 cols) -->
+            <table class="doc-table" style="margin-bottom: 12px;">
+                <tr>
+                    <td class="td-yellow">Name of Care Assistant</td>
+                    <td><input type="text" id="shadowCareName" class="table-input" placeholder="Enter Care Assistant name"></td>
+                    <td class="td-yellow">Supervisor</td>
+                    <td><input type="text" id="shadowSupervisorName" class="table-input" placeholder="Enter Supervisor name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Customer / Client</td>
+                    <td><input type="text" id="shadowClientName" class="table-input" placeholder="Enter Customer name"></td>
+                    <td class="td-yellow">Shift Hours</td>
+                    <td><input type="text" id="shadowShiftHours" class="table-input" placeholder="e.g. 08:00 - 14:00"></td>
+                </tr>
+            </table>
+
+            <!-- Core Tasks Table -->
+            <h3 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin: 14px 0 8px 0;">Tasks Observed / Completed</h3>
+            <div class="table-responsive">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th class="th-yellow" style="text-align: left; width: 46%;">Task</th>
+                        <th class="th-yellow center-text" style="width: 18%;">Observed</th>
+                        <th class="th-yellow center-text" style="width: 18%;">Completed</th>
+                        <th class="th-yellow center-text" style="width: 18%;">N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Body wash</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs1"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp1"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa1"></td>
+                    </tr>
+                    <tr>
+                        <td>Shower</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs2"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp2"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa2"></td>
+                    </tr>
+                    <tr>
+                        <td>Oral Care</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs3"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp3"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa3"></td>
+                    </tr>
+                    <tr>
+                        <td>Check skin integrity/repositioning</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs4"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp4"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa4"></td>
+                    </tr>
+                    <tr>
+                        <td>Incontinence care</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs5"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp5"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa5"></td>
+                    </tr>
+                    <tr>
+                        <td>Catheter care</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs6"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp6"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa6"></td>
+                    </tr>
+                    <tr>
+                        <td>Medication reminders</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs7"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp7"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa7"></td>
+                    </tr>
+                    <tr>
+                        <td>Meal preparation</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs8"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp8"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa8"></td>
+                    </tr>
+                    <tr>
+                        <td>Assisting with exercises</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs9"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp9"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa9"></td>
+                    </tr>
+                    <tr>
+                        <td>Bed making</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs10"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp10"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa10"></td>
+                    </tr>
+                    <tr>
+                        <td>Light housekeeping</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs11"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp11"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa11"></td>
+                    </tr>
+                    <tr>
+                        <td>Documenting in daily logs</td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskObs12"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskComp12"></td>
+                        <td class="col-checkbox"><input type="checkbox" id="taskNa12"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Performance & Compliance Review Table (Yes / No / N/A) -->
+            <h3 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin: 16px 0 8px 0;">Performance &amp; Compliance Review</h3>
+            <div class="table-responsive">
+            <table class="doc-table" style="margin-bottom: 12px;">
+                <thead>
+                    <tr>
+                        <th class="th-yellow" style="text-align: left; width: 64%;">Evaluation Question</th>
+                        <th class="th-yellow center-text" style="width: 12%;">Yes</th>
+                        <th class="th-yellow center-text" style="width: 12%;">No</th>
+                        <th class="th-yellow center-text" style="width: 12%;">N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Did the Care Assistant engage well with each Customer?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q1" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q1" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q1" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant engage well with other staff members (if present)?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q2" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q2" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q2" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant familiarise themselves with the care plans and risk assessments prior to starting the shift?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q3" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q3" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q3" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant adhere to correct infection prevention and control procedures?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q4" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q4" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q4" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant adhere to correct person moving and handling techniques?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q5" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q5" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q5" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant adhere to the confidentiality policy?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q6" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q6" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q6" value="na"></td>
+                    </tr>
+                    <tr>
+                        <td>Did the Care Assistant clock in and out of each shift?</td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q7" value="yes"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q7" value="no"></td>
+                        <td class="col-checkbox"><input type="radio" name="eval_q7" value="na"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="comments-box-wrapper" style="margin-bottom: 14px;">
+                <div class="comments-label">Additional Comments:</div>
+                <textarea id="qAdditional" class="comments-textarea" rows="2" placeholder="Enter any final supervisory feedback or recommendations..."></textarea>
+            </div>
+
+            <!-- Dual Signatures & Dates (Side-by-Side) -->
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 14px; font-weight: 700; color: #005952; margin-bottom: 12px; border-bottom: 1.5px solid #005952; padding-bottom: 4px;">
+                    Signatures & Acknowledgement
+                </h3>
+
+                <div class="signatures-grid">
+                    <!-- Care Assistant Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed by Care Assistant:</span>
+                            <button type="button" class="btn-clear" id="btnClearCareSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="careSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="careSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Supervisor Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed by Supervisor:</span>
+                            <button type="button" class="btn-clear" id="btnClearSupSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="supSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="supSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed Shadow Shift form.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="shadow-shift.js?v=8"></script>
+</body>
+</html>

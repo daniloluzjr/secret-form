@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InisCare - Supervisors Documentation Portal</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Native App Environment Detection: Automatically hides store download badges inside installed app -->
+    <script>
+        (function() {
+            function detectApp() {
+                try {
+                    var ua = navigator.userAgent || navigator.vendor || window.opera || '';
+                    var isApp = (
+                        window.ReactNativeWebView !== undefined ||
+                        /InisCareSupervisorsApp/i.test(ua) ||
+                        /\bwv\b/i.test(ua) ||
+                        /Android.*Version\/[0-9.]+\s+(?:Mobile\s+)?Chrome/i.test(ua) ||
+                        (/iPhone|iPad|iPod/i.test(ua) && !/Safari/i.test(ua)) ||
+                        (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+                        window.navigator.standalone === true ||
+                        new URLSearchParams(window.location.search).get('inapp') === '1'
+                    );
+                    if (isApp) {
+                        document.documentElement.classList.add('in-app-env');
+                        if (document.body) {
+                            document.body.classList.add('in-app-env');
+                        }
+                        return true;
+                    }
+                } catch (e) {}
+                return false;
+            }
+            detectApp();
+            document.addEventListener('DOMContentLoaded', detectApp);
+            window.addEventListener('load', detectApp);
+            var checks = 0;
+            var timer = setInterval(function() {
+                checks++;
+                if (detectApp() || checks > 30) {
+                    clearInterval(timer);
+                }
+            }, 50);
+        })();
+    </script>
+</head>
+<body>
+
+    <div class="portal-container">
+        
+        <!-- Header -->
+        <header class="portal-header">
+            <div class="portal-header-content">
+                <h1>Supervisors Documentation Portal</h1>
+                <p>Select a form below to fill in, sign digitally, generate the official PDF, and send copies via email.</p>
+            </div>
+            <img src="InisCare-logo.png" alt="InisCare Logo" class="portal-logo-img">
+        </header>
+
+        <!-- Main Dashboard Cards Grid (4 Top, 3 Bottom) -->
+        <main>
+            <!-- Top Row: 4 Cards -->
+            <div class="portal-grid-top">
+                <!-- Card 1: Spot Check -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 1</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M9 11l3 3L22 4"></path>
+                                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                            </svg>
+                        </div>
+                        <h2>Healthcare Assistant Spot Check</h2>
+                        <p>Standard supervisory spot check covering timekeeping, dress code, hygiene, infection control, and care plan compliance.</p>
+                    </div>
+                    <a href="spot-check.html" class="portal-card-btn">
+                        <span>Open Spot Check</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 2: Supervision Checklist -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 2</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                        </div>
+                        <h2>Healthcare Assistant Supervision Checklist</h2>
+                        <p>Comprehensive 1-page supervision evaluation (Exceeds, Meets, Does not meet, Not observed) with dual Care Assistant and Supervisor signatures.</p>
+                    </div>
+                    <a href="supervision-checklist.html" class="portal-card-btn">
+                        <span>Open Checklist</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 3: Shadow Shift -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 3</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h2>Care Assistant Shadow Shift</h2>
+                        <p>Shadow shift log documenting observed and completed core care tasks, interaction evaluations, IPC adherence, and supervisory notes.</p>
+                    </div>
+                    <a href="shadow-shift.html" class="portal-card-btn">
+                        <span>Open Shadow Shift</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 4: Phone / WhatsApp Consent -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 4</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                            </svg>
+                        </div>
+                        <h2>Staff Phone & WhatsApp Consent</h2>
+                        <p>Official consent form for InisCare staff phone number storage and inclusion in the staff WhatsApp communication group.</p>
+                    </div>
+                    <a href="consent-form.html" class="portal-card-btn">
+                        <span>Open Consent</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+
+            <!-- Bottom Row: 3 Cards -->
+            <div class="portal-grid-bottom" style="margin-top: 22px;">
+                <!-- Card 5: Care Assistant Catch Up -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 5</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h2>Care Assistant Catch Up</h2>
+                        <p>8-point comprehensive assessment evaluating support, feedback, communication, and satisfaction with real-time score tally and dual signatures.</p>
+                    </div>
+                    <a href="catch-up.html" class="portal-card-btn">
+                        <span>Open Catch Up</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 6: CCA (National Carer Competency Assessment) -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 6</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                <path d="M9 12l2 2 4-4"></path>
+                            </svg>
+                        </div>
+                        <h2>National Carer Competency Assessment (CCA)</h2>
+                        <p>9-domain clinical evaluation covering user safety, communications, hygiene, continence, nutrition, and professional ethos with dual assessor sign-offs.</p>
+                    </div>
+                    <a href="cca.html" class="portal-card-btn">
+                        <span>Open CCA</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 7: PSP (Personal Support Plan) -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 7</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                                <polyline points="10 9 9 9 8 9"></polyline>
+                            </svg>
+                        </div>
+                        <h2>PSP (Personal Support Plan)</h2>
+                        <p>Comprehensive clinical care plan, medication records, ADLs assessment, risk assessments (PM&amp;H, Falls, Home Safety), consents, and housekeeping agreement.</p>
+                    </div>
+                    <a href="psp.html" class="portal-card-btn">
+                        <span>Open PSP</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+
+                <!-- Card 8: Incident Report Form -->
+                <article class="portal-card">
+                    <span class="portal-card-badge">Form 8</span>
+                    <div>
+                        <div class="portal-card-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h2>Incident Report Form</h2>
+                        <p>Standard InisCare incident reporting covering administrative details, categories, factual event descriptions, emergency contacts, managerial CAPA, and regulatory checklists.</p>
+                    </div>
+                    <a href="incident-report.html" class="portal-card-btn">
+                        <span>Open Incident Report</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </a>
+                </article>
+            </div>
+        </main>
+
+        <!-- Mobile Apps Download Banner -->
+        <section class="portal-app-banner">
+            <div class="portal-app-banner-content">
+                <div class="portal-app-banner-badge">
+                    <span class="pulse-dot"></span>
+                    NOW AVAILABLE ON GOOGLE PLAY • APPLE IN REVIEW
+                </div>
+                <h3>InisCare Mobile App</h3>
+                <p>Access clinical supervision workflows, instant offline PDF generation, and care records on iPhone, iPad, and Android tablets.</p>
+            </div>
+            <div class="portal-app-buttons">
+                <!-- Apple App Store Official Badge -->
+                <a href="https://apps.apple.com/app/iniscare/id6825410923" target="_blank" rel="noopener noreferrer" class="store-badge-wrapper" title="InisCare on Apple App Store (In Review)">
+                    <img src="app-store-badge.svg" alt="Download on the App Store" class="store-badge-vector">
+                    <span class="store-badge-status-pill">In Review</span>
+                </a>
+
+                <!-- Google Play Official Badge -->
+                <a href="https://play.google.com/store/apps/details?id=com.iniscare.supervisors" target="_blank" rel="noopener noreferrer" class="store-badge-wrapper" title="Download InisCare on Google Play">
+                    <img src="google-play-badge.svg" alt="Get it on Google Play" class="store-badge-vector">
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="portal-footer">
+            <div class="portal-footer-content">
+                <div class="portal-footer-copy">
+                    &copy; 2026 InisCare. All rights reserved. &bull; Supervisors Documentation Portal &bull; <a href="privacy.html" class="portal-inline-link">Privacy Policy &amp; GDPR</a>
+                </div>
+                <div class="portal-footer-links">
+                    <a href="contact.html" class="portal-footer-link">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                        </svg>
+                        Support &amp; Contact
+                    </a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>

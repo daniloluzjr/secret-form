@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Carer Competency Assessment (CCA) - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        <div class="form-paper" id="ccaDocument">
+
+            <!-- Logo Header -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Title Banner -->
+            <div class="doc-banner-title">
+                National Carer Competency Assessment
+            </div>
+
+            <!-- Candidate & Assessor Details Table -->
+            <section id="sec-candidate">
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Candidate’s Name:</td>
+                        <td style="width: 38%;"><input type="text" id="candidateName" class="table-input" placeholder="Candidate's Full Name"></td>
+                        <td class="td-yellow" style="width: 18%;">Assessment Date:</td>
+                        <td style="width: 22%;"><input type="text" id="ccaDateCompleted" class="table-input" readonly></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Candidate’s Address:</td>
+                        <td colspan="3"><input type="text" id="candidateAddress" class="table-input" placeholder="Full Address"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Organisation / Company:</td>
+                        <td><input type="text" id="orgName" class="table-input" value="InisCare" placeholder="Company Name"></td>
+                        <td class="td-yellow">Care Assessor:</td>
+                        <td><input type="text" id="careAssessorName" class="table-input" placeholder="Print Name"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Clinical Assessor:</td>
+                        <td colspan="3"><input type="text" id="clinicalAssessorName" class="table-input" placeholder="Clinical Assessor Print Name"></td>
+                    </tr>
+                </table>
+
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 10px 14px; margin-bottom: 16px; font-size: 11.5px; line-height: 1.45; color: #334155;">
+                    <strong>Instructions:</strong> Please insert a tick (&check;) in Column 2 when each skill is observed. Select <strong>Yes</strong> (Pass) or <strong>No</strong> in Column 3 if the observed task was/was not to required standard. If not to required standard, insert actions required in the Assessor Comments section. Care Assessor must have suitable training and appropriate qualifications to assess candidates.
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 1. SKILLS ASSESSMENT - SERVICE USER SAFETY
+                 ======================================================== -->
+            <section id="sec-safety">
+                <div class="section-sub-banner">
+                    <span>1. Skills Assessment &bull; Service User Safety</span>
+                    <span class="sec-badge">Safety Standards</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Recognising a change or deterioration of Service User and report accordingly</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Moving and handling including hoist positioning, bed care</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Falls prevention including mobility aids</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Health &amp; Safety including hazards &amp; awareness of personal and Service User safety</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Personal &amp; Environmental Infection Prevention &amp; Control to include PPE, hand washing, priority cleaning and disposal of bodily fluids</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Safeguarding of vulnerable adults</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_6"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_6" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_6" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_6" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Reporting risks and serious reportable events as they arise to the organisation's agreed pathways</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_7"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_7" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_7" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_7" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Reporting concerns and complaints raised to relevant supervisors</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs1_8"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass1_8" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass1_8" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm1_8" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 2. SKILLS ASSESSMENT - COMMUNICATIONS
+                 ======================================================== -->
+            <section id="sec-comms">
+                <div class="section-sub-banner">
+                    <span>2. Skills Assessment &bull; Communications</span>
+                    <span class="sec-badge">Interpersonal</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Feedback on the agreed Care Plan</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Record keeping which meets local and national policies</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Appropriate communication with Service Users and relatives and in challenging situations</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Maintaining confidentiality and data protection</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Assisting Service User to understand and access their Home Care File</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Promotes empowerment, advocacy and independence</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_6"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_6" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_6" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_6" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Obtaining Service User consent in accordance with the HSE National Consent Policy</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_7"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_7" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_7" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_7" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Communication methods: effective interpersonal skills, courteous, appropriate, respects and maintains confidentiality</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs2_8"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass2_8" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass2_8" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm2_8" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 3. SKILLS ASSESSMENT - EFFECTIVE TEAM MEMBER
+                 ======================================================== -->
+            <section id="sec-team">
+                <div class="section-sub-banner">
+                    <span>3. Skills Assessment &bull; Effective Team Member</span>
+                    <span class="sec-badge">Teamwork</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Adheres by individualised Service User Care Plan and works within the parameters of plan</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Being accountable for your actions</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Ensuring equality and diversity</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding the importance of continuity of care for Service Users</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Professional behaviours e.g. treating all Service Users, co-workers, other team members with respect and dignity</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Timely liaison with other team members, supervisor, line manager</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs3_6"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass3_6" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass3_6" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm3_6" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 4. SKILLS ASSESSMENT - PERSONAL HYGIENE
+                 ======================================================== -->
+            <section id="sec-hygiene">
+                <div class="section-sub-banner">
+                    <span>4. Skills Assessment &bull; Personal Hygiene</span>
+                    <span class="sec-badge">Personal Care</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Assisting with all personal care</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs4_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass4_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass4_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm4_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Providing oral hygiene including teeth/denture care</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs4_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass4_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass4_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm4_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Care of hair, nails and feet (not cutting of toe nails)</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs4_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass4_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass4_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm4_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Assisting with dressing and undressing</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs4_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass4_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass4_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm4_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 5. SKILLS ASSESSMENT - PROMOTING CONTINENCE
+                 ======================================================== -->
+            <section id="sec-continence">
+                <div class="section-sub-banner">
+                    <span>5. Skills Assessment &bull; Promoting Continence</span>
+                    <span class="sec-badge">Continence Care</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Assist Service Users to the toilet / Managing incontinence and appropriate continence wear</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs5_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass5_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass5_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm5_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Use of a commode</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs5_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass5_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass5_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm5_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Catheter care if required</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs5_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass5_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass5_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm5_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Emptying urinary devices</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs5_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass5_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass5_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm5_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Awareness of skin integrity with respect to continence care</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs5_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass5_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass5_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm5_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 6. SKILLS ASSESSMENT - NUTRITION
+                 ======================================================== -->
+            <section id="sec-nutrition">
+                <div class="section-sub-banner">
+                    <span>6. Skills Assessment &bull; Nutrition &amp; Hydration</span>
+                    <span class="sec-badge">Dietary Care</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Assist with eating and drinking per agreed Care Plan</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs6_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass6_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass6_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm6_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Promote choice</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs6_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass6_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass6_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm6_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Promote independence</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs6_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass6_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass6_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm6_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Record food and fluid input/output if required by the agreed Care Plan</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs6_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass6_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass6_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm6_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Knowledge of food hygiene / preparation and food storage</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs6_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass6_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass6_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm6_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 7. SKILLS ASSESSMENT - SOCIAL, EMOTIONAL & CULTURAL CARE
+                 ======================================================== -->
+            <section id="sec-social">
+                <div class="section-sub-banner">
+                    <span>7. Skills Assessment &bull; Social, Emotional &amp; Cultural Care</span>
+                    <span class="sec-badge">Holistic Wellbeing</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Awareness of social, emotional, spiritual and cultural wellbeing</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs7_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass7_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass7_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm7_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Awareness and sensitivity to individual will and preference</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs7_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass7_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass7_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm7_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 8. SKILLS ASSESSMENT - GENERAL PROFESSIONAL ETHOS
+                 ======================================================== -->
+            <section id="sec-ethos">
+                <div class="section-sub-banner">
+                    <span>8. Skills Assessment &bull; General Professional Ethos</span>
+                    <span class="sec-badge">Professional Conduct</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Understanding relationships with other disciplines</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding relationship with Supervisor</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding relationships with colleagues</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding relationship with Service Users</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding relationship with Service User supportive persons</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Understanding role as a carer</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_6"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_6" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_6" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_6" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Knowledge of company policies and procedures</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs8_7"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass8_7" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass8_7" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm8_7" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 9. SKILLS ASSESSMENT - PRESSURE AREA CARE
+                 ======================================================== -->
+            <section id="sec-pressure">
+                <div class="section-sub-banner">
+                    <span>9. Skills Assessment &bull; Pressure Area Care</span>
+                    <span class="sec-badge">Tissue Viability</span>
+                </div>
+
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 48%; text-align: left;">Demonstrated Carer Ability</th>
+                            <th class="th-yellow center-text" style="width: 10%;">Observed (&check;)</th>
+                            <th class="th-yellow center-text" style="width: 14%;">Pass (Yes/No)</th>
+                            <th class="th-yellow" style="width: 28%; text-align: left;">Assessors Comments / Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Inspection of pressure points and alert if required</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs9_1"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass9_1" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass9_1" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm9_1" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Knowledge of different grades of pressure ulcers</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs9_2"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass9_2" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass9_2" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm9_2" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Pressure ulcer prevention &bull; Awareness of position change &bull; Provision of safe skin care</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs9_3"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass9_3" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass9_3" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm9_3" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Catheter and Stoma Care as appropriate</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs9_4"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass9_4" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass9_4" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm9_4" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                        <tr>
+                            <td>Appropriate use of equipment / Reporting of faulty equipment to relevant person / line manager</td>
+                            <td class="col-checkbox"><input type="checkbox" id="obs9_5"></td>
+                            <td class="center-text">
+                                <label><input type="radio" name="pass9_5" value="Yes"> Yes</label>
+                                <label style="margin-left: 6px;"><input type="radio" name="pass9_5" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="comm9_5" class="table-input" placeholder="Notes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 FINAL ASSESSMENT OUTCOME & DUAL SIGN-OFF
+                 ======================================================== -->
+            <section id="sec-signoff">
+                <div class="section-sub-banner">
+                    <span>Overall Competency Outcome &amp; Assessor Sign-Off</span>
+                    <span class="sec-badge">Formal Certification</span>
+                </div>
+
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <td class="td-yellow" style="width: 25%;">Overall Assessment Result:</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="overallOutcome" value="Competent"> <strong style="color: #166534;">Competent / Pass</strong> (All standards achieved)</label>
+                                <label style="margin-left: 14px;"><input type="radio" name="overallOutcome" value="ActionRequired"> <strong style="color: #b91c1c;">Action Plan Required</strong> (Needs follow-up)</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Assessor Summary Comments:</td>
+                        <td><textarea id="overallAssessorComments" class="table-textarea" placeholder="Overall notes, commendations, or specific action plan..."></textarea></td>
+                    </tr>
+                </table>
+
+                <!-- Dual Signatures Grid (Official InisCare Standard) -->
+                <div class="signatures-grid">
+                    <!-- Care Assessor -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Care Assessor Signature:</span>
+                            <button type="button" class="btn-clear" id="btnClearCareAssessorSig">Clear</button>
+                        </div>
+                        <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                            <canvas id="careAssessorSigCanvas"></canvas>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 160px;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                <input type="text" id="careAssessorPrint" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;" placeholder="Care Assessor Name">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                <input type="text" id="careAssessorDate" class="date-input" style="width: 120px;" readonly>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Clinical Assessor -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Clinical Assessor Signature:</span>
+                            <button type="button" class="btn-clear" id="btnClearClinicalAssessorSig">Clear</button>
+                        </div>
+                        <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                            <canvas id="clinicalAssessorSigCanvas"></canvas>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+                            <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 160px;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                <input type="text" id="clinicalAssessorPrint" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;" placeholder="Clinical Assessor Name">
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                <input type="text" id="clinicalAssessorDate" class="date-input" style="width: 120px;" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- /form-paper -->
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed National Carer Competency Assessment.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div><!-- /form-wrapper -->
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="cca.js?v=7"></script>
+</body>
+</html>

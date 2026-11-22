@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Assistant Supervision Checklist - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <!-- Form Paper -->
+        <div class="form-paper" id="supervisionDocument">
+            
+            <!-- Header Logo -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Banner Title -->
+            <div class="doc-banner-title">
+                Healthcare Assistant Supervision Checklist
+            </div>
+
+            <!-- Top Details Table (4 items) -->
+            <table class="doc-table">
+                <tr>
+                    <td class="td-yellow">Name of Customer</td>
+                    <td><input type="text" id="custName" class="table-input" placeholder="Enter Customer name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Name of the Staff Member</td>
+                    <td><input type="text" id="staffName" class="table-input" placeholder="Enter Care Assistant name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Supervisor</td>
+                    <td><input type="text" id="supName" class="table-input" placeholder="Enter Supervisor name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Date</td>
+                    <td><input type="text" id="checkDate" class="table-input" readonly></td>
+                </tr>
+            </table>
+
+            <!-- Checklist Table (Items 1 - 8) -->
+            <h3 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin: 16px 0 8px 0;">Part 1 - Performance Criteria</h3>
+            <div class="table-responsive">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th class="th-yellow" style="text-align: left; width: 34%;">Evaluation Criteria</th>
+                        <th class="th-yellow center-text" style="width: 10%;">Exceeds<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 10%;">Meets<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 11%;">Does not meet<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 9%;">Not<br>observed</th>
+                        <th class="th-yellow" style="text-align: left; width: 26%;">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Reports for work assignments as scheduled</td>
+                        <td class="col-checkbox"><input type="radio" name="item1" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item1" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item1" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item1" value="not_obs"></td>
+                        <td><input type="text" id="comm1" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Wears appropriate uniform and has ID badge</td>
+                        <td class="col-checkbox"><input type="radio" name="item2" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item2" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item2" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item2" value="not_obs"></td>
+                        <td><input type="text" id="comm2" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Demonstrates courteous behaviour towards the Customer and others</td>
+                        <td class="col-checkbox"><input type="radio" name="item3" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item3" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item3" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item3" value="not_obs"></td>
+                        <td><input type="text" id="comm3" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Assists with personal care using appropriate techniques</td>
+                        <td class="col-checkbox"><input type="radio" name="item4" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item4" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item4" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item4" value="not_obs"></td>
+                        <td><input type="text" id="comm4" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Delivers medication prompts effectively while working within their scope of practice</td>
+                        <td class="col-checkbox"><input type="radio" name="item5" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item5" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item5" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item5" value="not_obs"></td>
+                        <td><input type="text" id="comm5" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Assists with Customers nutritional needs, while adhering to correct IPC protocol</td>
+                        <td class="col-checkbox"><input type="radio" name="item6" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item6" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item6" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item6" value="not_obs"></td>
+                        <td><input type="text" id="comm6" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Demonstrates a good relationship with the Customer</td>
+                        <td class="col-checkbox"><input type="radio" name="item7" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item7" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item7" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item7" value="not_obs"></td>
+                        <td><input type="text" id="comm7" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>House is kept tidy and hygienic</td>
+                        <td class="col-checkbox"><input type="radio" name="item8" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item8" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item8" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item8" value="not_obs"></td>
+                        <td><input type="text" id="comm8" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Checklist Table (Items 9 - 13) -->
+            <h3 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin: 20px 0 8px 0;">Part 2 - Compliance & Procedures</h3>
+            <div class="table-responsive">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th class="th-yellow" style="text-align: left; width: 34%;">Evaluation Criteria</th>
+                        <th class="th-yellow center-text" style="width: 10%;">Exceeds<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 10%;">Meets<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 11%;">Does not meet<br>requirements</th>
+                        <th class="th-yellow center-text" style="width: 9%;">Not<br>observed</th>
+                        <th class="th-yellow" style="text-align: left; width: 26%;">Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Demonstrates good communication skills</td>
+                        <td class="col-checkbox"><input type="radio" name="item9" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item9" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item9" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item9" value="not_obs"></td>
+                        <td><input type="text" id="comm9" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Follows Customers Care Plan and risk assessments</td>
+                        <td class="col-checkbox"><input type="radio" name="item10" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item10" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item10" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item10" value="not_obs"></td>
+                        <td><input type="text" id="comm10" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Documentation updated accordingly and professionally</td>
+                        <td class="col-checkbox"><input type="radio" name="item11" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item11" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item11" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item11" value="not_obs"></td>
+                        <td><input type="text" id="comm11" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Adheres to InisCare Policy and Procedures</td>
+                        <td class="col-checkbox"><input type="radio" name="item12" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item12" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item12" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item12" value="not_obs"></td>
+                        <td><input type="text" id="comm12" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                    <tr>
+                        <td>Uses appropriate PM&H techniques</td>
+                        <td class="col-checkbox"><input type="radio" name="item13" value="exceeds"></td>
+                        <td class="col-checkbox"><input type="radio" name="item13" value="meets"></td>
+                        <td class="col-checkbox"><input type="radio" name="item13" value="not_met"></td>
+                        <td class="col-checkbox"><input type="radio" name="item13" value="not_obs"></td>
+                        <td><input type="text" id="comm13" class="table-input" placeholder="Notes"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Any other comments -->
+            <div class="comments-box-wrapper" style="margin-top: 14px;">
+                <div class="comments-label">Any other comments:</div>
+                <textarea id="otherComments" class="comments-textarea" rows="4" placeholder="Enter general supervision remarks or feedback here..."></textarea>
+            </div>
+
+            <!-- Dual Signatures (Care Assistant + Supervisor) -->
+            <div class="signature-dual-grid">
+                
+                <!-- Care Assistant Signature -->
+                <div>
+                    <div class="sig-label-bar">
+                        <span>Signed (Care Assistant):</span>
+                        <button type="button" class="btn-clear" id="btnClearCareSig">Clear</button>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="careSigCanvas" height="85"></canvas>
+                    </div>
+                    <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                        <input type="text" id="careSigDate" class="date-input" style="width: 140px;" readonly>
+                    </div>
+                </div>
+
+                <!-- Supervisor Signature -->
+                <div>
+                    <div class="sig-label-bar">
+                        <span>Signed (Supervisor):</span>
+                        <button type="button" class="btn-clear" id="btnClearSupSig">Clear</button>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="supSigCanvas" height="85"></canvas>
+                    </div>
+                    <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                        <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                        <input type="text" id="supSigDate" class="date-input" style="width: 140px;" readonly>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed Supervision Checklist.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="supervision-checklist.js?v=8"></script>
+</body>
+</html>

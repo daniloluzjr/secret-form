@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthcare Assistant Spot Check - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <!-- Document Paper for Spot Check -->
+        <div class="form-paper" id="spotCheckDocument">
+            
+            <!-- Logo -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Banner Title -->
+            <div class="doc-banner-title">
+                Healthcare Assistant Spot Check
+            </div>
+
+            <!-- Top Details Table -->
+            <table class="doc-table">
+                <tr>
+                    <td class="td-yellow">Name of Care Assistant</td>
+                    <td><input type="text" id="careAssistantName" class="table-input" placeholder="Enter Care Assistant name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Supervisor</td>
+                    <td><input type="text" id="supervisorName" class="table-input" placeholder="Enter Supervisor name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Date</td>
+                    <td><input type="text" id="spotCheckDate" class="table-input" readonly></td>
+                </tr>
+            </table>
+
+            <!-- Questions Table (Y / N / N/A) -->
+            <div class="table-responsive">
+            <table class="doc-table">
+                <thead>
+                    <tr>
+                        <th style="text-align: left; background: #fff;">Item / Question</th>
+                        <th style="width: 50px; text-align: center; background: #fff;">Y</th>
+                        <th style="width: 50px; text-align: center; background: #fff;">N</th>
+                        <th style="width: 50px; text-align: center; background: #fff;">N/A</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Good timekeeping?</td>
+                        <td class="col-checkbox"><input type="radio" name="q1" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q1" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q1" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Adheres to dress code and displays ID badge?</td>
+                        <td class="col-checkbox"><input type="radio" name="q2" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q2" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q2" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Maintains good personal hygiene?</td>
+                        <td class="col-checkbox"><input type="radio" name="q3" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q3" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q3" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Uses good hand hygiene techniques?</td>
+                        <td class="col-checkbox"><input type="radio" name="q4" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q4" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q4" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Adheres to correct infection prevention and control protocol?</td>
+                        <td class="col-checkbox"><input type="radio" name="q5" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q5" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q5" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Uses mobile phone on duty?</td>
+                        <td class="col-checkbox"><input type="radio" name="q6" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q6" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q6" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Can complete the tasks on the care plan?</td>
+                        <td class="col-checkbox"><input type="radio" name="q7" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q7" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q7" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Uses good communication with the Customer?</td>
+                        <td class="col-checkbox"><input type="radio" name="q8" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q8" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q8" value="NA"></td>
+                    </tr>
+                    <tr>
+                        <td>Communicates issues/concerns to their Line Manager?</td>
+                        <td class="col-checkbox"><input type="radio" name="q9" value="Y"></td>
+                        <td class="col-checkbox"><input type="radio" name="q9" value="N"></td>
+                        <td class="col-checkbox"><input type="radio" name="q9" value="NA"></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <!-- Comments Box -->
+            <div class="comments-box-wrapper">
+                <div class="comments-label">Comments:</div>
+                <textarea id="spotCheckComments" class="comments-textarea" rows="4" placeholder="Enter comments here..."></textarea>
+            </div>
+
+            <!-- Dual Signatures & Dates (Side-by-Side) -->
+            <div style="margin-top: 20px;">
+                <h3 style="font-size: 14px; font-weight: 700; color: #005952; margin-bottom: 12px; border-bottom: 1.5px solid #005952; padding-bottom: 4px;">
+                    Signatures & Acknowledgement
+                </h3>
+
+                <div class="signatures-grid">
+                    <!-- Care Assistant Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed (Care Assistant):</span>
+                            <button type="button" class="btn-clear" id="btnClearCareSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="careSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="careSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Supervisor Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed (Supervisor):</span>
+                            <button type="button" class="btn-clear" id="btnClearSupSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="supervisorSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="supSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed Spot Check.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="spot-check.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "iniscare-supervisors-portal",
+  "version": "1.0.0",
+  "description": "InisCare Supervisors Documentation Portal - Spot Check, Supervision Checklist, Shadow Shift & Consent Form with Digital Signatures & PDF Export",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve ."
+  },
+  "keywords": [
+    "iniscare",
+    "supervisors",
+    "spot-check",
+    "supervision-checklist",
+    "shadow-shift",
+    "consent-form",
+    "digital-signature",
+    "pdf"
+  ],
+  "author": "InisCare",
+  "license": "MIT",
+  "dependencies": {
+    "@vercel/blob": "^2.8.2",
+    "docx": "^9.14.0"
+  }
+}

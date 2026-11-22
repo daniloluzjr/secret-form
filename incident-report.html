@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident Report Form - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+    <style>
+        .office-use-banner {
+            text-align: center;
+            color: #b91c1c;
+            font-weight: 700;
+            font-size: 13px;
+            margin: -6px 0 16px 0;
+            letter-spacing: 0.3px;
+        }
+        .helper-text {
+            font-size: 11px;
+            color: #555;
+            font-style: italic;
+            margin: 4px 0 8px;
+            display: block;
+        }
+        .gdpr-box {
+            background: #fafafa;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 12px 16px;
+            font-size: 11px;
+            color: #374151;
+            line-height: 1.5;
+            margin-top: 14px;
+        }
+        .gdpr-box h4 {
+            font-size: 11.5px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            color: #111827;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+        }
+        .gdpr-box ul {
+            margin: 6px 0 0 18px;
+            padding: 0;
+        }
+        .gdpr-box li {
+            margin-bottom: 5px;
+        }
+        .category-table td {
+            padding: 7px 10px;
+        }
+        .yn-choice-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            margin: 0 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #1e293b;
+            cursor: pointer;
+        }
+        .yn-choice-label input[type="radio"] {
+            width: 17px;
+            height: 17px;
+            cursor: pointer;
+            accent-color: var(--primary, #005952);
+            vertical-align: middle;
+        }
+        .sig-container {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .sig-canvas-box {
+            border: 1px solid #94a3b8;
+            background: #ffffff;
+            border-radius: 4px;
+            cursor: crosshair;
+            touch-action: none;
+            width: 100%;
+            max-width: 420px;
+            height: 110px;
+        }
+        .btn-clear-sig {
+            align-self: flex-start;
+            font-size: 11px;
+            padding: 3px 8px;
+            background: #f1f5f9;
+            border: 1px solid #cbd5e1;
+            border-radius: 3px;
+            cursor: pointer;
+            color: #475569;
+        }
+        .btn-clear-sig:hover {
+            background: #e2e8f0;
+            color: #0f172a;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <!-- Document Paper for Incident Report Form -->
+        <div class="form-paper" id="incidentReportDocument">
+            
+            <!-- ========================================== -->
+            <!-- PAGE 1: Administrative, Individuals, Category -->
+            <!-- ========================================== -->
+            <div class="doc-page-section" id="pageSection1">
+                <div class="doc-logo-bar">
+                    <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+                </div>
+
+                <div class="doc-banner-title" style="margin-bottom: 14px;">
+                    Incident Report Form
+                </div>
+
+                <!-- 1. Administrative Details -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Administrative Details</th>
+                        </tr>
+                        <tr>
+                            <th class="th-yellow-sub" style="width: 32%; text-align: left;">Field</th>
+                            <th class="th-yellow-sub" style="width: 68%; text-align: left;">Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-yellow-sub">Date &amp; Time of Incident</td>
+                            <td><input type="text" id="incDateTime" class="table-input" placeholder="DD/MM/YYYY - HH:MM"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow-sub">Date &amp; Time Report Completed</td>
+                            <td><input type="text" id="repDateTime" class="table-input" placeholder="DD/MM/YYYY - HH:MM"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow-sub">Location of Incident</td>
+                            <td><input type="text" id="incLocation" class="table-input" placeholder="e.g. Client Home, Bathroom, Community"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow-sub">Full Address of Incident</td>
+                            <td><textarea id="incAddress" class="table-input" rows="2" placeholder="Full postal address"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow-sub">Person Completing Form</td>
+                            <td><input type="text" id="personCompleting" class="table-input" placeholder="Full Name"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow-sub">InisCare Office</td>
+                            <td><input type="text" id="inisCareOffice" class="table-input" placeholder="e.g. Glasnevin, South Dublin"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 2. Individuals Involved -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Individuals Involved</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Employee Details -->
+                        <tr>
+                            <td colspan="2" class="th-yellow-sub" style="text-align: center; font-weight: 700;">Employee Details</td>
+                        </tr>
+                        <tr>
+                            <td style="width: 32%;">Name</td>
+                            <td><input type="text" id="empName" class="table-input" placeholder="Employee Name"></td>
+                        </tr>
+                        <tr>
+                            <td>Job Title</td>
+                            <td><input type="text" id="empJobTitle" class="table-input" placeholder="e.g. Health Care Assistant"></td>
+                        </tr>
+
+                        <!-- Client Details -->
+                        <tr>
+                            <td colspan="2" class="th-yellow-sub" style="text-align: center; font-weight: 700;">Client Details</td>
+                        </tr>
+                        <tr>
+                            <td>Full Name</td>
+                            <td><input type="text" id="clientFullName" class="table-input" placeholder="Customer / Client Full Name"></td>
+                        </tr>
+
+                        <!-- Others Involved -->
+                        <tr>
+                            <td colspan="2" class="th-yellow-sub" style="text-align: center; font-weight: 700;">Others Involved</td>
+                        </tr>
+                        <tr>
+                            <td>Name</td>
+                            <td><input type="text" id="otherName" class="table-input" placeholder="Name of other person involved"></td>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td><input type="text" id="otherRole" class="table-input" placeholder="e.g. Supervisor, Family Member, Paramedic"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- 3. Incident Category -->
+                <table class="doc-table category-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Incident Category</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" style="background: #ffffff; text-align: left; font-weight: normal; font-style: italic; font-size: 11px;">
+                                (Select all primary categories that apply)
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Client Fall / Trip (Level ground, bed transfer, shower transfer)</td>
+                            <td style="width: 48px; text-align: center;"><input type="checkbox" id="cat_fall" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Medication Incident (Omission, wrong dose, wrong time, administration error)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_med" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Pressure Injury / Skin Tear (New breakdown or sudden deterioration)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_skin" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Client Illness / Deterioration (Sudden collapse, choking, acute distress)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_illness" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Safeguarding / Allegation (Suspected physical, financial, emotional abuse/neglect)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_safeguarding" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Staff Health &amp; Safety (Manual handling injury, needle stick, aggression/abuse)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_hns" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>Property / Equipment (Hoist failure, broken mobility aid, missing keys/access)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_property" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                        <tr>
+                            <td>No Show (Health Care assistant failed to attend call with no notice give)</td>
+                            <td style="text-align: center;"><input type="checkbox" id="cat_noshow" style="width: 18px; height: 18px;"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="confidentiality-notice">
+                    Confidentiality Notice: Contains sensitive personal data subject to GDPR and the Data Protection Act 2018.
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECTION 2: Description & Immediate Action -->
+            <!-- ========================================== -->
+            <div class="doc-page-section" id="pageSection2" style="margin-top: 24px;">
+                <div style="margin-bottom: 20px;">
+                    <label style="font-weight: 700; font-size: 13px; color: #1e293b; display: block;">
+                        Factual Description of Event &amp; Immediate Action
+                    </label>
+                    <span class="helper-text">
+                        (Describe chronologically and objectively. Include exact sequence, equipment involved, and observable facts. Do not speculate.)
+                    </span>
+                    <textarea id="eventDescription" class="table-input" rows="10" style="font-size: 13px; line-height: 1.5;" placeholder="Describe what happened chronologically and objectively..."></textarea>
+                </div>
+
+                <div style="margin-bottom: 20px;">
+                    <label style="font-weight: 700; font-size: 13px; color: #1e293b; display: block;">
+                        Immediate Action Taken
+                    </label>
+                    <span class="helper-text">
+                        (Detail immediate first aid, medical care provided, environment made safe, etc.)
+                    </span>
+                    <textarea id="immediateAction" class="table-input" rows="10" style="font-size: 13px; line-height: 1.5;" placeholder="Detail first aid given, medical care provided, environment secured, office notified, etc..."></textarea>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECTION 3: Contacts, Injuries & Certification -->
+            <!-- ========================================== -->
+            <div class="doc-page-section" id="pageSection3" style="margin-top: 24px;">
+                <!-- External Emergency Contact Log -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="4" class="th-yellow" style="font-size: 13px;">External Emergency Contact Log</th>
+                        </tr>
+                        <tr>
+                            <th class="th-yellow-sub" style="width: 34%; text-align: left;">Individual Contacted</th>
+                            <th class="th-yellow-sub" style="width: 22%; text-align: center;">Contacted?</th>
+                            <th class="th-yellow-sub" style="width: 18%; text-align: center;">Time</th>
+                            <th class="th-yellow-sub" style="width: 26%; text-align: left;">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Emergency Services (112/999)</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="emgContacted" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="emgContacted" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="emgTime" class="table-input" placeholder="HH:MM" style="text-align: center;"></td>
+                            <td><input type="text" id="emgName" class="table-input" placeholder="Dispatcher / Crew"></td>
+                        </tr>
+                        <tr>
+                            <td>GP / SouthDoc / DDoc</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="gpContacted" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="gpContacted" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="gpTime" class="table-input" placeholder="HH:MM" style="text-align: center;"></td>
+                            <td><input type="text" id="gpName" class="table-input" placeholder="Doctor / Clinic"></td>
+                        </tr>
+                        <tr>
+                            <td>NOK / Next of Kin</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="nokContacted" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="nokContacted" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="nokTime" class="table-input" placeholder="HH:MM" style="text-align: center;"></td>
+                            <td><input type="text" id="nokName" class="table-input" placeholder="Family Contact"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Additional Details -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Additional Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 44%; font-weight: 500;">Did the customer receive any injury (Please give details)</td>
+                            <td><textarea id="customerInjury" class="table-input" rows="2" placeholder="Details or N/A"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Did the employee receive any injury (Please give details)</td>
+                            <td><textarea id="employeeInjury" class="table-input" rows="2" placeholder="Details or N/A"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Any damage to the customers belonging's (Please give details)</td>
+                            <td><textarea id="customerDamage" class="table-input" rows="2" placeholder="Details or N/A"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 500;">Any damage to the employee's belonging's (Please give details)</td>
+                            <td><textarea id="employeeDamage" class="table-input" rows="2" placeholder="Details or N/A"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="th-yellow-sub" style="font-weight: 700;">Additional Comments</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <textarea id="additionalComments" class="table-input" rows="4" placeholder="Any further comments, observations, or context..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Sign-off / Certification -->
+                <div style="margin-top: 14px;">
+                    <p style="text-align: center; font-style: italic; font-weight: 700; margin-bottom: 10px; font-size: 12.5px;">
+                        I hereby certify that all information provided above is true and accurate.
+                    </p>
+                    <table class="doc-table">
+                        <tr>
+                            <td style="width: 25%; font-weight: 600;">Print Name</td>
+                            <td colspan="2"><input type="text" id="reporterPrintName" class="table-input" placeholder="Reporter Full Name"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600; vertical-align: top; padding-top: 10px;">Signature</td>
+                            <td style="width: 50%;">
+                                <div class="sig-container">
+                                    <canvas id="sigReporter" class="sig-canvas-box"></canvas>
+                                    <button type="button" class="btn-clear-sig" id="btnClearSigReporter">Clear Signature</button>
+                                </div>
+                            </td>
+                            <td style="width: 25%; vertical-align: top; padding-top: 10px;">
+                                <div style="font-size: 11px; color: #64748b; margin-bottom: 4px;">Sign with finger / mouse</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 600;">Date</td>
+                            <td colspan="2"><input type="text" id="reporterSigDate" class="table-input" placeholder="DD/MM/YYYY"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECTION 4: Statutory Notifications & CAPA -->
+            <!-- ========================================== -->
+            <div class="doc-page-section" id="pageSection4" style="margin-top: 24px;">
+                <div class="office-use-banner">
+                    Office use &ndash; to be completed by Branch Manager or Quality Assurance
+                </div>
+
+                <!-- Statutory & Regulatory Notifications Checklist -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="5" class="th-yellow" style="font-size: 13px;">Statutory &amp; Regulatory Notifications Checklist</th>
+                        </tr>
+                        <tr>
+                            <th colspan="5" style="background: #fff; font-weight: normal; font-style: italic; font-size: 11px; text-align: left;">
+                                (To be verified by Branch Manager / Quality Assurance )
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="th-yellow-sub" style="width: 16%; text-align: left;">Statutory Body</th>
+                            <th class="th-yellow-sub" style="width: 44%; text-align: left;">Mandatory Trigger Condition</th>
+                            <th class="th-yellow-sub" style="width: 14%; text-align: center; vertical-align: middle; line-height: 1.3;">Required?<br><span style="font-size: 9.5px; font-weight: normal;">(Yes / No)</span></th>
+                            <th class="th-yellow-sub" style="width: 13%; text-align: center;">Date Reported</th>
+                            <th class="th-yellow-sub" style="width: 13%; text-align: left;">Ref / Acknowledgment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: 700;">HSA</td>
+                            <td>Employee absent &gt;3 consecutive days due to workplace injury</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="hsaReq" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="hsaReq" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="hsaDate" class="table-input" placeholder="DD/MM/YYYY" style="text-align: center;"></td>
+                            <td><input type="text" id="hsaRef" class="table-input" placeholder="Ref #"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 700;">HSE Safeguarding</td>
+                            <td>Safeguarding Concern / Vulnerable Adult Allegation</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="hseReq" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="hseReq" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="hseDate" class="table-input" placeholder="DD/MM/YYYY" style="text-align: center;"></td>
+                            <td><input type="text" id="hseRef" class="table-input" placeholder="Ref #"></td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: 700;">An Garda S&iacute;och&aacute;na</td>
+                            <td>Criminal matter, violent assault, or serious safety event</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="gardaReq" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="gardaReq" value="No"> No</label>
+                            </td>
+                            <td><input type="text" id="gardaDate" class="table-input" placeholder="DD/MM/YYYY" style="text-align: center;"></td>
+                            <td><input type="text" id="gardaRef" class="table-input" placeholder="Ref #"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Managerial Review & Corrective Action Plan (CAPA) -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Managerial Review &amp; Corrective Action Plan (CAPA)</th>
+                        </tr>
+                        <tr>
+                            <th colspan="2" class="th-yellow-sub" style="text-align: center; font-weight: 700;">Root Cause Analysis</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width: 50%;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="rc_careplan" style="width: 17px; height: 17px;">
+                                    <span>Care Plan not followed</span>
+                                </label>
+                            </td>
+                            <td style="width: 50%;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="rc_equipment" style="width: 17px; height: 17px;">
+                                    <span>Equipment failure/lack of maintenance</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="rc_environmental" style="width: 17px; height: 17px;">
+                                    <span>Environmental hazard</span>
+                                </label>
+                            </td>
+                            <td>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="rc_comm" style="width: 17px; height: 17px;">
+                                    <span>Communication/Handover breakdown</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" id="rc_other" style="width: 17px; height: 17px;">
+                                    <span>Other</span>
+                                </label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <div style="font-size: 11.5px; font-weight: 600; margin-bottom: 4px;">Provide further details</div>
+                                <textarea id="rcDetails" class="table-input" rows="3" placeholder="Provide root cause details and findings..."></textarea>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Corrective Actions Table -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow-sub" style="width: 70%; text-align: left;">Corrective Actions Taken</th>
+                            <th class="th-yellow-sub" style="width: 30%; text-align: left;">Date Completed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Care Plan updated</td>
+                            <td><input type="text" id="ca_careplan_date" class="table-input" placeholder="DD/MM/YYYY"></td>
+                        </tr>
+                        <tr>
+                            <td>Risk Assessment reassessed</td>
+                            <td><input type="text" id="ca_risk_date" class="table-input" placeholder="DD/MM/YYYY"></td>
+                        </tr>
+                        <tr>
+                            <td>Equipment replaced/serviced</td>
+                            <td><input type="text" id="ca_equipment_date" class="table-input" placeholder="DD/MM/YYYY"></td>
+                        </tr>
+                        <tr>
+                            <td>Staff refresher training scheduled</td>
+                            <td><input type="text" id="ca_training_date" class="table-input" placeholder="DD/MM/YYYY"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div>Other (Provide further details):</div>
+                                <input type="text" id="ca_other_text" class="table-input" placeholder="Describe other corrective action taken" style="margin-top: 4px;">
+                            </td>
+                            <td style="vertical-align: bottom;">
+                                <input type="text" id="ca_other_date" class="table-input" placeholder="DD/MM/YYYY">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- SECTION 5: Quick Close-Out, Manager Sign-off & GDPR -->
+            <!-- ========================================== -->
+            <div class="doc-page-section" id="pageSection5" style="margin-top: 24px;">
+                <!-- Manager's Quick Close-Out Checklist -->
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" class="th-yellow" style="font-size: 13px;">Manager's Quick Close-Out Checklist</th>
+                        </tr>
+                        <tr>
+                            <th class="th-yellow-sub" style="width: 78%; text-align: left;">Tasks</th>
+                            <th class="th-yellow-sub" style="width: 22%; text-align: center;">Completed &ndash; Yes / No</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Confirm date, location, branch office, and reporter name are filled in.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk1" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk1" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ensure employee, client, and witness details are complete.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk2" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk2" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Check that the incident type is selected and the event description is clear.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk3" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk3" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Verify immediate actions, emergency calls (999/GP/NOK), injuries, and property damage are logged.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk4" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk4" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Confirm the reporter signed and dated the form.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk5" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk5" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>HSE Safeguarding: Abuse or vulnerable adult concern? Mark Yes/No, add date &amp; ref #.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk6" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk6" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Garda&iacute;: Crime, assault, or severe safety issue? Mark Yes/No, add date &amp; ref #.</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk7" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk7" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Care Plan updated</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk8" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk8" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Risk assessment reviewed</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk9" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk9" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Equipment fixed or replaced</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk10" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk10" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Staff training scheduled</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk11" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk11" value="No"> No</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Other actions completed</td>
+                            <td style="text-align: center;">
+                                <label class="yn-choice-label"><input type="radio" name="chk12" value="Yes"> Yes</label>
+                                <label class="yn-choice-label"><input type="radio" name="chk12" value="No"> No</label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Manager Sign-off -->
+                <table class="doc-table" style="margin-top: 14px;">
+                    <tr>
+                        <td style="width: 25%; font-weight: 600;">Print Name</td>
+                        <td colspan="2"><input type="text" id="mgrPrintName" class="table-input" placeholder="Manager Full Name"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Role</td>
+                        <td colspan="2"><input type="text" id="mgrRole" class="table-input" placeholder="e.g. Branch Manager / Quality Assurance"></td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600; vertical-align: top; padding-top: 10px;">Signature</td>
+                        <td style="width: 50%;">
+                            <div class="sig-container">
+                                <canvas id="sigManager" class="sig-canvas-box"></canvas>
+                                <button type="button" class="btn-clear-sig" id="btnClearSigManager">Clear Signature</button>
+                            </div>
+                        </td>
+                        <td style="width: 25%; vertical-align: top; padding-top: 10px;">
+                            <div style="font-size: 11px; color: #64748b; margin-bottom: 4px;">Sign with finger / mouse</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="font-weight: 600;">Date</td>
+                        <td colspan="2"><input type="text" id="mgrSigDate" class="table-input" placeholder="DD/MM/YYYY"></td>
+                    </tr>
+                </table>
+
+                <!-- DATA PROTECTION & GDPR NOTICE -->
+                <div class="gdpr-box">
+                    <h4>Data Protection &amp; GDPR Notice</h4>
+                    <p style="margin: 0 0 6px 0;">
+                        The personal data and special category health data collected on this form are processed by InisCare in accordance with the General Data Protection Regulation (GDPR) (EU) 2016/679 and the Data Protection Acts 1988–2018.
+                    </p>
+                    <ul>
+                        <li><strong>Purpose:</strong> Information is collected solely for incident management, risk mitigation, statutory reporting (including HSE NIMS / HSA), quality assurance, legal compliance, and protecting the health and safety of clients and employees.</li>
+                        <li><strong>Confidentiality &amp; Sharing:</strong> Access is strictly restricted to authorised quality, clinical, and management personnel. Information will only be disclosed to external statutory bodies (e.g., HSE Safeguarding, Health &amp; Safety Authority, State Claims Agency, An Garda S&iacute;och&aacute;na) where required by law or contractual service agreements.</li>
+                        <li><strong>Retention:</strong> Forms are retained securely in compliance with InisCare's Data Retention Policy and statutory record-keeping periods for health and social care providers in Ireland.</li>
+                    </ul>
+                </div>
+
+                <div class="confidentiality-notice">
+                    Confidentiality Notice: Contains sensitive personal data subject to GDPR and the Data Protection Act 2018.
+                </div>
+            </div>
+
+        </div><!-- /form-paper -->
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed Incident Report.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. quality@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+
+            <!-- Secondary Local Storage Buttons (Save & Clean Form) -->
+            <div class="secondary-buttons-group">
+                <button type="button" class="btn-secondary-action btn-save-local" id="btnSaveLocal" title="Save form locally on this device">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span>Save Form</span>
+                </button>
+                <button type="button" class="btn-secondary-action btn-clear-local" id="btnClearLocal" title="Clear form to start a new incident report">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                    <span>Clean Form</span>
+                </button>
+            </div>
+            <div id="localDraftStatus" class="local-draft-status"></div>
+        </div>
+
+    </div><!-- /form-wrapper -->
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="incident-report.js?v=2"></script>
+</body>
+</html>

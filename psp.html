@@ -1,0 +1,2675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Support Plan (PSP) - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+
+
+    <div class="form-wrapper">
+        <div class="form-paper" id="pspDocument">
+
+            <!-- Logo Header -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Main Title Banner -->
+            <div class="doc-banner-title">
+                Personal Support Plan
+            </div>
+
+            <!-- ========================================================
+                 SECTION 1: CLIENT DETAILS & CONTACTS
+                 ======================================================== -->
+            <section id="sec-overview">
+                <div class="section-sub-banner">
+                    <span>1. Customer Identification &amp; Key Information</span>
+                    <span class="sec-badge">Confidential</span>
+                </div>
+
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 18%;">Name:</td>
+                        <td style="width: 32%;"><input type="text" id="custName" class="table-input"></td>
+                        <td class="td-yellow" style="width: 20%;">Prefers to be called:</td>
+                        <td style="width: 30%;"><input type="text" id="custPrefName" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Address:</td>
+                        <td><textarea id="custAddress" class="table-textarea"></textarea></td>
+                        <td class="td-yellow">DOB:</td>
+                        <td><input type="text" id="custDob" class="table-input" placeholder="DD/MM/YYYY"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Telephone:</td>
+                        <td><input type="text" id="custPhone" class="table-input"></td>
+                        <td class="td-yellow">Assessment Date:</td>
+                        <td><input type="text" id="custAssessDate" class="table-input" placeholder="DD/MM/YYYY"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Reassessment Date:</td>
+                        <td colspan="3"><input type="text" id="custReassessDate" class="table-input" placeholder="DD/MM/YYYY"></td>
+                    </tr>
+                </table>
+
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--primary); margin: 12px 0 6px 0;">Other Contact Details</h4>
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 18%;">Primary Contact:</td>
+                        <td style="width: 32%;"><input type="text" id="primContactName" class="table-input"></td>
+                        <td class="td-yellow" style="width: 20%;">Relationship:</td>
+                        <td style="width: 30%;"><input type="text" id="primContactRel" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Telephone:</td>
+                        <td><input type="text" id="primContactPhone" class="table-input"></td>
+                        <td class="td-yellow">Mobile:</td>
+                        <td><input type="text" id="primContactMobile" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Address:</td>
+                        <td><input type="text" id="primContactAddr" class="table-input"></td>
+                        <td class="td-yellow">Email:</td>
+                        <td><input type="email" id="primContactEmail" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Comments:</td>
+                        <td colspan="3"><input type="text" id="primContactComm" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Second Contact:</td>
+                        <td><input type="text" id="secContactName" class="table-input"></td>
+                        <td class="td-yellow">Relationship:</td>
+                        <td><input type="text" id="secContactRel" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Telephone:</td>
+                        <td><input type="text" id="secContactPhone" class="table-input"></td>
+                        <td class="td-yellow">Mobile:</td>
+                        <td><input type="text" id="secContactMobile" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Address:</td>
+                        <td><input type="text" id="secContactAddr" class="table-input"></td>
+                        <td class="td-yellow">Email:</td>
+                        <td><input type="email" id="secContactEmail" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Comments:</td>
+                        <td colspan="3"><input type="text" id="secContactComm" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">GP Name:</td>
+                        <td><input type="text" id="gpName" class="table-input"></td>
+                        <td class="td-yellow">GP Number:</td>
+                        <td><input type="text" id="gpPhone" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">PHN Name:</td>
+                        <td><input type="text" id="phnName" class="table-input"></td>
+                        <td class="td-yellow">PHN Number:</td>
+                        <td><input type="text" id="phnPhone" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Health Centre:</td>
+                        <td><input type="text" id="healthCentre" class="table-input"></td>
+                        <td class="td-yellow">H.C. Number:</td>
+                        <td><input type="text" id="healthCentrePhone" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Comments:</td>
+                        <td colspan="3"><input type="text" id="healthCentreComm" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--primary); margin: 12px 0 6px 0;">Property Access &amp; Living Arrangements</h4>
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 20%;">Access Preference:</td>
+                        <td style="width: 30%;"><input type="text" id="accessPref" class="table-input"></td>
+                        <td class="td-yellow" style="width: 20%;">Gate Code:</td>
+                        <td style="width: 30%;"><input type="text" id="gateCode" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Keybox Location:</td>
+                        <td><input type="text" id="keyboxLoc" class="table-input"></td>
+                        <td class="td-yellow">Keybox Code:</td>
+                        <td><input type="text" id="keyboxCode" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Lock Door When Leaving:</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="lockDoor" value="Yes"> Yes</label>
+                                <label><input type="radio" name="lockDoor" value="No"> No</label>
+                            </div>
+                        </td>
+                        <td class="td-yellow">Alarm Code:</td>
+                        <td><input type="text" id="alarmCode" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Security Camera Present? / Location:</td>
+                        <td><input type="text" id="secCamera" class="table-input"></td>
+                        <td class="td-yellow">Lives:</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="livingWith" value="Alone" id="livesAlone"> Alone</label>
+                                <label><input type="radio" name="livingWith" value="Spouse" id="livesSpouse"> Spouse</label>
+                                <label><input type="radio" name="livingWith" value="Spouse & Family" id="livesSpouseFam"> Spouse &amp; Family</label>
+                                <label><input type="radio" name="livingWith" value="Son/Daughter/ Other" id="livesOther"> Son/Daughter/ Other:</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Bio:</td>
+                        <td colspan="3"><textarea id="custBio" class="table-textarea" style="min-height: 70px;"></textarea></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 2: HEALTH INFORMATION & CARE PLAN SUMMARY
+                 ======================================================== -->
+            <section id="sec-careplan">
+                <div class="section-sub-banner">
+                    <span>2. Health Information &amp; Care Plan Summary</span>
+                    <span class="sec-badge">Clinical</span>
+                </div>
+
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Medical History:</td>
+                        <td colspan="3"><textarea id="medHistory" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">PM&amp;H Equipment:</td>
+                        <td><input type="text" id="pmhEquipment" class="table-input"></td>
+                        <td class="td-yellow" style="width: 20%;">Walking Aids:</td>
+                        <td><input type="text" id="walkingAids" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Allergies:</td>
+                        <td><input type="text" id="allergies" class="table-input"></td>
+                        <td class="td-yellow">Pets:</td>
+                        <td><input type="text" id="pets" class="table-input"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Understands Service:</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="understandsService" value="Yes"> Yes</label>
+                                <label><input type="radio" name="understandsService" value="No"> No</label>
+                            </div>
+                        </td>
+                        <td class="td-yellow">NOK Aware (if No):</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="nokAware" value="Yes"> Yes</label>
+                                <label><input type="radio" name="nokAware" value="No"> No</label>
+                                <label><input type="radio" name="nokAware" value="N/A"> N/A</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Total Care Hours / Week:</td>
+                        <td><input type="text" id="careHoursWeek" class="table-input"></td>
+                        <td class="td-yellow">Days of Care:</td>
+                        <td>
+                            <div class="checkbox-label-group">
+                                <label><input type="checkbox" id="dayMon"> Mon</label>
+                                <label><input type="checkbox" id="dayTue"> Tue</label>
+                                <label><input type="checkbox" id="dayWed"> Wed</label>
+                                <label><input type="checkbox" id="dayThu"> Thu</label>
+                                <label><input type="checkbox" id="dayFri"> Fri</label>
+                                <label><input type="checkbox" id="daySat"> Sat</label>
+                                <label><input type="checkbox" id="daySun"> Sun</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Carer Preference:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group">
+                                <label><input type="radio" name="carerPref" value="No preference"> No preference</label>
+                                <label><input type="radio" name="carerPref" value="Female"> Female</label>
+                                <label><input type="radio" name="carerPref" value="Male"> Male</label>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--primary); margin: 12px 0 6px 0;">Daily Visit Schedules &amp; Duties</h4>
+                <table class="doc-table">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 18%;">Shift</th>
+                            <th class="th-yellow" style="width: 25%;">Preferred Time</th>
+                            <th class="th-yellow" style="width: 57%;">Assigned Duties &amp; Care Activities</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="td-yellow">Morning</td>
+                            <td><input type="text" id="shiftMornTime" class="table-input"></td>
+                            <td><textarea id="shiftMornDuties" class="table-textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Afternoon</td>
+                            <td><input type="text" id="shiftAftTime" class="table-input"></td>
+                            <td><textarea id="shiftAftDuties" class="table-textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Evening</td>
+                            <td><input type="text" id="shiftEveTime" class="table-input"></td>
+                            <td><textarea id="shiftEveDuties" class="table-textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Night</td>
+                            <td><input type="text" id="shiftNightTime" class="table-input"></td>
+                            <td><textarea id="shiftNightDuties" class="table-textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Overnight</td>
+                            <td><input type="text" id="shiftOverTime" class="table-input"></td>
+                            <td><textarea id="shiftOverDuties" class="table-textarea"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 3: MEDICATION RECORD
+                 ======================================================== -->
+            <section id="sec-medication">
+                <div class="section-sub-banner">
+                    <span>3. Medication Record</span>
+                    <span class="sec-badge">Pharmacy &amp; Dosage</span>
+                </div>
+
+                <p style="font-size: 11.5px; color: #475569; margin-bottom: 8px;">Record all regularly prescribed medications prompting or administration requirements:</p>
+                
+                <table class="doc-table" id="regMedTable">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 45%;">Name of Tablet / Medication</th>
+                            <th class="th-yellow" style="width: 25%;">Dose</th>
+                            <th class="th-yellow" style="width: 25%;">Frequency / Timing</th>
+                            <th class="th-yellow" style="width: 5%; text-align: center;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="regMedBody">
+                        <tr>
+                            <td><input type="text" class="table-input med-name"></td>
+                            <td><input type="text" class="table-input med-dose"></td>
+                            <td><input type="text" class="table-input med-freq"></td>
+                            <td style="text-align: center;"><button type="button" class="btn-del-row" onclick="removeMedRow(this)">&times;</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn-dynamic-action" id="btnAddMedRow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Add Regular Medication Row
+                </button>
+
+                <h4 style="font-size: 13px; font-weight: 700; color: var(--primary); margin: 12px 0 6px 0;">Additional Short Term Medication (Antibiotics, Courses, PRN)</h4>
+                <table class="doc-table" id="shortMedTable">
+                    <thead>
+                        <tr>
+                            <th class="th-yellow" style="width: 35%;">Name of Tablet / Medicine</th>
+                            <th class="th-yellow" style="width: 30%;">Reason for Prescription</th>
+                            <th class="th-yellow" style="width: 15%;">Start Date/Time</th>
+                            <th class="th-yellow" style="width: 15%;">End Date/Time</th>
+                            <th class="th-yellow" style="width: 5%; text-align: center;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="shortMedBody">
+                        <tr>
+                            <td><input type="text" class="table-input short-name"></td>
+                            <td><input type="text" class="table-input short-reason"></td>
+                            <td><input type="text" class="table-input short-start" placeholder="DD/MM/YY"></td>
+                            <td><input type="text" class="table-input short-end" placeholder="DD/MM/YY"></td>
+                            <td style="text-align: center;"><button type="button" class="btn-del-row" onclick="removeMedRow(this)">&times;</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <button type="button" class="btn-dynamic-action" id="btnAddShortMedRow">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Add Short Term Medication Row
+                </button>
+
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Additional Comments / Instructions:</td>
+                        <td><textarea id="medComments" class="table-textarea"></textarea></td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 4: ACTIVITIES OF DAILY LIVING (ADLs)
+                 ======================================================== -->
+            <section id="sec-adls">
+                <div class="section-sub-banner">
+                    <span>4. Assessment of Activities of Daily Living (ADLs)</span>
+                    <span class="sec-badge">Clinical Needs</span>
+                </div>
+
+                <!-- 1. Communication -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">1. Communication</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlCommGoal" class="table-input" value="To maintain or enhance current levels of communication"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlCommNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Vision / Eyesight:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Vision:</strong>
+                                <label><input type="radio" name="visionStatus" value="Normal"> Normal</label>
+                                <label><input type="radio" name="visionStatus" value="Impaired"> Impaired</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Aids used:</strong>
+                                <label><input type="checkbox" id="visAidNone"> None</label>
+                                <label><input type="checkbox" id="visAidGlasses"> Glasses</label>
+                                <label><input type="checkbox" id="visAidMag"> Magnifying glass</label>
+                                <label><input type="checkbox" id="visCleanDaily"> Clean &amp; fit glasses daily</label>
+                                <label><input type="checkbox" id="visCleanOwn"> Able to clean &amp; fit own glasses</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Actions to be taken by carer:</strong>
+                                <label><input type="checkbox" id="visActRange"> Place objects in range of vision</label>
+                                <label><input type="checkbox" id="visActRead"> Read documents aloud</label>
+                                <label><input type="checkbox" id="visActWrite"> Assist to write</label>
+                                <label><input type="checkbox" id="visActPhone"> Assist to use telephone</label>
+                            </div>
+                            <span class="input-sublabel">Other Eyecare Needs / Care Required (include requirements for those who are blind):</span>
+                            <input type="text" id="visionOther" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Hearing:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Hearing:</strong>
+                                <label><input type="radio" name="hearingStatus" value="Normal"> Normal</label>
+                                <label><input type="radio" name="hearingStatus" value="Impaired"> Impaired</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Aids used:</strong>
+                                <label><input type="checkbox" id="hearNone"> None</label>
+                                <label><input type="checkbox" id="hearAidR"> Hearing aids: R)</label>
+                                <label><input type="checkbox" id="hearAidL"> L)</label>
+                                <label><input type="checkbox" id="hearAidBoth"> Both</label>
+                                <label><input type="checkbox" id="hearAdjVol"> Adjust volume daily</label>
+                                <label><input type="checkbox" id="hearBattDaily"> Check batteries &amp; clean aids daily</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Actions to be taken by carer:</strong>
+                                <label><input type="checkbox" id="hearActAttn"> Gain attention before speaking</label>
+                                <label><input type="checkbox" id="hearActLoud"> Speak loudly, clearly &amp; directly</label>
+                                <label><input type="checkbox" id="hearActNoise"> Minimise background noise</label>
+                                <label><input type="checkbox" id="hearActTime"> Allow extra time for response</label>
+                                <label><input type="checkbox" id="hearActSteps"> Give step by step instructions</label>
+                            </div>
+                            <span class="input-sublabel">Other hearing needs required (methods of communication for deaf):</span>
+                            <input type="text" id="hearingOther" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Speech &amp; Language:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Language:</strong>
+                                <label><input type="radio" name="langType" value="English"> English</label>
+                                <label><input type="radio" name="langType" value="Other"> Other</label>
+                                <span style="margin-left: 8px;">If Other, specify primary language:</span>
+                                <input type="text" id="primaryLangSpec" class="table-input" style="width: 180px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Speech:</strong>
+                                <label><input type="radio" name="speechStatus" value="Normal"> Normal</label>
+                                <label><input type="radio" name="speechStatus" value="Impaired"> Impaired</label>
+                                <strong style="margin-left: 14px;">Cognitive Function:</strong>
+                                <label><input type="radio" name="cogStatus" value="Orientated"> Orientated</label>
+                                <label><input type="radio" name="cogStatus" value="Disorientated"> Disorientated</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Method of communication:</strong>
+                                <label><input type="checkbox" id="commMethVerbal"> Verbal</label>
+                                <label><input type="checkbox" id="commMethNonVerbal"> Non-verbal</label>
+                                <label><input type="checkbox" id="commMethWritten"> Written</label>
+                                <label><input type="checkbox" id="commMethVisual"> Visual</label>
+                            </div>
+                            <span class="input-sublabel">Other Speech &amp; Language Needs / Care Required (methods for non-verbal or non-English):</span>
+                            <input type="text" id="speechOther" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlCommNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 2. Mobility -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">2. Mobility</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlMobGoal" class="table-input" value="Customer will maintain current level of mobility"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlMobNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Walking / Transferring:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Aids used:</strong>
+                                <label><input type="checkbox" id="mobStick"> Walking stick</label>
+                                <label><input type="checkbox" id="mobWheelchair"> Wheelchair</label>
+                                <label><input type="checkbox" id="mobFrame"> Zimmer frame</label>
+                                <label><input type="checkbox" id="mobWalker"> Wheeled walker</label>
+                                <label><input type="checkbox" id="mobAidsNA"> N/A</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Mobility Status:</strong>
+                                <label><input type="checkbox" id="mob1Assist"> 1 to assist</label>
+                                <label><input type="checkbox" id="mob2Assist"> 2 to assist</label>
+                                <label><input type="checkbox" id="mobHipRep"> Hip replacement</label>
+                                <label><input type="checkbox" id="mobAmputee"> Amputee</label>
+                                <label><input type="checkbox" id="mobStatusNA"> N/A</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Other aids used:</strong>
+                                <label><input type="checkbox" id="mobBedRail"> Bed rail</label>
+                                <label><input type="checkbox" id="mobSlideSheet"> Slide sheet</label>
+                                <label><input type="checkbox" id="mobHoist"> Hoist</label>
+                                <label><input type="checkbox" id="mobStandHoist"> Standing hoist</label>
+                                <label><input type="checkbox" id="mobOtherAidsNA"> N/A</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Other:</strong>
+                                <label><input type="checkbox" id="mobDir"> Provide direction</label>
+                                <label><input type="checkbox" id="mobSupervise"> Supervise movement</label>
+                                <label><input type="checkbox" id="mobEncourage"> Encourage to maintain mobility</label>
+                                <label><input type="checkbox" id="mobOtherNA"> N/A</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <strong>Assistance with Physiotherapy exercises required:</strong>
+                                <label><input type="radio" name="mobPhysio" value="Yes"> Yes</label>
+                                <label><input type="radio" name="mobPhysio" value="No"> No</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlMobNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 3. Maintaining a Safe Environment -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">3. Maintaining a Safe Environment</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlSafeGoal" class="table-input" value="Customer will remain safely at home"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlSafeNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Safeguarding:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Is the Customer aware of the safeguarding policy:</span>
+                                <label><input type="radio" name="safePolicy" value="Yes"> Yes</label>
+                                <label><input type="radio" name="safePolicy" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <span>Is the Customer aware of the Complaints policy:</span>
+                                <label><input type="radio" name="complaintPolicy" value="Yes"> Yes</label>
+                                <label><input type="radio" name="complaintPolicy" value="No"> No</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Home Environment:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Has the home safety risk assessment been completed:</span>
+                                <label><input type="radio" name="homeRaComplete" value="Yes"> Yes</label>
+                                <label><input type="radio" name="homeRaComplete" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <span>Have any risks identified been brought to the Customers attention:</span>
+                                <label><input type="radio" name="risksBrought" value="Yes"> Yes</label>
+                                <label><input type="radio" name="risksBrought" value="No"> No</label>
+                            </div>
+                            <p style="font-size: 11px; font-style: italic; color: #64748b; margin-top: 4px;">Please note, positive risk taking is a person's right</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlSafeNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 4. Breathing -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">4. Breathing</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlBreathGoal" class="table-input" value="All HCA will be aware of their duties"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlBreathNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Breathing Assessment:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Is there a diagnosis of Asthma, COPD or other breathing condition:</span>
+                                <label><input type="radio" name="hasCopd" value="Yes"> Yes</label>
+                                <label><input type="radio" name="hasCopd" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Does the Customer get breathless on exertion:</span>
+                                <label><input type="radio" name="breathless" value="Yes"> Yes</label>
+                                <label><input type="radio" name="breathless" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Does the Customer require oxygen:</span>
+                                <label><input type="radio" name="oxygenReq" value="Yes"> Yes</label>
+                                <label><input type="radio" name="oxygenReq" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Does the Customer use inhalers:</span>
+                                <label><input type="radio" name="inhalers" value="Yes"> Yes</label>
+                                <label><input type="radio" name="inhalers" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <span>Does the Customer require nebulisers:</span>
+                                <label><input type="radio" name="nebulisers" value="Yes"> Yes</label>
+                                <label><input type="radio" name="nebulisers" value="No"> No</label>
+                            </div>
+                            <p style="font-size: 11px; font-style: italic; color: #64748b; margin-top: 4px;">If assistance is needed with oxygen therapy, the HCA must be trained prior to starting with the Customer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlBreathNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 5. Body Temperature -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">5. Body Temperature</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlTempGoal" class="table-input" value="HCA will be aware of their duties"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlTempNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Heating Controls:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Are home heating controls set:</span>
+                                <label><input type="radio" name="heatSet" value="Yes"> Yes</label>
+                                <label><input type="radio" name="heatSet" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <span>Is the HCA permitted to turn the heating on/off:</span>
+                                <label><input type="radio" name="heatPermit" value="Yes"> Yes</label>
+                                <label><input type="radio" name="heatPermit" value="No"> No</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments (include heating instructions):</td>
+                        <td colspan="3"><input type="text" id="adlTempNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 6. Elimination -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">6. Elimination</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlElimGoal" class="table-input" value="To promote continence or maintain at current level"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlElimNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Urinary / Bowel:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Urinary:</strong>
+                                <label><input type="checkbox" id="uriNorm"> Normal</label>
+                                <label><input type="checkbox" id="uriCont"> Continent</label>
+                                <label><input type="checkbox" id="uriIncont"> Incontinent</label>
+                                <label><input type="checkbox" id="uriOccas"> Occasional Incontinence</label>
+                                <label><input type="checkbox" id="uriCath"> Urinary Catheter</label>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <span class="input-sublabel">Other (e.g. frequently needs to pass urine):</span>
+                                <input type="text" id="uriOther" class="table-input">
+                            </div>
+                            <div style="margin-bottom: 6px;">
+                                <span class="input-sublabel">Bowel - State normal pattern if applicable:</span>
+                                <input type="text" id="bowelPattern" class="table-input" style="margin-bottom: 6px;">
+                                <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                    <label><input type="checkbox" id="bowelCont"> Continent</label>
+                                    <label><input type="checkbox" id="bowelIncont"> Incontinent</label>
+                                    <label><input type="checkbox" id="bowelOccas"> Occasional incontinence</label>
+                                    <label><input type="checkbox" id="bowelColostomy"> Colostomy</label>
+                                    <label><input type="checkbox" id="bowelIleostomy"> Ileostomy</label>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 8px;">
+                                <span class="input-sublabel">Other (e.g. suffers with constipation/diarrhoea frequently):</span>
+                                <input type="text" id="bowelOther" class="table-input">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Stoma care:</strong>
+                                <label><input type="radio" name="stomaCare" value="Independent"> Independent</label>
+                                <label><input type="radio" name="stomaCare" value="Assistance"> Assistance</label>
+                                <span style="margin-left: 8px;">Specify:</span>
+                                <input type="text" id="stomaSpecify" class="table-input" style="width: 220px; display: inline-block;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                                <div>
+                                    <span class="input-sublabel">Continence aids day:</span>
+                                    <input type="text" id="contAidsDay" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Continence aids night:</span>
+                                    <input type="text" id="contAidsNight" class="table-input">
+                                </div>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Toileting Aids:</strong>
+                                <label><input type="checkbox" id="toilCommode"> Commode</label>
+                                <label><input type="checkbox" id="toilUrinal"> Urinal</label>
+                                <label><input type="checkbox" id="toilBedPan"> Bed pan</label>
+                                <label><input type="checkbox" id="toilNA"> N/A</label>
+                            </div>
+                            <span class="input-sublabel">Personal preferences (e.g. likes to be left alone approx. 15 minutes when using commode):</span>
+                            <input type="text" id="toilPreferences" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlElimNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 7. Pressure Area & Skin Care -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">7. Pressure Area &amp; Skin Care</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlSkinGoal" class="table-input" value="To maintain skin integrity and prevent development of pressure areas"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlSkinNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Skin Assessment:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Existing Skin Condition:</strong>
+                                <label><input type="checkbox" id="skinNormal"> Normal</label>
+                                <label><input type="checkbox" id="skinDry"> Dry</label>
+                                <label><input type="checkbox" id="skinMoist"> Moist</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Pressure areas intact:</strong>
+                                <label><input type="radio" name="pressureIntact" value="Yes"> Yes</label>
+                                <label><input type="radio" name="pressureIntact" value="No"> No</label>
+                                <span style="margin-left: 8px;">If No, Specify location and description:</span>
+                                <input type="text" id="pressureLocDesc" class="table-input" style="width: 240px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 8px;">
+                                <strong>Wounds:</strong>
+                                <label><input type="radio" name="woundsPresent" value="No"> No</label>
+                                <label><input type="radio" name="woundsPresent" value="Yes"> Yes</label>
+                                <span style="margin-left: 8px;">If Yes, specify location and description:</span>
+                                <input type="text" id="woundsLocDesc" class="table-input" style="width: 240px; display: inline-block;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 8px;">
+                                <div>
+                                    <span class="input-sublabel">Pressure Relief Aids:</span>
+                                    <input type="text" id="skinReliefAids" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Pressure Area Regime:</span>
+                                    <input type="text" id="skinRegime" class="table-input">
+                                </div>
+                            </div>
+                            <span class="input-sublabel">Skin Care requirements:</span>
+                            <input type="text" id="skinCareReqs" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlSkinNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 8. Medication -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">8. Medication</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlMedGoal" class="table-input" value="That Customer will safely take medications as prescribed"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlMedNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Medication Details:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Current medications:</strong>
+                                <label><input type="checkbox" id="medTab"> Tablets</label>
+                                <label><input type="checkbox" id="medCream"> Topical creams/ointments</label>
+                                <label><input type="checkbox" id="medEye"> Eyedrops</label>
+                                <label><input type="checkbox" id="medEar"> Eardrops</label>
+                                <label><input type="checkbox" id="medInj"> Injections</label>
+                                <label><input type="checkbox" id="medNeb"> nebulisers/inhalers</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="medCurrentOther" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Form prepared:</strong>
+                                <label><input type="checkbox" id="medFormPrePack"> Pre-packed</label>
+                                <label><input type="checkbox" id="medFormSep"> Separate medications</label>
+                                <label><input type="checkbox" id="medFormMix"> Mixture of pre-packed &amp; separate medications</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Assistance required:</strong>
+                                <label><input type="radio" name="medAssistLevel" value="Independent"> Independent</label>
+                                <label><input type="radio" name="medAssistLevel" value="Prompt"> Needs some help: supervise or prompt to take medications</label>
+                                <label><input type="radio" name="medAssistLevel" value="Family"> Family will assist</label>
+                                <label><input type="radio" name="medAssistLevel" value="Full"> Needs full assistance</label>
+                            </div>
+                            <p style="font-size: 11px; font-style: italic; color: #64748b; margin-top: 2px; margin-bottom: 6px;">(please note, where full assistance is required, all HCA will have to complete SAM training prior to starting with the Customer)</p>
+                            <div class="checkbox-label-group">
+                                <strong>Blood sugar level testing:</strong>
+                                <label><input type="radio" name="bslTest" value="Yes"> Yes</label>
+                                <label><input type="radio" name="bslTest" value="No"> No</label>
+                                <label><input type="radio" name="bslTest" value="N/A"> N/A</label>
+                                <span style="margin-left: 8px;">Frequency:</span>
+                                <input type="text" id="bslFreq" class="table-input" style="width: 120px; display: inline-block;">
+                                <label style="margin-left: 8px;"><input type="radio" name="bslMode" value="Independent"> Independent</label>
+                                <label><input type="radio" name="bslMode" value="Prompt"> Needs some assistance/prompting to self-check</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlMedNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 9. Personal Hygiene / Dressing and Undressing & Expressing Sexuality -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">9. Personal Hygiene / Dressing and Undressing &amp; Expressing Sexuality</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlHygGoal" class="table-input" value="Adequate personal hygiene will be maintained"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlHygNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Shower &amp; Washing:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Preferred (can tick more than one):</strong>
+                                <label><input type="checkbox" id="washShower"> Shower</label>
+                                <label><input type="checkbox" id="washBath"> Bath</label>
+                                <label><input type="checkbox" id="washBed"> Bed side wash</label>
+                                <label><input type="checkbox" id="washBasin"> Basin wash</label>
+                                <label><input type="checkbox" id="washSink"> Sink wash</label>
+                                <label><input type="checkbox" id="washSelfCare"> Encourage to optimise self-care</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="washOtherSpec" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Frequency:</strong>
+                                <label><input type="checkbox" id="freqShowerEvery"> Shower every day</label>
+                                <label><input type="checkbox" id="freqShowerAlt"> Shower alternate days</label>
+                                <label><input type="checkbox" id="freqWashEvery"> Basin/sink wash every day</label>
+                                <label><input type="checkbox" id="freqWashAlt"> Basin/sink wash alternate days</label>
+                                <label><input type="checkbox" id="freqNA"> N/A</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="freqOtherSpec" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Transfer:</strong>
+                                <label><input type="checkbox" id="transIndep"> Walk Independently to shower</label>
+                                <label><input type="checkbox" id="transMobAid"> Walk with mobility aid to shower</label>
+                                <label><input type="checkbox" id="transWheelchair"> Wheelchair</label>
+                                <span style="margin-left: 6px;">Other, specify:</span>
+                                <input type="text" id="transOtherSpec" class="table-input" style="width: 180px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Showering Aids:</strong>
+                                <label><input type="checkbox" id="aidShowerChair"> Shower chair</label>
+                                <label><input type="checkbox" id="aidGrabBars"> Grab bars</label>
+                                <label><input type="checkbox" id="aidShowerOther"> Other</label>
+                                <label><input type="checkbox" id="aidShowerNA"> N/A</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Toiletries:</strong>
+                                <label><input type="checkbox" id="toilNormSoap"> Normal soap</label>
+                                <label><input type="checkbox" id="toilDeod"> Deodorant</label>
+                                <label><input type="checkbox" id="toilAqueous"> Aqueous cream</label>
+                                <label><input type="checkbox" id="toilMoist"> Moisturiser (am/pm)</label>
+                                <span style="margin-left: 6px;">Soap substitute:</span>
+                                <input type="text" id="toilSoapSub" class="table-input" style="width: 120px; display: inline-block;">
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="toilOtherSpec" class="table-input" style="width: 120px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group">
+                                <strong>Hair Care:</strong>
+                                <label><input type="checkbox" id="hairWashShower"> Wash in shower</label>
+                                <label><input type="checkbox" id="hairWashBath"> Wash in bath/sink</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="hairWashOtherSpec" class="table-input" style="width: 180px; display: inline-block;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Grooming &amp; Dressing:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Facial Hair:</strong>
+                                <label><input type="checkbox" id="groomFacial"> Facial hair</label>
+                                <label><input type="checkbox" id="groomDryShave"> Dry shave</label>
+                                <label><input type="checkbox" id="groomShaveNA"> N/A</label>
+                                <span style="margin-left: 6px;">Frequency:</span>
+                                <input type="text" id="groomShaveFreq" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Nail/Foot Care:</strong>
+                                <label><input type="checkbox" id="nailIndep"> Independent</label>
+                                <label><input type="checkbox" id="nailClean"> Assist to keep nails clean</label>
+                                <label><input type="checkbox" id="nailMonitor"> Monitor &amp; encourage self-care</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="nailOtherSpec" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Teeth:</strong>
+                                <label><input type="checkbox" id="teethSome"> Some (upper &amp; lower)</label>
+                                <label><input type="checkbox" id="teethAll"> All of own</label>
+                                <label><input type="checkbox" id="teethNone"> None</label>
+                                <strong style="margin-left: 8px;">Dentures:</strong>
+                                <label><input type="checkbox" id="dentTop"> Top</label>
+                                <label><input type="checkbox" id="dentBottom"> Bottom</label>
+                                <label><input type="checkbox" id="dentBoth"> Both</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Cleaning routine:</strong>
+                                <label><input type="checkbox" id="dentCleanIndep"> Independent</label>
+                                <label><input type="checkbox" id="dentCleanSup"> Supervise</label>
+                                <label><input type="checkbox" id="dentCleanPrompt"> Some assistance/prompt</label>
+                                <label><input type="checkbox" id="dentCleanAssist"> Fully assist</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="dentCleanOther" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Dressing Assistance:</strong>
+                                <label><input type="radio" name="dressAssist" value="Independent"> Independent</label>
+                                <label><input type="radio" name="dressAssist" value="Minimal"> Requires minimal assistance/supervision</label>
+                                <label><input type="radio" name="dressAssist" value="1Assist"> Requires assistance x 1</label>
+                                <label><input type="radio" name="dressAssist" value="2Assist"> Requires assistance x 2</label>
+                            </div>
+                            <span class="input-sublabel">Other dressing needs/preferences (e.g. lay out clothes daily):</span>
+                            <input type="text" id="dressOtherSpec" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Expressing Sexuality:</td>
+                        <td colspan="3">
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Wear accessories (jewellery, watch, cufflinks):</span>
+                                <label><input type="radio" name="sexAccessories" value="Yes"> Yes</label>
+                                <label><input type="radio" name="sexAccessories" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Paint nails or have nails cleaned:</span>
+                                <label><input type="radio" name="sexNails" value="Yes"> Yes</label>
+                                <label><input type="radio" name="sexNails" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Have hair styled:</span>
+                                <label><input type="radio" name="sexHair" value="Yes"> Yes</label>
+                                <label><input type="radio" name="sexHair" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Wear make-up / face creams:</span>
+                                <label><input type="radio" name="sexMakeup" value="Yes"> Yes</label>
+                                <label><input type="radio" name="sexMakeup" value="No"> No</label>
+                            </div>
+                            <div class="checkbox-label-group">
+                                <span>Wear perfume / aftershave:</span>
+                                <label><input type="radio" name="sexPerfume" value="Yes"> Yes</label>
+                                <label><input type="radio" name="sexPerfume" value="No"> No</label>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlHygieneNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- 10. Nutrition, Sleeping, Social & End of Life -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="4" class="th-yellow" style="text-align: left; font-size: 13px;">10. Nutrition, Hydration, Sleeping &amp; End of Life</th>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow" style="width: 22%;">Goal:</td>
+                        <td colspan="3"><input type="text" id="adlNutriGoal" class="table-input" value="To ensure that Customer receives adequate nutritional intake to meet assessed need"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Care Needs:</td>
+                        <td colspan="3"><textarea id="adlNutriNeeds" class="table-textarea"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Eating &amp; Drinking:</td>
+                        <td colspan="3">
+                            <div style="margin-bottom: 6px;">
+                                <span class="input-sublabel">Food Allergies / Food Intolerances:</span>
+                                <input type="text" id="foodAllergiesSpec" class="table-input">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Appetite:</strong>
+                                <label><input type="radio" name="appetite" value="Good"> Good</label>
+                                <label><input type="radio" name="appetite" value="Fair"> Fair</label>
+                                <label><input type="radio" name="appetite" value="Poor"> Poor</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Type of diet:</strong>
+                                <label><input type="checkbox" id="dietReg"> Unmodified regular diet</label>
+                                <label><input type="checkbox" id="dietSoft"> Soft &amp; Bite Sized</label>
+                                <label><input type="checkbox" id="dietMinced"> Minced moist diet</label>
+                                <label><input type="checkbox" id="dietSmooth"> Smooth &amp; puree diet</label>
+                                <label><input type="checkbox" id="dietLiquid"> Liquidised diet</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="dietOtherSpec" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Food preparation:</strong>
+                                <label><input type="checkbox" id="foodPrepSome"> Requires some assistance</label>
+                                <label><input type="checkbox" id="foodPrepFull"> Requires full assistance</label>
+                                <label><input type="checkbox" id="foodPrepIndep"> Independent with preparing own meals</label>
+                                <label><input type="checkbox" id="foodPrepMOW"> Meals on wheels</label>
+                                <span style="margin-left: 6px;">Other meal delivery service:</span>
+                                <input type="text" id="foodPrepOther" class="table-input" style="width: 160px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Food aids / assistance needed:</strong>
+                                <label><input type="checkbox" id="foodAidCrock"> Modified Crockery</label>
+                                <label><input type="checkbox" id="foodAidCutlery"> Modified Cutlery</label>
+                                <label><input type="checkbox" id="foodAidBowl"> Bowl</label>
+                                <label><input type="checkbox" id="foodAidPlate"> Lipped Plate</label>
+                                <label><input type="checkbox" id="foodAidProt"> Clothing Protector</label>
+                                <label><input type="checkbox" id="foodAidNA"> N/A</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="foodAidOther" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Fluid Consistency:</strong>
+                                <label><input type="checkbox" id="fluidReg"> Regular unmodified fluids</label>
+                                <label><input type="checkbox" id="fluidG1"> Grade 1- very mildly thick</label>
+                                <label><input type="checkbox" id="fluidG2"> Grade 2- mildly thick</label>
+                                <label><input type="checkbox" id="fluidG3"> Grade 3- moderately thick</label>
+                                <label><input type="checkbox" id="fluidG4"> Grade 4- extremely thick</label>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Drinking Aids:</strong>
+                                <label><input type="checkbox" id="drinkAidCup"> Modified Cup</label>
+                                <label><input type="checkbox" id="drinkAidProt"> Clothing Protector</label>
+                                <label><input type="checkbox" id="drinkAidNA"> N/A</label>
+                                <span style="margin-left: 6px;">Special Instructions, specify:</span>
+                                <input type="text" id="drinkSpecialInst" class="table-input" style="width: 200px; display: inline-block;">
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px;">
+                                <div>
+                                    <span class="input-sublabel">Breakfast:</span>
+                                    <input type="text" id="mealBreakfast" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Lunch:</span>
+                                    <input type="text" id="mealLunch" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Dinner:</span>
+                                    <input type="text" id="mealDinner" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Snacks:</span>
+                                    <input type="text" id="mealSnacks" class="table-input">
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Sleeping &amp; Rest:</td>
+                        <td colspan="3">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 6px;">
+                                <div>
+                                    <span class="input-sublabel">Usual rise time:</span>
+                                    <input type="text" id="sleepRiseTime" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Usual time to bed:</span>
+                                    <input type="text" id="sleepBedTime" class="table-input">
+                                </div>
+                                <div>
+                                    <span class="input-sublabel">Rest time:</span>
+                                    <input type="text" id="sleepRestTime" class="table-input">
+                                </div>
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Room:</strong>
+                                <label><input type="checkbox" id="roomLight"> Light on</label>
+                                <label><input type="checkbox" id="roomDoorOpen"> Door open</label>
+                                <label><input type="checkbox" id="roomDoorClosed"> Door closed</label>
+                                <label><input type="checkbox" id="roomBedRail"> Bed Rail</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="roomOther" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <strong>Night-time patterns:</strong>
+                                <label><input type="checkbox" id="nightWear"> Assist into night wear</label>
+                                <label><input type="checkbox" id="nightToilet"> Prompt to use toilet</label>
+                                <span style="margin-left: 6px;">Other:</span>
+                                <input type="text" id="nightOther" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                            <span class="input-sublabel">Sleep preferences / aids to sleep:</span>
+                            <input type="text" id="sleepAids" class="table-input">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Social &amp; Activities:</td>
+                        <td colspan="3">
+                            <div style="margin-bottom: 6px;">
+                                <span class="input-sublabel">Frequency of visits/contact with family/friends:</span>
+                                <input type="text" id="socialVisits" class="table-input">
+                            </div>
+                            <div style="margin-bottom: 6px;">
+                                <span class="input-sublabel">Cultural / Spiritual needs:</span>
+                                <input type="text" id="culturalNeeds" class="table-input">
+                            </div>
+                            <div style="margin-bottom: 6px;">
+                                <span class="input-sublabel">Hobbies / interests:</span>
+                                <input type="text" id="socialHobbies" class="table-input">
+                            </div>
+                            <div class="checkbox-label-group">
+                                <strong>Community services currently used:</strong>
+                                <label><input type="checkbox" id="csHomeHelp"> Home Help</label>
+                                <label><input type="checkbox" id="csRespite"> Respite</label>
+                                <label><input type="checkbox" id="csMeals"> Meals supply</label>
+                                <label><input type="checkbox" id="csDayService"> Day Service</label>
+                                <label><input type="checkbox" id="csPhn"> PHN/CMHN</label>
+                                <label><input type="checkbox" id="csPrivate"> Private Carer</label>
+                                <label><input type="checkbox" id="csTherapy"> Therapy/Other Discipline</label>
+                                <label><input type="checkbox" id="csNone"> None</label>
+                                <label><input type="checkbox" id="csOther"> Other</label>
+                                <span style="margin-left: 6px;">Specify:</span>
+                                <input type="text" id="csOtherSpec" class="table-input" style="width: 140px; display: inline-block;">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">End of Life Stage:</td>
+                        <td colspan="3">
+                            <p style="font-size: 11px; font-style: italic; color: #64748b; margin-bottom: 6px;">
+                                **Please note, this must be discussed in conjunction with the individual, their family, hospice team and the Branch Manager. All staff will be trained in palliative care needs **
+                            </p>
+                            <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                <span>Is the Individual receiving end of life care:</span>
+                                <label><input type="radio" name="palliativeCare" value="Yes"> Yes</label>
+                                <label><input type="radio" name="palliativeCare" value="No"> No</label>
+                            </div>
+                            <span class="input-sublabel">The palliative care plan is as follows:</span>
+                            <textarea id="palliativeNotes" class="table-textarea"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-yellow">Additional Comments:</td>
+                        <td colspan="3"><input type="text" id="adlSleepNotes" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <!-- ADL Assessment Sign-off -->
+                <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 14px; margin-top: 14px;">
+                    <div class="sig-label-bar">
+                        <span style="font-size: 13px; font-weight: 700; color: var(--primary);">This Booklet is to be completed by the Care Coordinator/Care Supervisor or Clinical Governance Nurse:</span>
+                        <button type="button" class="btn-clear" id="btnClearAdlSig">Clear</button>
+                    </div>
+                    <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                        <canvas id="adlSigCanvas"></canvas>
+                    </div>
+                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px;">
+                            <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Full Name in Print:</span>
+                            <input type="text" id="adlAssessorName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                            <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Time:</span>
+                            <input type="text" id="adlSigTime" class="table-input" style="width: 80px;" placeholder="HH:MM">
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                            <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                            <input type="text" id="adlSigDate" class="date-input" style="width: 130px;" readonly>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 5: ABOUT ME
+                 ======================================================== -->
+            <section id="sec-aboutme">
+                <div class="section-sub-banner">
+                    <span>5. About Me &bull; Person-Centred Life Story</span>
+                    <span class="sec-badge">Personal History</span>
+                </div>
+
+                <!-- My Home Life -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="2" class="th-yellow" style="text-align: left; font-size: 13px;">My Home Life</th>
+                    </tr>
+                    <tr>
+                        <th class="th-yellow" style="width: 45%;">Question Prompts</th>
+                        <th class="th-yellow" style="width: 55%;">Learning Outcomes</th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 11px; color: #475569; vertical-align: top;">
+                            <ul style="margin: 0; padding-left: 16px; line-height: 1.5;">
+                                <li>Have you always lived here?</li>
+                                <li>Do you like living here?</li>
+                                <li>What do you like about living here?</li>
+                                <li>What do you enjoy doing in your own home?</li>
+                                <li>What do you need a bit more help with?</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <textarea id="aboutHomeOutcomes" class="table-textarea" style="min-height: 70px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="input-sublabel">The best way to support me to remain at home is:</span>
+                            <textarea id="aboutHomeLife" class="table-textarea"></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- Friendships -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="2" class="th-yellow" style="text-align: left; font-size: 13px;">Friendships</th>
+                    </tr>
+                    <tr>
+                        <th class="th-yellow" style="width: 45%;">Question Prompts</th>
+                        <th class="th-yellow" style="width: 55%;">Learning Outcomes</th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 11px; color: #475569; vertical-align: top;">
+                            <ul style="margin: 0; padding-left: 16px; line-height: 1.5;">
+                                <li>Do you have a supportive circle of friends?</li>
+                                <li>Do you see them often enough?</li>
+                                <li>Do you attend any activities? (e.g., day centre, clubs, etc)</li>
+                                <li>How do you keep in contact with your friends?</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <textarea id="aboutFriendOutcomes" class="table-textarea" style="min-height: 70px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="input-sublabel">The best way to support me in continuing my friendships is:</span>
+                            <textarea id="aboutFriendships" class="table-textarea"></textarea>
+                        </td>
+                    </tr>
+                </table>
+
+                <!-- My Life Now -->
+                <table class="doc-table" style="margin-bottom: 16px;">
+                    <tr>
+                        <th colspan="2" class="th-yellow" style="text-align: left; font-size: 13px;">My Life Now</th>
+                    </tr>
+                    <tr>
+                        <th class="th-yellow" style="width: 45%;">Question Prompts</th>
+                        <th class="th-yellow" style="width: 55%;">Learning Outcomes</th>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 11px; color: #475569; vertical-align: top;">
+                            <ul style="margin: 0; padding-left: 16px; line-height: 1.5;">
+                                <li>What do you do during the week?</li>
+                                <li>What achievements have you been most proud of?</li>
+                                <li>What makes a good day for you?</li>
+                                <li>Would you like help to have more good days? If yes, how can we help?</li>
+                                <li>What makes a bad day for you?</li>
+                                <li>What hobbies did you enjoy in the past, but are unable to do now? Can we help you to participate in these hobbies again?</li>
+                                <li>Is there anything that you would like to do?</li>
+                            </ul>
+                        </td>
+                        <td>
+                            <textarea id="aboutLifeOutcomes" class="table-textarea" style="min-height: 90px;"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <span class="input-sublabel">The best way to support me to achieve my personal goals is:</span>
+                            <textarea id="aboutLifeGoals" class="table-textarea"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 6: RISK ASSESSMENTS
+                 ======================================================== -->
+            <section id="sec-risks">
+                <div class="section-sub-banner">
+                    <span>6. Risk Assessments</span>
+                    <span class="sec-badge">Mandatory Audit</span>
+                </div>
+
+                <p style="font-size: 12px; color: #475569; margin-bottom: 16px;">
+                    The 3 InisCare statutory risk assessments below guarantee compliance on A4 prints and digital screens.
+                </p>
+
+                <!-- ====================================================
+                     RISK ASSESSMENT 1: PERSON MOVING & HANDLING (PM&H)
+                     ==================================================== -->
+                <div class="risk-vertical-card" id="riskCardPmh">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid var(--primary); padding-bottom: 6px;">
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--primary); margin: 0;">
+                            Assessment 1: Person Moving &amp; Handling (PM&amp;H)
+                        </h3>
+                    </div>
+
+                    <!-- PM&H Checklist -->
+                    <table class="doc-table" style="font-size: 11.5px; margin-bottom: 12px;">
+                        <thead>
+                            <tr>
+                                <th class="th-yellow" style="width: 50%;">Current Mobility &amp; Care Assistant</th>
+                                <th class="th-yellow" style="width: 50%;">Environment &amp; Customer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="vertical-align: top;">
+                                    <strong style="color: var(--primary);">Current mobility:</strong>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhStandInd"> Is the Customer able to stand independently?</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhWalkInd"> Is the Customer able to walk independently?</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhAssistReq"> Is assistance required to mobilise?</label></div>
+                                    <div style="margin: 4px 0;">
+                                        <span class="input-sublabel">If yes how many carers are required?</span>
+                                        <input type="text" id="pmhCarersNum" class="table-input">
+                                    </div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhAidsUsed"> Are mobility aids currently used?</label></div>
+                                    <div style="margin: 4px 0;">
+                                        <span class="input-sublabel">If yes, state what aids are in use:</span>
+                                        <input type="text" id="pmhAidsInUse" class="table-input">
+                                    </div>
+
+                                    <div style="margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+                                        <strong style="color: var(--primary);">Care Assistant:</strong>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhTwist"> Risk of twisting</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhStoop"> Risk of stooping</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhPost"> Risk of unstable posture</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhStrenuous"> Is the task too strenuous?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhTrained"> Has the HCA completed PM&amp;H training?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhAlone"> Is the HCA working alone?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhFit"> Is the HCA physically fit to complete the task?</label></div>
+                                    </div>
+                                </td>
+                                <td style="vertical-align: top;">
+                                    <strong style="color: var(--primary);">Environment:</strong>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhUneven"> Are there uneven surfaces?</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhFloorVar"> Variations in floor height</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhLight"> Inadequate lighting</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhBedChair"> Nonadjustable bed/chair</label></div>
+                                    <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhSpace"> Enough space to manoeuvre PM&amp;H equipment</label></div>
+
+                                    <div style="margin-top: 10px; border-top: 1px solid #e2e8f0; padding-top: 8px;">
+                                        <strong style="color: var(--primary);">Customer:</strong>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhMedRel"> Is there medication relevant to moving and handling (e.g. sedation/pain/anti spasmodic)?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhUnderstand"> Can the Customer understand &amp; participate in simple instructions?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhCoop"> Will behaviour affect cooperation with moving and handling?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhBariatric"> Is the Customer bariatric?</label></div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhEquipAvail"> Is the correct PM&amp;H equipment available?</label></div>
+                                        <div style="margin: 4px 0;">
+                                            <span class="input-sublabel">If yes, list the equipment in place:</span>
+                                            <input type="text" id="pmhEquipInPlace" class="table-input">
+                                        </div>
+                                        <div style="margin: 4px 0;"><label><input type="checkbox" id="pmhFallRisk"> Is the Customer at high risk of falling?</label></div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2">
+                                    <strong style="color: var(--primary);">People Handling Risk Level:</strong>
+                                    <div class="checkbox-label-group" style="margin-top: 6px;">
+                                        <label><input type="radio" name="pmhOverallLevel" value="High"> <strong>High</strong> – completely dependent, unpredictable, minimum of 2 HCAs &amp; equipment required. More HCAs may be required for heavier / bariatric Customers</label>
+                                    </div>
+                                    <div class="checkbox-label-group" style="margin-top: 4px;">
+                                        <label><input type="radio" name="pmhOverallLevel" value="Medium"> <strong>Medium</strong> – requires some assistance usually 1 HCA &amp; equipment, 2 carers may be needed for some activities</label>
+                                    </div>
+                                    <div class="checkbox-label-group" style="margin-top: 4px;">
+                                        <label><input type="radio" name="pmhOverallLevel" value="Low"> <strong>Low</strong> – requires no hands-on assistance. May require verbal guidance/ equipment</label>
+                                    </div>
+                                    <p style="font-size: 11px; font-style: italic; color: #64748b; margin: 4px 0;">If the Customer condition changes the moving and handling risk assessment will need to be reviewed</p>
+                                    <span class="input-sublabel" style="margin-top: 6px;">Comments:</span>
+                                    <textarea id="pmhComments" class="table-textarea"></textarea>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Vertical Form Block -->
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div class="risk-header-grid">
+                            <div class="risk-header-item">
+                                <span class="lbl">InisCare Office</span>
+                                <input type="text" id="pmhOffice">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Source of Risk</span>
+                                <input type="text" id="pmhSource">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Customer Name</span>
+                                <input type="text" id="pmhCustName">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Risk Assessor</span>
+                                <input type="text" id="pmhAssessor">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Date</span>
+                                <input type="text" id="pmhDate" readonly>
+                            </div>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>1. Hazard &amp; Risk Description</label>
+                            <input type="text" id="pmhHazard">
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>2. Existing Control Measures</label>
+                            <textarea id="pmhExistingControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>3. Additional Controls Required</label>
+                            <textarea id="pmhAdditionalControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-meta-row">
+                            <div class="risk-field-block">
+                                <label>Action Owner</label>
+                                <input type="text" id="pmhOwner">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Due Date</label>
+                                <input type="text" id="pmhDueDate" placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Review Date</label>
+                                <input type="text" id="pmhReviewDate" placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+
+                        <!-- Calculation Box -->
+                        <div class="risk-calc-box">
+                            <div class="risk-calc-selectors">
+                                <span>Likelihood:</span>
+                                <select id="pmhLikelihood" onchange="calculateRisk('pmh')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Rare / Remote</option>
+                                    <option value="2">2 - Unlikely</option>
+                                    <option value="3">3 - Possible</option>
+                                    <option value="4">4 - Likely</option>
+                                    <option value="5">5 - Almost Certain</option>
+                                </select>
+
+                                <span>Impact:</span>
+                                <select id="pmhImpact" onchange="calculateRisk('pmh')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Negligible</option>
+                                    <option value="2">2 - Minor</option>
+                                    <option value="3">3 - Moderate</option>
+                                    <option value="4">4 - Major</option>
+                                    <option value="5">5 - Extreme</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="risk-score-badge risk-badge-neutral" id="pmhScoreBadge">Rating: Pending</div>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="pmhStatus" value="Open"> Open</label>
+                                    <label><input type="radio" name="pmhStatus" value="Monitor"> Monitor</label>
+                                    <label><input type="radio" name="pmhStatus" value="Closed"> Closed</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visual 5x5 Matrix -->
+                        <div class="risk-matrix-table-wrap">
+                            <table class="risk-matrix-table" id="matrixTablePmh">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Likelihood</th>
+                                        <th style="width: 15%;">Negligible (1)</th>
+                                        <th style="width: 15%;">Minor (2)</th>
+                                        <th style="width: 15%;">Moderate (3)</th>
+                                        <th style="width: 15%;">Major (4)</th>
+                                        <th style="width: 15%;">Extreme (5)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="matrix-header-y">Almost Certain (5)</td>
+                                        <td class="m-green" data-cell="5-1">5</td>
+                                        <td class="m-amber" data-cell="5-2">10</td>
+                                        <td class="m-red" data-cell="5-3">15</td>
+                                        <td class="m-red" data-cell="5-4">20</td>
+                                        <td class="m-red" data-cell="5-5">25</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Likely (4)</td>
+                                        <td class="m-green" data-cell="4-1">4</td>
+                                        <td class="m-amber" data-cell="4-2">8</td>
+                                        <td class="m-amber" data-cell="4-3">12</td>
+                                        <td class="m-red" data-cell="4-4">16</td>
+                                        <td class="m-red" data-cell="4-5">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Possible (3)</td>
+                                        <td class="m-green" data-cell="3-1">3</td>
+                                        <td class="m-amber" data-cell="3-2">6</td>
+                                        <td class="m-amber" data-cell="3-3">9</td>
+                                        <td class="m-amber" data-cell="3-4">12</td>
+                                        <td class="m-red" data-cell="3-5">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Unlikely (2)</td>
+                                        <td class="m-green" data-cell="2-1">2</td>
+                                        <td class="m-green" data-cell="2-2">4</td>
+                                        <td class="m-amber" data-cell="2-3">6</td>
+                                        <td class="m-amber" data-cell="2-4">8</td>
+                                        <td class="m-amber" data-cell="2-5">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Rare / Remote (1)</td>
+                                        <td class="m-green" data-cell="1-1">1</td>
+                                        <td class="m-green" data-cell="1-2">2</td>
+                                        <td class="m-green" data-cell="1-3">3</td>
+                                        <td class="m-green" data-cell="1-4">4</td>
+                                        <td class="m-green" data-cell="1-5">5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- PM&H Signature Block -->
+                        <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+                            <div class="sig-label-bar">
+                                <span style="font-size: 12.5px; font-weight: 700; color: var(--primary);">Signed (PM&amp;H Assessor):</span>
+                                <button type="button" class="btn-clear" id="btnClearPmhSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="pmhSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                    <input type="text" id="pmhPrintName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                    <input type="text" id="pmhSigDate" class="date-input" style="width: 130px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====================================================
+                     RISK ASSESSMENT 2: FALLS RISK ASSESSMENT
+                     ==================================================== -->
+                <div class="risk-vertical-card" id="riskCardFalls">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid var(--primary); padding-bottom: 6px;">
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--primary); margin: 0;">
+                            Assessment 2: Falls Risk Assessment
+                        </h3>
+                    </div>
+
+                    <!-- Falls Checklist -->
+                    <table class="doc-table" style="font-size: 11.5px; margin-bottom: 12px;">
+                        <tr>
+                            <th colspan="3" class="th-yellow" style="text-align: left;">History of Falls</th>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow" style="width: 25%;">Any previous falls:</td>
+                            <td style="width: 25%;">
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="prevFalls" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="prevFalls" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="input-sublabel">If yes, approximate dates of falls:</span>
+                                <input type="text" id="fallsPrevDates" class="table-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Cause of previous falls:</td>
+                            <td colspan="2"><input type="text" id="fallsCause" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Any injuries sustained:</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallsInjuries" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="fallsInjuries" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="input-sublabel">Comments:</span>
+                                <input type="text" id="fallsInjuriesComm" class="table-input">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Fear of falling?</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fearFalling" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="fearFalling" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="input-sublabel">Comments:</span>
+                                <input type="text" id="fearFallingComm" class="table-input">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="3" class="th-yellow" style="text-align: left;">Mobility</th>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Unstable gait?</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallUnstableGait" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="fallUnstableGait" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td><span class="input-sublabel">Comments:</span><input type="text" id="fallGaitComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Uses recommended walking aid?</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallRecAid" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="fallRecAid" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td><span class="input-sublabel">Comments:</span><input type="text" id="fallRecAidComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Is the individual:</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallIndivAssist" value="assist x1"> assist x1</label>
+                                    <label><input type="radio" name="fallIndivAssist" value="assist x2"> assist x2</label>
+                                    <label><input type="radio" name="fallIndivAssist" value="Independent"> Independent</label>
+                                </div>
+                            </td>
+                            <td><span class="input-sublabel">Comments:</span><input type="text" id="fallIndivAssistComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Any podiatry issues?</td>
+                            <td>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallPodiatry" value="Yes"> Yes</label>
+                                    <label><input type="radio" name="fallPodiatry" value="No"> No</label>
+                                </div>
+                            </td>
+                            <td><span class="input-sublabel">Comments:</span><input type="text" id="fallPodiatryComm" class="table-input"></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="3" class="th-yellow" style="text-align: left;">Medical History (Contributing to Falls)</th>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Visual impairment:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmVisual" value="Yes"> Yes</label><label><input type="radio" name="fmVisual" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmVisualComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Cardiac arrhythmias:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmCardiac" value="Yes"> Yes</label><label><input type="radio" name="fmCardiac" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmCardiacComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Transient Ischaemic Attacks:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmTia" value="Yes"> Yes</label><label><input type="radio" name="fmTia" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmTiaComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Stroke:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmStroke" value="Yes"> Yes</label><label><input type="radio" name="fmStroke" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmStrokeComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Parkinsons disease:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmParkinsons" value="Yes"> Yes</label><label><input type="radio" name="fmParkinsons" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmParkinsonsComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Muscle weakness:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmMuscle" value="Yes"> Yes</label><label><input type="radio" name="fmMuscle" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmMuscleComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Decreased peripheral sensation:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmSens" value="Yes"> Yes</label><label><input type="radio" name="fmSens" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmSensComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Osteoporosis:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmOsteo" value="Yes"> Yes</label><label><input type="radio" name="fmOsteo" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmOsteoComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Hypotension:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmHypo" value="Yes"> Yes</label><label><input type="radio" name="fmHypo" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmHypoComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Incontinence / bowel urgency:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmIncont" value="Yes"> Yes</label><label><input type="radio" name="fmIncont" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmIncontComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Dizziness:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmDizzy" value="Yes"> Yes</label><label><input type="radio" name="fmDizzy" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmDizzyComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Malnutrition:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmMalnut" value="Yes"> Yes</label><label><input type="radio" name="fmMalnut" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmMalnutComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Dehydration:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmDehyd" value="Yes"> Yes</label><label><input type="radio" name="fmDehyd" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmDehydComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Cognitive impairment:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fmCognitive" value="Yes"> Yes</label><label><input type="radio" name="fmCognitive" value="No"> No</label></div></td>
+                            <td><input type="text" id="fmCognitiveComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Other (please describe):</td>
+                            <td colspan="2"><input type="text" id="fmOtherDesc" class="table-input"></td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="3" class="th-yellow" style="text-align: left;">Medication &amp; Environmental Factors</th>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Medication (tick all):</td>
+                            <td colspan="2">
+                                <div class="checkbox-label-group" style="margin-bottom: 6px;">
+                                    <label><input type="checkbox" id="fMedAnxiety"> Antianxiety agents</label>
+                                    <label><input type="checkbox" id="fMedNarcotic"> Narcotic agents</label>
+                                    <label><input type="checkbox" id="fMedAntidep"> Antidepressants</label>
+                                    <label><input type="checkbox" id="fMedHypnotic"> Hypnotics/tranquilisers</label>
+                                    <label><input type="checkbox" id="fMedAntihyp"> Antihypertensives</label>
+                                    <label><input type="checkbox" id="fMedHypogly"> Hypoglycaemic agents</label>
+                                    <label><input type="checkbox" id="fMedCardiac"> Cardiac medications</label>
+                                    <label><input type="checkbox" id="fMedLaxative"> Laxatives/Cathartics</label>
+                                    <label><input type="checkbox" id="fMedDiuretic"> Diuretics</label>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                    <div><span class="input-sublabel">Other (describe):</span><input type="text" id="fMedOther" class="table-input"></div>
+                                    <div><span class="input-sublabel">Comments:</span><input type="text" id="fMedComments" class="table-input"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Trip hazards in home:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="feTrip" value="Yes"> Yes</label><label><input type="radio" name="feTrip" value="No"> No</label></div></td>
+                            <td><input type="text" id="feTripComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Pets in the home:</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="fePets" value="Yes"> Yes</label><label><input type="radio" name="fePets" value="No"> No</label></div></td>
+                            <td><input type="text" id="fePetsComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Wears appropriate footwear?</td>
+                            <td><div class="checkbox-label-group"><label><input type="radio" name="feFootwear" value="Yes"> Yes</label><label><input type="radio" name="feFootwear" value="No"> No</label></div></td>
+                            <td><input type="text" id="feFootwearComm" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Other contributing factors:</td>
+                            <td colspan="2"><input type="text" id="feOtherFactors" class="table-input"></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Actions taken to reduce risk:</td>
+                            <td colspan="2"><textarea id="feActionsTaken" class="table-textarea"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow">Falls Risk Rating:</td>
+                            <td colspan="2">
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallsRatingOverall" value="Low"> <strong>Low risk</strong></label>
+                                    <label><input type="radio" name="fallsRatingOverall" value="Medium"> <strong>Medium risk</strong></label>
+                                    <label><input type="radio" name="fallsRatingOverall" value="High"> <strong>High risk</strong></label>
+                                </div>
+                                <span class="input-sublabel" style="margin-top: 6px;">The above risk rating was given because:</span>
+                                <textarea id="fallsRatingReason" class="table-textarea"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Vertical Form Block -->
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div class="risk-header-grid">
+                            <div class="risk-header-item">
+                                <span class="lbl">InisCare Office</span>
+                                <input type="text" id="fallsOffice">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Source of Risk</span>
+                                <input type="text" id="fallsSource">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Customer Name</span>
+                                <input type="text" id="fallsCustName">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Risk Assessor</span>
+                                <input type="text" id="fallsAssessor">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Date</span>
+                                <input type="text" id="fallsDate" readonly>
+                            </div>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>1. Hazard &amp; Risk Description</label>
+                            <input type="text" id="fallsHazard">
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>2. Existing Control Measures</label>
+                            <textarea id="fallsExistingControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>3. Additional Controls Required</label>
+                            <textarea id="fallsAdditionalControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-meta-row">
+                            <div class="risk-field-block">
+                                <label>Action Owner</label>
+                                <input type="text" id="fallsOwner">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Due Date</label>
+                                <input type="text" id="fallsDueDate" placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Review Date</label>
+                                <input type="text" id="fallsReviewDate" placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+
+                        <!-- Calculation Box -->
+                        <div class="risk-calc-box">
+                            <div class="risk-calc-selectors">
+                                <span>Likelihood:</span>
+                                <select id="fallsLikelihood" onchange="calculateRisk('falls')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Rare / Remote</option>
+                                    <option value="2">2 - Unlikely</option>
+                                    <option value="3">3 - Possible</option>
+                                    <option value="4">4 - Likely</option>
+                                    <option value="5">5 - Almost Certain</option>
+                                </select>
+
+                                <span>Impact:</span>
+                                <select id="fallsImpact" onchange="calculateRisk('falls')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Negligible</option>
+                                    <option value="2">2 - Minor</option>
+                                    <option value="3">3 - Moderate</option>
+                                    <option value="4">4 - Major</option>
+                                    <option value="5">5 - Extreme</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="risk-score-badge risk-badge-neutral" id="fallsScoreBadge">Rating: Pending</div>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="fallsStatus" value="Open"> Open</label>
+                                    <label><input type="radio" name="fallsStatus" value="Monitor"> Monitor</label>
+                                    <label><input type="radio" name="fallsStatus" value="Closed"> Closed</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visual 5x5 Matrix -->
+                        <div class="risk-matrix-table-wrap">
+                            <table class="risk-matrix-table" id="matrixTableFalls">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Likelihood</th>
+                                        <th style="width: 15%;">Negligible (1)</th>
+                                        <th style="width: 15%;">Minor (2)</th>
+                                        <th style="width: 15%;">Moderate (3)</th>
+                                        <th style="width: 15%;">Major (4)</th>
+                                        <th style="width: 15%;">Extreme (5)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="matrix-header-y">Almost Certain (5)</td>
+                                        <td class="m-green" data-cell="5-1">5</td>
+                                        <td class="m-amber" data-cell="5-2">10</td>
+                                        <td class="m-red" data-cell="5-3">15</td>
+                                        <td class="m-red" data-cell="5-4">20</td>
+                                        <td class="m-red" data-cell="5-5">25</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Likely (4)</td>
+                                        <td class="m-green" data-cell="4-1">4</td>
+                                        <td class="m-amber" data-cell="4-2">8</td>
+                                        <td class="m-amber" data-cell="4-3">12</td>
+                                        <td class="m-red" data-cell="4-4">16</td>
+                                        <td class="m-red" data-cell="4-5">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Possible (3)</td>
+                                        <td class="m-green" data-cell="3-1">3</td>
+                                        <td class="m-amber" data-cell="3-2">6</td>
+                                        <td class="m-amber" data-cell="3-3">9</td>
+                                        <td class="m-amber" data-cell="3-4">12</td>
+                                        <td class="m-red" data-cell="3-5">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Unlikely (2)</td>
+                                        <td class="m-green" data-cell="2-1">2</td>
+                                        <td class="m-green" data-cell="2-2">4</td>
+                                        <td class="m-amber" data-cell="2-3">6</td>
+                                        <td class="m-amber" data-cell="2-4">8</td>
+                                        <td class="m-amber" data-cell="2-5">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Rare / Remote (1)</td>
+                                        <td class="m-green" data-cell="1-1">1</td>
+                                        <td class="m-green" data-cell="1-2">2</td>
+                                        <td class="m-green" data-cell="1-3">3</td>
+                                        <td class="m-green" data-cell="1-4">4</td>
+                                        <td class="m-green" data-cell="1-5">5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Falls Signature Block -->
+                        <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+                            <div class="sig-label-bar">
+                                <span style="font-size: 12.5px; font-weight: 700; color: var(--primary);">Signed (Falls Assessor):</span>
+                                <button type="button" class="btn-clear" id="btnClearFallsSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="fallsSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                    <input type="text" id="fallsPrintName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                    <input type="text" id="fallsSigDate" class="date-input" style="width: 130px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ====================================================
+                     RISK ASSESSMENT 3: HOME SAFETY RISK ASSESSMENT
+                     ==================================================== -->
+                <div class="risk-vertical-card" id="riskCardSafety">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 2px solid var(--primary); padding-bottom: 6px;">
+                        <h3 style="font-size: 15px; font-weight: 700; color: var(--primary); margin: 0;">
+                            Assessment 3: Home Safety Risk Assessment
+                        </h3>
+                    </div>
+
+                    <!-- Home Safety Checklist (Room by Room) -->
+                    <table class="doc-table" style="font-size: 11.5px; margin-bottom: 12px;">
+                        <thead>
+                            <tr>
+                                <th class="th-yellow" style="width: 35%;">Room / Area Item</th>
+                                <th class="th-yellow" style="width: 15%; text-align: center;">Yes / No</th>
+                                <th class="th-yellow" style="width: 35%;">Room / Area Item</th>
+                                <th class="th-yellow" style="width: 15%; text-align: center;">Yes / No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Outside Area & Entrance Hall -->
+                            <tr style="background: #f1f5f9; font-weight: bold;">
+                                <td colspan="2" style="color: var(--primary);">Outside Area</td>
+                                <td colspan="2" style="color: var(--primary);">Entrance Hall</td>
+                            </tr>
+                            <tr>
+                                <td>Parking in close proximity to the house</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsParking" value="Yes"> Y</label> <label><input type="radio" name="hsParking" value="No"> N</label></td>
+                                <td>Are the lights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsHallLights" value="Yes"> Y</label> <label><input type="radio" name="hsHallLights" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Streetlights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsStreetlights" value="Yes"> Y</label> <label><input type="radio" name="hsStreetlights" value="No"> N</label></td>
+                                <td>Door lock in working order</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsDoorLock" value="Yes"> Y</label> <label><input type="radio" name="hsDoorLock" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Uneven Paths</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsUnevenPaths" value="Yes"> Y</label> <label><input type="radio" name="hsUnevenPaths" value="No"> N</label></td>
+                                <td>Is the floor safe? (mats/slippery/clutter)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsHallFloor" value="Yes"> Y</label> <label><input type="radio" name="hsHallFloor" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>House Alarm</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsHouseAlarm" value="Yes"> Y</label> <label><input type="radio" name="hsHouseAlarm" value="No"> N</label></td>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">Living Room</td>
+                            </tr>
+                            <tr>
+                                <td>Broken windows in the house</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBrokenWin" value="Yes"> Y</label> <label><input type="radio" name="hsBrokenWin" value="No"> N</label></td>
+                                <td>Is the floor safe? (mats/slippery/clutter)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsLivingFloor" value="Yes"> Y</label> <label><input type="radio" name="hsLivingFloor" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Visitors visible prior to entry</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsVisitorsVisible" value="Yes"> Y</label> <label><input type="radio" name="hsVisitorsVisible" value="No"> N</label></td>
+                                <td>Cables tidy</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsCablesTidy" value="Yes"> Y</label> <label><input type="radio" name="hsCablesTidy" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Entrance safe? (Steps/railings secure)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsEntranceSafe" value="Yes"> Y</label> <label><input type="radio" name="hsEntranceSafe" value="No"> N</label></td>
+                                <td>Plugs working and safe</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsPlugsSafe" value="Yes"> Y</label> <label><input type="radio" name="hsPlugsSafe" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Doorbell working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsDoorbell" value="Yes"> Y</label> <label><input type="radio" name="hsDoorbell" value="No"> N</label></td>
+                                <td>Lights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsLivingLights" value="Yes"> Y</label> <label><input type="radio" name="hsLivingLights" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">Kitchen</td>
+                                <td>Windows can be opened</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsLivingWin" value="Yes"> Y</label> <label><input type="radio" name="hsLivingWin" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>All Appliances working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsKitchenAppl" value="Yes"> Y</label> <label><input type="radio" name="hsKitchenAppl" value="No"> N</label></td>
+                                <td>Favourite Chair easy sit/stand</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsChairEasy" value="Yes"> Y</label> <label><input type="radio" name="hsChairEasy" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Plugs working and safe</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsKitchenPlugs" value="Yes"> Y</label> <label><input type="radio" name="hsKitchenPlugs" value="No"> N</label></td>
+                                <td>Table beside chair in easy reach</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsTableReach" value="Yes"> Y</label> <label><input type="radio" name="hsTableReach" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Is floor safe? (mats/slippery/clutter)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsKitchenFloor" value="Yes"> Y</label> <label><input type="radio" name="hsKitchenFloor" value="No"> N</label></td>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">Bedroom</td>
+                            </tr>
+                            <tr>
+                                <td>Windows can be opened</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsKitchenWin" value="Yes"> Y</label> <label><input type="radio" name="hsKitchenWin" value="No"> N</label></td>
+                                <td>Lights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedLights" value="Yes"> Y</label> <label><input type="radio" name="hsBedLights" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Pots/dishes/cutlery stored safely</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsPotsStored" value="Yes"> Y</label> <label><input type="radio" name="hsPotsStored" value="No"> N</label></td>
+                                <td>Is floor safe? (mats/slippery/clutter)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedFloor" value="Yes"> Y</label> <label><input type="radio" name="hsBedFloor" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">Stairway (Tick if N/A: <input type="checkbox" id="hsStairNA">)</td>
+                                <td>Cables safe</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedCables" value="Yes"> Y</label> <label><input type="radio" name="hsBedCables" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Stairlift insitu</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsStairlift" value="Yes"> Y</label> <label><input type="radio" name="hsStairlift" value="No"> N</label></td>
+                                <td>Plugs working and safe</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedPlugs" value="Yes"> Y</label> <label><input type="radio" name="hsBedPlugs" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Banister secure</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBanister" value="Yes"> Y</label> <label><input type="radio" name="hsBanister" value="No"> N</label></td>
+                                <td>Phone beside bed</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedPhone" value="Yes"> Y</label> <label><input type="radio" name="hsBedPhone" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Stairs safe? (Free clutter/carpet secure)</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsStairsSafe" value="Yes"> Y</label> <label><input type="radio" name="hsStairsSafe" value="No"> N</label></td>
+                                <td>Torch beside bed</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedTorch" value="Yes"> Y</label> <label><input type="radio" name="hsBedTorch" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Lights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsStairLights" value="Yes"> Y</label> <label><input type="radio" name="hsStairLights" value="No"> N</label></td>
+                                <td>Bed easily accessible</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBedAccess" value="Yes"> Y</label> <label><input type="radio" name="hsBedAccess" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">Bathroom</td>
+                                <td colspan="2" style="background: #f1f5f9; font-weight: bold; color: var(--primary);">General</td>
+                            </tr>
+                            <tr>
+                                <td>Lights working</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathLights" value="Yes"> Y</label> <label><input type="radio" name="hsBathLights" value="No"> N</label></td>
+                                <td>Smoke alarm</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsSmokeAlarm" value="Yes"> Y</label> <label><input type="radio" name="hsSmokeAlarm" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Floor safe when wet</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathFloor" value="Yes"> Y</label> <label><input type="radio" name="hsBathFloor" value="No"> N</label></td>
+                                <td>Carbon monoxide alarm</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsCoAlarm" value="Yes"> Y</label> <label><input type="radio" name="hsCoAlarm" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Walk in shower</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathShower" value="Yes"> Y</label> <label><input type="radio" name="hsBathShower" value="No"> N</label></td>
+                                <td>Firefighting equipment</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsFireEquip" value="Yes"> Y</label> <label><input type="radio" name="hsFireEquip" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Bath hoist present</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathHoist" value="Yes"> Y</label> <label><input type="radio" name="hsBathHoist" value="No"> N</label></td>
+                                <td>Location of firefighting equipment:</td>
+                                <td><input type="text" id="hsFireLoc" class="table-input"></td>
+                            </tr>
+                            <tr>
+                                <td>Windows can be opened</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathWin" value="Yes"> Y</label> <label><input type="radio" name="hsBathWin" value="No"> N</label></td>
+                                <td>House free from odour</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsNoOdour" value="Yes"> Y</label> <label><input type="radio" name="hsNoOdour" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Transfer space toilet/shower/bath</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBathTransfer" value="Yes"> Y</label> <label><input type="radio" name="hsBathTransfer" value="No"> N</label></td>
+                                <td>House free from rodents/insects</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsNoPests" value="Yes"> Y</label> <label><input type="radio" name="hsNoPests" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Safety mat in bath</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsSafetyMat" value="Yes"> Y</label> <label><input type="radio" name="hsSafetyMat" value="No"> N</label></td>
+                                <td>Post easily accessible</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsPostAccess" value="Yes"> Y</label> <label><input type="radio" name="hsPostAccess" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Shower chair</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsShowerChair" value="Yes"> Y</label> <label><input type="radio" name="hsShowerChair" value="No"> N</label></td>
+                                <td>Bins easily accessible</td>
+                                <td style="text-align: center;"><label><input type="radio" name="hsBinsAccess" value="Yes"> Y</label> <label><input type="radio" name="hsBinsAccess" value="No"> N</label></td>
+                            </tr>
+                            <tr>
+                                <td>Bathroom Comments:</td>
+                                <td><input type="text" id="hsBathComments" class="table-input"></td>
+                                <td>Location of Fuse box:</td>
+                                <td><input type="text" id="hsFuseBoxLoc" class="table-input"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Vertical Form Block -->
+                    <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 12px; margin-bottom: 12px;">
+                        <div class="risk-header-grid">
+                            <div class="risk-header-item">
+                                <span class="lbl">InisCare Office</span>
+                                <input type="text" id="safetyOffice">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Source of Risk</span>
+                                <input type="text" id="safetySource">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Customer Name</span>
+                                <input type="text" id="safetyCustName">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Risk Assessor</span>
+                                <input type="text" id="safetyAssessor">
+                            </div>
+                            <div class="risk-header-item">
+                                <span class="lbl">Date</span>
+                                <input type="text" id="safetyDate" readonly>
+                            </div>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>1. Hazard &amp; Risk Description</label>
+                            <input type="text" id="safetyHazard">
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>2. Existing Control Measures</label>
+                            <textarea id="safetyExistingControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-field-block">
+                            <label>3. Additional Controls Required</label>
+                            <textarea id="safetyAdditionalControls" rows="2"></textarea>
+                        </div>
+
+                        <div class="risk-meta-row">
+                            <div class="risk-field-block">
+                                <label>Action Owner</label>
+                                <input type="text" id="safetyOwner">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Due Date</label>
+                                <input type="text" id="safetyDueDate" placeholder="DD/MM/YYYY">
+                            </div>
+                            <div class="risk-field-block">
+                                <label>Review Date</label>
+                                <input type="text" id="safetyReviewDate" placeholder="DD/MM/YYYY">
+                            </div>
+                        </div>
+
+                        <!-- Calculation Box -->
+                        <div class="risk-calc-box">
+                            <div class="risk-calc-selectors">
+                                <span>Likelihood:</span>
+                                <select id="safetyLikelihood" onchange="calculateRisk('safety')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Rare / Remote</option>
+                                    <option value="2">2 - Unlikely</option>
+                                    <option value="3">3 - Possible</option>
+                                    <option value="4">4 - Likely</option>
+                                    <option value="5">5 - Almost Certain</option>
+                                </select>
+
+                                <span>Impact:</span>
+                                <select id="safetyImpact" onchange="calculateRisk('safety')">
+                                    <option value="" selected disabled>Select...</option>
+                                    <option value="1">1 - Negligible</option>
+                                    <option value="2">2 - Minor</option>
+                                    <option value="3">3 - Moderate</option>
+                                    <option value="4">4 - Major</option>
+                                    <option value="5">5 - Extreme</option>
+                                </select>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="risk-score-badge risk-badge-neutral" id="safetyScoreBadge">Rating: Pending</div>
+                                <div class="checkbox-label-group">
+                                    <label><input type="radio" name="safetyStatus" value="Open"> Open</label>
+                                    <label><input type="radio" name="safetyStatus" value="Monitor"> Monitor</label>
+                                    <label><input type="radio" name="safetyStatus" value="Closed"> Closed</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Visual 5x5 Matrix -->
+                        <div class="risk-matrix-table-wrap">
+                            <table class="risk-matrix-table" id="matrixTableSafety">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 25%;">Likelihood</th>
+                                        <th style="width: 15%;">Negligible (1)</th>
+                                        <th style="width: 15%;">Minor (2)</th>
+                                        <th style="width: 15%;">Moderate (3)</th>
+                                        <th style="width: 15%;">Major (4)</th>
+                                        <th style="width: 15%;">Extreme (5)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="matrix-header-y">Almost Certain (5)</td>
+                                        <td class="m-green" data-cell="5-1">5</td>
+                                        <td class="m-amber" data-cell="5-2">10</td>
+                                        <td class="m-red" data-cell="5-3">15</td>
+                                        <td class="m-red" data-cell="5-4">20</td>
+                                        <td class="m-red" data-cell="5-5">25</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Likely (4)</td>
+                                        <td class="m-green" data-cell="4-1">4</td>
+                                        <td class="m-amber" data-cell="4-2">8</td>
+                                        <td class="m-amber" data-cell="4-3">12</td>
+                                        <td class="m-red" data-cell="4-4">16</td>
+                                        <td class="m-red" data-cell="4-5">20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Possible (3)</td>
+                                        <td class="m-green" data-cell="3-1">3</td>
+                                        <td class="m-amber" data-cell="3-2">6</td>
+                                        <td class="m-amber" data-cell="3-3">9</td>
+                                        <td class="m-amber" data-cell="3-4">12</td>
+                                        <td class="m-red" data-cell="3-5">15</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Unlikely (2)</td>
+                                        <td class="m-green" data-cell="2-1">2</td>
+                                        <td class="m-green" data-cell="2-2">4</td>
+                                        <td class="m-amber" data-cell="2-3">6</td>
+                                        <td class="m-amber" data-cell="2-4">8</td>
+                                        <td class="m-amber" data-cell="2-5">10</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="matrix-header-y">Rare / Remote (1)</td>
+                                        <td class="m-green" data-cell="1-1">1</td>
+                                        <td class="m-green" data-cell="1-2">2</td>
+                                        <td class="m-green" data-cell="1-3">3</td>
+                                        <td class="m-green" data-cell="1-4">4</td>
+                                        <td class="m-green" data-cell="1-5">5</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Home Safety Signature Block -->
+                        <div style="margin-top: 14px; padding-top: 12px; border-top: 1px solid #e2e8f0;">
+                            <div class="sig-label-bar">
+                                <span style="font-size: 12.5px; font-weight: 700; color: var(--primary);">Signed (Home Safety Assessor):</span>
+                                <button type="button" class="btn-clear" id="btnClearSafetySig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="safetySigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 8px; flex: 1; min-width: 200px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                    <input type="text" id="safetyPrintName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                    <input type="text" id="safetySigDate" class="date-input" style="width: 130px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 7: CONSENT FORM
+                 ======================================================== -->
+            <section id="sec-consent">
+                <div class="section-sub-banner">
+                    <span>7. Consent Form</span>
+                    <span class="sec-badge">Formal Agreement</span>
+                </div>
+
+                <table class="doc-table">
+                    <tr>
+                        <td class="td-yellow" style="width: 20%;">Customer Name:</td>
+                        <td style="width: 30%;"><input type="text" id="consentCustName" class="table-input"></td>
+                        <td class="td-yellow" style="width: 20%;">Address:</td>
+                        <td style="width: 30%;"><input type="text" id="consentCustAddr" class="table-input"></td>
+                    </tr>
+                </table>
+
+                <div style="margin: 12px 0 8px 0; font-size: 13px; font-weight: 600; color: #1e293b;">
+                    I, <input type="text" id="consentGiverName" class="table-input" style="width: 260px; display: inline-block;"> am giving my consent for the following:
+                </div>
+
+                <table class="doc-table">
+                    <tbody>
+                        <tr>
+                            <td class="col-checkbox" style="width: 40px;"><input type="checkbox" id="cConsentCare"></td>
+                            <td><strong>Consent to care</strong> &bull; I agree to receive home support services delivered by InisCare Healthcare Assistants.</td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentMeds"></td>
+                            <td><strong>Consent for Medication Prompts</strong> &bull; InisCare staff may prompt / assist with taking prescribed medications.</td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentKeybox"></td>
+                            <td><strong>Keybox Access</strong> &bull; InisCare staff have authorization to use the property keybox. Keybox code: <input type="text" id="consentKeyboxVal" style="width: 120px; border-bottom: 1px solid #444; border-top:none; border-left:none; border-right:none; padding: 2px 4px; font-weight: bold;"></td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentNok"></td>
+                            <td><strong>Discussion with NOK</strong> &bull; InisCare staff may discuss care needs with designated Next of Kin: <input type="text" id="consentNokVal" style="width: 180px; border-bottom: 1px solid #444; border-top:none; border-left:none; border-right:none; padding: 2px 4px; font-weight: bold;"></td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentHse"></td>
+                            <td><strong>HSE &amp; Health Services Information Sharing</strong> &bull; I agree to information sharing between InisCare, HSE, PHN, and my GP Practice.</td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentPlan"></td>
+                            <td><strong>Care Plan &amp; Risk Assessments</strong> &bull; I have read, understand, and agree with my Personal Support Plan and priority rating.</td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentMale"></td>
+                            <td><strong>Male Care Assistants</strong> &bull; Consent for male HCAs to provide meal preparation, companionship, and double-up assistance (for female Customers).</td>
+                        </tr>
+                        <tr>
+                            <td class="col-checkbox"><input type="checkbox" id="cConsentBsl"></td>
+                            <td><strong>Blood Sugar Testing</strong> &bull; Consent for Care Assistants to prompt or assist with blood glucose monitoring where assessed.</td>
+                        </tr>
+                        <tr>
+                            <td class="td-yellow" style="font-weight: bold;">Additional Comments:</td>
+                            <td><input type="text" id="consentComments" class="table-input"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Dual Consent Signatures -->
+                <div style="margin-top: 20px;">
+                    <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 10px;">
+                        Signatures &amp; Consent Confirmation
+                    </h4>
+
+                    <div class="signatures-grid">
+                        <!-- Customer / NOK -->
+                        <div>
+                            <div class="sig-label-bar">
+                                <span>Signed (Customer / NOK):</span>
+                                <button type="button" class="btn-clear" id="btnClearConsentClientSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="consentClientSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                <input type="text" id="consentClientSigDate" class="date-input" style="width: 140px;" readonly>
+                            </div>
+                        </div>
+
+                        <!-- InisCare Representative -->
+                        <div>
+                            <div class="sig-label-bar">
+                                <span>Signed (InisCare Representative):</span>
+                                <button type="button" class="btn-clear" id="btnClearConsentRepSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="consentRepSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 140px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                    <input type="text" id="consentRepName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 120px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Title:</span>
+                                    <input type="text" id="consentRepTitle" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                    <input type="text" id="consentRepDate" class="date-input" style="width: 110px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================================
+                 SECTION 8: HOUSEKEEPING LIST
+                 ======================================================== -->
+            <section id="sec-housekeeping">
+                <div class="section-sub-banner">
+                    <span>8. Housekeeping Scope &bull; Service Agreement</span>
+                    <span class="sec-badge">Service Standards</span>
+                </div>
+
+                <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 6px; padding: 12px; margin-bottom: 12px; font-size: 12px; line-height: 1.5; color: #166534;">
+                    <strong>InisCare Policy:</strong> InisCare staff are professional Healthcare Assistants dedicated to supporting safe independent living, not domestic cleaners. Tasks are light household duties directly supporting customer welfare:
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin-bottom: 14px;">
+                    <!-- Permitted Tasks -->
+                    <div style="border: 1px solid #86efac; background: #ffffff; border-radius: 6px; padding: 12px;">
+                        <h4 style="color: #166534; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #22c55e;">&#10003;</span> Permitted Light Housekeeping Tasks
+                        </h4>
+                        <ul style="font-size: 11.5px; color: #334155; line-height: 1.5; padding-left: 18px; margin: 0;">
+                            <li>Hoovering rooms used by the Customer (weekly or as reasonably needed)</li>
+                            <li>Washing up the Customer's used dishes only</li>
+                            <li>Customer's personal laundry (clothing only)</li>
+                            <li>Mopping kitchen/bathroom floors (once a week / as needed)</li>
+                            <li>Cleaning bathroom after use (toilet, shower/bath wipe down)</li>
+                            <li>Making Customer's bed and changing bedsheets</li>
+                            <li>Wiping kitchen countertops after use</li>
+                            <li>Emptying household bins</li>
+                            <li>Checking fridge for expired food &amp; wiping spills</li>
+                            <li>Cleaning fireplace in exceptional cases (no other heat source)</li>
+                            <li>Dusting surfaces within easy reach (excluding delicate ornaments)</li>
+                            <li>Cleaning microwave after use by carer</li>
+                        </ul>
+                    </div>
+
+                    <!-- Excluded Tasks -->
+                    <div style="border: 1px solid #fca5a5; background: #fff5f5; border-radius: 6px; padding: 12px;">
+                        <h4 style="color: #991b1b; font-size: 12.5px; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">
+                            <span style="color: #ef4444;">&#10007;</span> Strictly Excluded Tasks
+                        </h4>
+                        <ul style="font-size: 11.5px; color: #450a0a; line-height: 1.5; padding-left: 18px; margin: 0;">
+                            <li>Gardening or outdoor maintenance</li>
+                            <li>Cleaning ovens or deep cooker scrubbing</li>
+                            <li>Cleaning kitchen cupboard doors</li>
+                            <li>Window washing</li>
+                            <li>Deep cleaning (scrubbing floors, skirting boards, walls)</li>
+                            <li>Moving heavy furniture to clean behind</li>
+                            <li>Standing on furniture/ladders to reach high cobwebs</li>
+                            <li>Painting or home decorating</li>
+                            <li>Tidying private wardrobes/drawers of customer personal effects</li>
+                            <li>Defrosting freezers</li>
+                            <li>Draining or servicing washing machines</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Housekeeping Signatures -->
+                <div style="margin-top: 20px;">
+                    <h4 style="font-size: 13.5px; font-weight: 700; color: var(--primary); margin-bottom: 10px;">
+                        Housekeeping Agreement Signatures
+                    </h4>
+
+                    <div class="signatures-grid">
+                        <!-- Customer / NOK -->
+                        <div>
+                            <div class="sig-label-bar">
+                                <span>Signed by Customer / NOK:</span>
+                                <button type="button" class="btn-clear" id="btnClearHkClientSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="hkClientSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 8px;">
+                                <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                <input type="text" id="hkClientSigDate" class="date-input" style="width: 140px;" readonly>
+                            </div>
+                        </div>
+
+                        <!-- InisCare Representative -->
+                        <div>
+                            <div class="sig-label-bar">
+                                <span>Signed by InisCare Representative:</span>
+                                <button type="button" class="btn-clear" id="btnClearHkRepSig">Clear</button>
+                            </div>
+                            <div class="canvas-container" style="height: 95px; margin-bottom: 10px;">
+                                <canvas id="hkRepSigCanvas"></canvas>
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;">
+                                <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 140px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Print Name:</span>
+                                    <input type="text" id="hkRepName" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px; flex: 1; min-width: 120px;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Title:</span>
+                                    <input type="text" id="hkRepTitle" class="table-input" style="border: 0.6px solid #444; padding: 6px 8px; background: #fff;">
+                                </div>
+                                <div style="display: flex; align-items: center; gap: 6px; flex-shrink: 0;">
+                                    <span style="font-size: 12px; font-weight: 600; white-space: nowrap;">Date:</span>
+                                    <input type="text" id="hkRepDate" class="date-input" style="width: 110px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div><!-- /form-paper -->
+
+        <!-- Action Card with Target Email Field (Standard InisCare Portal Style) -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed Personal Support Plan.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+
+            <!-- Secondary Local Storage Buttons (Save & Clean Form) -->
+            <div class="secondary-buttons-group">
+                <button type="button" class="btn-secondary-action btn-save-local" id="btnSaveLocal" title="Save form locally on this device">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
+                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
+                        <polyline points="7 3 7 8 15 8"></polyline>
+                    </svg>
+                    <span>Save Form</span>
+                </button>
+                <button type="button" class="btn-secondary-action btn-clear-local" id="btnClearLocal" title="Clear form to start a new customer">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="3 6 5 6 21 6"></polyline>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        <line x1="10" y1="11" x2="10" y2="17"></line>
+                        <line x1="14" y1="11" x2="14" y2="17"></line>
+                    </svg>
+                    <span>Clean Form</span>
+                </button>
+            </div>
+            <div id="localDraftStatus" class="local-draft-status"></div>
+        </div>
+
+    </div><!-- /form-wrapper -->
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="psp.js?v=12"></script>
+</body>
+</html>

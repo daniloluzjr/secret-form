@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+.vercel/
+mobile/
+
+# Local app archives, builds and media assets
+builds/
+store-assets/
+docs-and-templates/
+generated-test-pdfs/
+

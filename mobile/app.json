@@ -1,0 +1,25 @@
+{
+  "name": "InisCareSupervisors",
+  "displayName": "InisCare Supervisors",
+  "expo": {
+    "name": "InisCare Supervisors",
+    "slug": "iniscaresupervisors",
+    "owner": "iniscare",
+    "version": "1.0.0",
+    "icon": "./assets/app-icon.png",
+    "ios": {
+      "bundleIdentifier": "com.iniscare.supervisors",
+      "supportsTablet": true,
+      "deploymentTarget": "16.0",
+      "buildNumber": "2"
+    },
+    "android": {
+      "package": "com.iniscare.supervisors"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ecb3c02a-3791-4b49-a8fa-a88390c8d866"
+      }
+    }
+  }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Assistant Catch Up - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <!-- Main Document Form -->
+        <div class="form-paper" id="catchUpDocument">
+            
+            <!-- Logo Bar -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare" class="doc-logo-img">
+            </div>
+
+            <!-- Banner Title -->
+            <div class="doc-banner-title">
+                Care Assistant Catch Up
+            </div>
+
+            <!-- Top Details Table -->
+            <table class="doc-table" style="margin-bottom: 20px;">
+                <tr>
+                    <td class="td-yellow">Carer</td>
+                    <td><input type="text" id="carerName" class="table-input" placeholder="Enter Carer name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Completed By</td>
+                    <td><input type="text" id="completedBy" class="table-input" placeholder="Enter who completed this"></td>
+                </tr>
+            </table>
+
+            <!-- Questions Container -->
+            <div id="questionsContainer">
+
+                <!-- 1 of 8: Date Of Assessment -->
+                <div class="catchup-question-card" data-q-id="q1">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Date Of Assessment</span>
+                    </div>
+                    <div class="catchup-input-wrapper">
+                        <input type="text" id="q1_answer" class="catchup-text-input" placeholder="Please enter your answer here.">
+                    </div>
+                </div>
+
+                <!-- 2 of 8: Do you like working with InisCare? -->
+                <div class="catchup-question-card" data-q-id="q3">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Do you like working with InisCare?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q3_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 3 of 8: How is the communication with your Line Manager? -->
+                <div class="catchup-question-card" data-q-id="q4">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">How is the communication with your Line Manager?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q4_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 4 of 8: Do you receive enough support on a daily basis? -->
+                <div class="catchup-question-card" data-q-id="q5">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Do you receive enough support on a daily basis?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q5_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 5 of 8: Do you receive sufficient feedback of your performance from the Managers/Supervisors? -->
+                <div class="catchup-question-card" data-q-id="q6">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Do you receive sufficient feedback of your performance from the Managers/Supervisors?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q6_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 6 of 8: Are you happy with your working hours? -->
+                <div class="catchup-question-card" data-q-id="q7">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Are you happy with your working hours?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q7_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 7 of 8: Do you have any suggestions or ideas on how we could improve the Care Assistant experience? -->
+                <div class="catchup-question-card" data-q-id="q8">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Do you have any suggestions or ideas on how we could improve the Care Assistant experience?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q8_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+                <!-- 8 of 8: Any additional comments or concerns? -->
+                <div class="catchup-question-card" data-q-id="q9">
+                    <div class="catchup-q-header">
+                        <span class="catchup-q-title">Any additional comments or concerns?</span>
+                    </div>
+                    <div class="catchup-input-wrapper" style="margin-bottom: 0;">
+                        <textarea id="q9_answer" class="catchup-textarea" rows="2" placeholder="Please enter your answer here."></textarea>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Dual Signatures & Dates (Side-by-Side) -->
+            <div style="margin-top: 25px;">
+                <h3 style="font-size: 15px; font-weight: 700; color: #005952; margin-bottom: 12px; border-bottom: 1.5px solid #005952; padding-bottom: 5px;">
+                    Signatures & Acknowledgement
+                </h3>
+
+                <div class="signatures-grid">
+                    <!-- Carer Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed (Care Assistant):</span>
+                            <button type="button" class="btn-clear" id="btnClearCarerSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="carerSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="carerSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+
+                    <!-- Supervisor Signature -->
+                    <div>
+                        <div class="sig-label-bar">
+                            <span>Signed (Completed By / Supervisor):</span>
+                            <button type="button" class="btn-clear" id="btnClearSupervisorSig">Clear</button>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="supervisorSigCanvas" height="85"></canvas>
+                        </div>
+                        <div style="margin-top: 8px; display: flex; align-items: center; gap: 8px;">
+                            <span style="font-size: 12px; font-weight: 600;">Date:</span>
+                            <input type="text" id="supervisorSigDate" class="date-input" style="width: 140px;" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Enter an email address to receive an official PDF copy of this Catch Up assessment.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="catch-up.js?v=12"></script>
+</body>
+</html>

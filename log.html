@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InisCare - Document Logs & Audit Trail</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .log-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 24px 20px 60px;
+        }
+        .log-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #e5e7eb;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .btn-portal-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background-color: #f1f5f9;
+            color: #005952;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+        .btn-portal-back:hover {
+            background-color: #e2e8f0;
+            color: #003833;
+        }
+        .log-title-area h1 {
+            font-family: 'Outfit', sans-serif;
+            color: #005952;
+            font-size: 26px;
+            margin: 0 0 4px;
+        }
+        .log-title-area p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+        .retention-alert {
+            background-color: #f8fafc;
+            border-left: 4px solid #005952;
+            padding: 12px 18px;
+            border-radius: 6px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 13px;
+            color: #334155;
+        }
+        .retention-alert strong {
+            color: #005952;
+        }
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        .kpi-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 16px 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .kpi-card-title {
+            font-size: 12px;
+            font-weight: 600;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+        }
+        .kpi-card-value {
+            font-size: 24px;
+            font-weight: 700;
+            color: #005952;
+            font-family: 'Outfit', sans-serif;
+        }
+        .log-controls {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+        }
+        .search-input {
+            flex: 1;
+            min-width: 260px;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .filter-select {
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 14px;
+            background: #fff;
+            color: #334155;
+            cursor: pointer;
+        }
+        .btn-refresh {
+            padding: 10px 16px;
+            background: #005952;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-refresh:hover {
+            background: #00433e;
+        }
+        .log-table-wrap {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow-x: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .log-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 13px;
+        }
+        .log-table th {
+            background: #f8fafc;
+            color: #475569;
+            font-weight: 600;
+            padding: 12px 14px;
+            border-bottom: 1px solid #e2e8f0;
+            white-space: nowrap;
+        }
+        .log-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #f1f5f9;
+            color: #1e293b;
+        }
+        .log-table tr:hover {
+            background-color: #f8fafc;
+        }
+        .form-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #e6f4f2;
+            color: #005952;
+            white-space: nowrap;
+        }
+        .badge-expiry {
+            display: inline-block;
+            padding: 2px 7px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            background: #fef3c7;
+            color: #92400e;
+            white-space: nowrap;
+        }
+        .btn-download-pdf {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: #005952;
+            color: #ffffff;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .btn-download-pdf:hover {
+            background: #003f3a;
+            color: #ffffff;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 48px 20px;
+            color: #64748b;
+        }
+        .empty-state svg {
+            stroke: #94a3b8;
+            margin-bottom: 12px;
+        }
+        /* PIN Auth Modal */
+        .auth-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .auth-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 32px 28px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .auth-card h2 {
+            font-family: 'Outfit', sans-serif;
+            color: #005952;
+            margin: 0 0 8px;
+            font-size: 22px;
+        }
+        .auth-card p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0 0 24px;
+        }
+        .pin-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 20px;
+            letter-spacing: 4px;
+            text-align: center;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+        .pin-input:focus {
+            border-color: #005952;
+            outline: none;
+        }
+        .btn-unlock {
+            width: 100%;
+            padding: 12px;
+            background: #005952;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-unlock:hover {
+            background: #00433e;
+        }
+        .auth-error {
+            color: #dc2626;
+            font-size: 13px;
+            margin-top: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PIN Authentication Gate -->
+    <div id="authOverlay" class="auth-overlay">
+        <div class="auth-card">
+            <div style="width: 52px; height: 52px; background: #e6f4f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; color: #005952;">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+            </div>
+            <h2>Supervisor Access Gate</h2>
+            <p>Please enter the 4-digit Supervisor PIN to access confidential documentation logs.</p>
+            <input type="password" id="pinInput" class="pin-input" maxlength="8" placeholder="••••" autofocus>
+            <button id="btnUnlock" class="btn-unlock">Unlock Logs</button>
+            <div id="authError" class="auth-error">Incorrect PIN. Please try again.</div>
+            <div style="margin-top: 18px;">
+                <a href="index.html" style="color: #64748b; font-size: 13px; text-decoration: none;">&larr; Return to Portal</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Container (Locked until PIN validated) -->
+    <div class="log-container" id="mainContent" style="display: none;">
+        
+        <!-- Header -->
+        <header class="log-header">
+            <div>
+                <a href="index.html" class="btn-portal-back">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    <span>Back to Portal</span>
+                </a>
+                <div class="log-title-area" style="margin-top: 14px;">
+                    <h1>Document Logs & Audit Trail</h1>
+                    <p>All digitally submitted supervisor assessments with secure cloud download links.</p>
+                </div>
+            </div>
+            <img src="InisCare-logo.png" alt="InisCare Logo" style="height: 48px; object-fit: contain;">
+        </header>
+
+        <!-- 45-Day Retention Notice Banner (GDPR Compliance) -->
+        <div class="retention-alert">
+            <div>
+                <strong>⚠️ Automated 45-Day Retention Policy (GDPR / HIQA Compliance):</strong>
+                <span>All signed records and download links are automatically purged after 45 days in compliance with healthcare data minimization regulations.</span>
+            </div>
+            <button id="btnLock" style="background: none; border: 1px solid #cbd5e1; padding: 4px 10px; border-radius: 4px; font-size: 12px; color: #64748b; cursor: pointer;">
+                🔒 Lock Session
+            </button>
+        </div>
+
+        <!-- KPI Statistics -->
+        <div class="kpi-row">
+            <div class="kpi-card">
+                <div class="kpi-card-title">Active Documents</div>
+                <div class="kpi-card-value" id="kpiActiveCount">--</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-card-title">Retention Policy</div>
+                <div class="kpi-card-value" style="color: #0284c7;">45 Days</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-card-title">Storage Status</div>
+                <div class="kpi-card-value" id="kpiStatus" style="font-size: 16px; margin-top: 6px; color: #16a34a;">Checking...</div>
+            </div>
+        </div>
+
+        <!-- Search & Filters -->
+        <div class="log-controls">
+            <input type="text" id="searchInput" class="search-input" placeholder="Search by carer, customer, candidate, supervisor, or email...">
+            <select id="formFilter" class="filter-select">
+                <option value="">All Form Types</option>
+                <option value="Catch Up">Care Assistant Catch Up</option>
+                <option value="Spot Check">Spot Check</option>
+                <option value="Supervision Checklist">Supervision Checklist</option>
+                <option value="Shadow Shift">Shadow Shift</option>
+                <option value="Consent Form">Staff Consent Form</option>
+                <option value="CCA">National CCA</option>
+                <option value="PSP">Personal Support Plan (PSP)</option>
+            </select>
+            <button id="btnRefresh" class="btn-refresh">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <polyline points="1 20 1 14 7 14"></polyline>
+                    <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                </svg>
+                <span>Refresh</span>
+            </button>
+        </div>
+
+        <!-- Document Table -->
+        <div class="log-table-wrap">
+            <table class="log-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>Form Type</th>
+                        <th>Subject / Person</th>
+                        <th>Recipient</th>
+                        <th>Retention</th>
+                        <th style="text-align: right;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="logsTableBody">
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            Loading documents...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+        const DEFAULT_PIN = '0909';
+        const authOverlay = document.getElementById('authOverlay');
+        const mainContent = document.getElementById('mainContent');
+        const pinInput = document.getElementById('pinInput');
+        const btnUnlock = document.getElementById('btnUnlock');
+        const authError = document.getElementById('authError');
+        const btnLock = document.getElementById('btnLock');
+        const logsTableBody = document.getElementById('logsTableBody');
+        const searchInput = document.getElementById('searchInput');
+        const formFilter = document.getElementById('formFilter');
+        const btnRefresh = document.getElementById('btnRefresh');
+        const kpiActiveCount = document.getElementById('kpiActiveCount');
+        const kpiStatus = document.getElementById('kpiStatus');
+
+        let allLogs = [];
+        let currentPin = sessionStorage.getItem('iniscare_supervisor_pin') || '';
+
+        function verifyAndUnlock(pin) {
+            if (!pin) return;
+            // Test fetch with PIN
+            fetch(`/api/logs?pin=${encodeURIComponent(pin)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        currentPin = pin;
+                        sessionStorage.setItem('iniscare_supervisor_pin', pin);
+                        authOverlay.style.display = 'none';
+                        mainContent.style.display = 'block';
+                        authError.style.display = 'none';
+                        renderLogs(data);
+                    } else {
+                        authError.style.display = 'block';
+                        authError.textContent = data.error || 'Incorrect PIN. Please try again.';
+                    }
+                })
+                .catch(err => {
+                    console.error('Auth error:', err);
+                    authError.style.display = 'block';
+                    authError.textContent = 'Server connection error. Please try again.';
+                });
+        }
+
+        btnUnlock.addEventListener('click', () => {
+            verifyAndUnlock(pinInput.value.trim());
+        });
+
+        pinInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') verifyAndUnlock(pinInput.value.trim());
+        });
+
+        btnLock.addEventListener('click', () => {
+            sessionStorage.removeItem('iniscare_supervisor_pin');
+            currentPin = '';
+            pinInput.value = '';
+            authOverlay.style.display = 'flex';
+            mainContent.style.display = 'none';
+        });
+
+        // Auto-unlock if valid PIN in session
+        if (currentPin) {
+            verifyAndUnlock(currentPin);
+        }
+
+        function loadLogs() {
+            if (!currentPin) return;
+            logsTableBody.innerHTML = `<tr><td colspan="6" class="empty-state">Loading document records...</td></tr>`;
+            fetch(`/api/logs?pin=${encodeURIComponent(currentPin)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success) {
+                        renderLogs(data);
+                    } else {
+                        logsTableBody.innerHTML = `<tr><td colspan="6" class="empty-state" style="color: #dc2626;">${data.error || 'Failed to load records.'}</td></tr>`;
+                    }
+                })
+                .catch(err => {
+                    logsTableBody.innerHTML = `<tr><td colspan="6" class="empty-state" style="color: #dc2626;">Connection error. Please try again.</td></tr>`;
+                });
+        }
+
+        function renderLogs(data) {
+            allLogs = data.logs || [];
+            kpiActiveCount.textContent = allLogs.length;
+
+            if (data.configured) {
+                kpiStatus.textContent = '● Connected (Vercel Blob)';
+                kpiStatus.style.color = '#16a34a';
+            } else {
+                kpiStatus.textContent = '○ Waiting for Vercel Blob Setup';
+                kpiStatus.style.color = '#ea580c';
+            }
+
+            filterAndRender();
+        }
+
+        function filterAndRender() {
+            const query = searchInput.value.toLowerCase().trim();
+            const filterType = formFilter.value.toLowerCase();
+
+            const filtered = allLogs.filter(item => {
+                const matchesFilter = !filterType || (item.title && item.title.toLowerCase().includes(filterType));
+                if (!matchesFilter) return false;
+
+                if (!query) return true;
+                const metaStr = Object.values(item.metadata || {}).join(' ').toLowerCase();
+                const text = `${item.title} ${item.fileName} ${item.targetEmail} ${metaStr}`.toLowerCase();
+                return text.includes(query);
+            });
+
+            if (filtered.length === 0) {
+                logsTableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="empty-state">
+                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="8" y1="12" x2="16" y2="12"></line>
+                            </svg>
+                            <div style="font-weight: 600; font-size: 15px; margin-bottom: 4px;">No documents found</div>
+                            <div style="font-size: 13px;">${allLogs.length === 0 ? 'Submitted forms will appear here automatically with direct download links.' : 'No records match your search criteria.'}</div>
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            logsTableBody.innerHTML = filtered.map(item => {
+                const dt = new Date(item.createdAt);
+                const formattedDate = isNaN(dt) ? item.createdAt : dt.toLocaleDateString('en-IE', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+                const person = (item.metadata && (item.metadata['Carer'] || item.metadata['Candidate'] || item.metadata['Service User'] || item.metadata['Name'] || item.metadata['Staff Member'])) || 'N/A';
+                const days = item.daysRemaining != null ? item.daysRemaining : 45;
+
+                return `
+                    <tr>
+                        <td style="font-weight: 500; white-space: nowrap;">${formattedDate}</td>
+                        <td><span class="form-badge">${item.title}</span></td>
+                        <td><strong>${person}</strong></td>
+                        <td style="color: #64748b; font-size: 12px;">${item.targetEmail || 'Central'}</td>
+                        <td><span class="badge-expiry">Expires in ${days}d</span></td>
+                        <td style="text-align: right;">
+                            <a href="${item.downloadUrl}" target="_blank" class="btn-download-pdf">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                <span>Download PDF</span>
+                            </a>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        searchInput.addEventListener('input', filterAndRender);
+        formFilter.addEventListener('change', filterAndRender);
+        btnRefresh.addEventListener('click', loadLogs);
+    </script>
+</body>
+</html>

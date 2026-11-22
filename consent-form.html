@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Phone & WhatsApp Consent Form - InisCare</title>
+    <link rel="icon" type="image/png" href="app-icon.png">
+    <link rel="apple-touch-icon" href="app-icon.png">
+    <link rel="stylesheet" href="styles.css?v=20">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="auth-guard.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+</head>
+<body>
+
+    <!-- Back to Portal bar -->
+    <div class="nav-back-bar">
+        <a href="index.html" class="nav-back-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            <span>Back to Portal</span>
+        </a>
+    </div>
+
+    <div class="form-wrapper">
+        
+        <div class="form-paper" id="consentDocument">
+            
+            <!-- Logo -->
+            <div class="doc-logo-bar">
+                <img src="InisCare-logo.png" alt="InisCare Logo" class="doc-logo-img">
+            </div>
+
+            <!-- Title -->
+            <div class="doc-banner-title">
+                Consent Form
+            </div>
+
+            <!-- Table 1 -->
+            <table class="doc-table">
+                <tr>
+                    <td class="td-yellow">Name:</td>
+                    <td><input type="text" id="inputName" class="table-input" placeholder="Enter full name"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Address:</td>
+                    <td><input type="text" id="inputAddress" class="table-input" placeholder="Enter full address"></td>
+                </tr>
+                <tr>
+                    <td class="td-yellow">Phone Number:</td>
+                    <td><input type="tel" id="inputPhone" class="table-input" placeholder="Enter contact phone number"></td>
+                </tr>
+            </table>
+
+            <!-- Consent Checkbox Row -->
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px; padding: 6px 4px; background: #fafafa; border: 1px solid #e5e7eb; border-radius: 4px;">
+                <span style="font-size: 12.5px; flex: 1;">
+                    I am giving my consent for InisCare staff to store my phone number and include me in the staff WhatsApp communication group
+                </span>
+                <input type="checkbox" id="inputConsent" style="width: 20px; height: 20px; cursor: pointer; accent-color: var(--primary);">
+            </div>
+
+            <!-- Additional Comments -->
+            <div class="comments-box-wrapper">
+                <div class="comments-label">Additional Comments:</div>
+                <textarea id="inputComments" class="comments-textarea" rows="3" placeholder="Enter any additional comments here (optional)"></textarea>
+            </div>
+
+            <!-- Signature & Date -->
+            <div class="signature-row">
+                <div class="sig-col">
+                    <div class="sig-label-bar">
+                        <span>Digital Signature:</span>
+                        <button type="button" class="btn-clear" id="btnClearConsentSig">Clear Signature</button>
+                    </div>
+                    <div class="canvas-container">
+                        <canvas id="consentSigCanvas" height="90"></canvas>
+                    </div>
+                </div>
+                <div class="date-col">
+                    <label for="inputDate">Date:</label>
+                    <input type="text" id="inputDate" class="date-input" readonly>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Action Card with Target Email Field -->
+        <div class="action-card">
+            <div class="email-field-group">
+                <label for="targetEmail">Send copy to email (optional):</label>
+                <p>Fill in this email address to receive an official copy of this completed and signed Consent Form.</p>
+                <div class="email-input-wrapper">
+                    <svg class="email-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <input type="email" id="targetEmail" class="email-target-input" placeholder="e.g. supervisor@iniscare.ie">
+                </div>
+            </div>
+
+            <!-- Dual Action Buttons -->
+            <div class="action-buttons-group">
+                <button type="button" class="btn-action btn-email" id="btnSendEmail">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                    <span>Send PDF by Email</span>
+                </button>
+
+                <button type="button" class="btn-action btn-download" id="btnDownloadPdf">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7 10 12 15 17 10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <span>Download / Share PDF</span>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="pdf-delivery.js?v=12"></script>
+    <script src="consent-form.js?v=6"></script>
+</body>
+</html>
