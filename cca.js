@@ -129,10 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return checked ? '&#10003;' : '';
     }
 
-    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:9.5px;line-height:1.35;color:#000;box-sizing:border-box;';
+    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:10px;line-height:1.35;color:#000;box-sizing:border-box;';
     const YELLOW = 'background-color:#f9e493;';
     const BORDER = 'border:0.5px solid #444;';
-    const SEC_HEADER = 'background-color:#005952;color:#fff;font-family:Outfit,sans-serif;font-size:11.5px;font-weight:700;padding:4px 8px;margin-bottom:6px;border-radius:2px;';
+    const SEC_HEADER = 'background-color:#005952;color:#fff;font-family:Outfit,sans-serif;font-size:11.5px;font-weight:700;padding:4.5px 8px;margin-bottom:5px;border-radius:2px;';
 
     // Criteria dataset for rendering clean PDF rows
     const sections = [
@@ -233,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    function renderSectionTable(sec, pad = '2px 5px', marginB = '5px') {
+    function renderSectionTable(sec, pad = '3.5px 7px', marginB = '6px') {
         let rows = '';
         sec.items.forEach(item => {
             const isObs = getCheck(`obs${item.id}`);
@@ -248,10 +248,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             rows += `
             <tr>
-                <td style="${BASE}${BORDER}padding:${pad};">${item.text}</td>
-                <td style="${BASE}${BORDER}width:45px;text-align:center;font-weight:bold;color:#005952;">${checkMark(isObs)}</td>
-                <td style="${BASE}${BORDER}width:50px;text-align:center;">${passBadge}</td>
-                <td style="${BASE}${BORDER}width:165px;padding:${pad};font-size:8.5px;">${esc(commVal)}</td>
+                <td style="${BASE}${BORDER}padding:${pad};font-size:10px;">${item.text}</td>
+                <td style="${BASE}${BORDER}width:45px;text-align:center;font-weight:bold;color:#005952;font-size:11px;">${checkMark(isObs)}</td>
+                <td style="${BASE}${BORDER}width:50px;text-align:center;font-size:10px;">${passBadge}</td>
+                <td style="${BASE}${BORDER}width:165px;padding:${pad};font-size:9.5px;">${esc(commVal)}</td>
             </tr>`;
         });
 
@@ -259,10 +259,10 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="${SEC_HEADER}">${sec.num}. Skills Assessment &bull; ${sec.title}</div>
         <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:${marginB};">
             <tr style="${YELLOW}">
-                <th style="${BASE}${BORDER}padding:2px 5px;text-align:left;">Demonstrated Carer Ability</th>
-                <th style="${BASE}${BORDER}width:45px;text-align:center;">Observed</th>
-                <th style="${BASE}${BORDER}width:50px;text-align:center;">Result</th>
-                <th style="${BASE}${BORDER}width:165px;text-align:left;padding:2px 5px;">Assessor Comments</th>
+                <th style="${BASE}${BORDER}padding:3.5px 6px;text-align:left;font-size:10px;">Demonstrated Carer Ability</th>
+                <th style="${BASE}${BORDER}width:45px;text-align:center;font-size:10px;">Observed</th>
+                <th style="${BASE}${BORDER}width:50px;text-align:center;font-size:10px;">Result</th>
+                <th style="${BASE}${BORDER}width:165px;text-align:left;padding:3.5px 6px;font-size:10px;">Assessor Comments</th>
             </tr>
             ${rows}
         </table>`;
@@ -275,60 +275,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function sigHtml(url) {
             return url
-                ? `<img src="${url}" style="height:36px;max-height:36px;width:auto;object-fit:contain;display:block;">`
-                : `<span style="${BASE}color:#aaa;font-style:italic;height:36px;display:flex;align-items:center;">(Signed digitally)</span>`;
+                ? `<img src="${url}" style="height:38px;max-height:38px;width:auto;object-fit:contain;display:block;">`
+                : `<span style="${BASE}color:#aaa;font-style:italic;height:38px;display:flex;align-items:center;">(Signed digitally)</span>`;
         }
 
         const candidateVal = getVal('candidateName') || 'Candidate';
         const outcomeVal = getRadio('overallOutcome', '');
         const overallResult = outcomeVal === 'Competent'
-            ? '<strong style="color:#166534;font-size:10px;">COMPETENT / PASS (All standards achieved)</strong>'
+            ? '<strong style="color:#166534;font-size:10.5px;">COMPETENT / PASS (All standards achieved)</strong>'
             : (outcomeVal === 'ActionRequired'
-                ? '<strong style="color:#b91c1c;font-size:10px;">ACTION PLAN REQUIRED (Needs follow-up)</strong>'
+                ? '<strong style="color:#b91c1c;font-size:10.5px;">ACTION PLAN REQUIRED (Needs follow-up)</strong>'
                 : '<span style="color:#777;font-size:10px;font-style:italic;">(Pending evaluation)</span>');
 
         const html = `
         <div style="${BASE}width:794px;background:#fff;margin:0;padding:0;">
 
             <!-- ================= PAGE 1: DETAILS + PROTOCOL + SECTIONS 1, 2, 3, 4 ================= -->
-            <div style="width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:18px 30px 16px 30px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;page-break-after:always;background:#fff;position:relative;">
+            <div style="width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:22px 34px 18px 34px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;page-break-after:always;background:#fff;position:relative;">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                    <div style="font-size:10.5px;font-weight:700;color:#005952;text-transform:uppercase;letter-spacing:0.5px;">National Clinical Framework &bull; Healthcare Assistant</div>
-                    <img src="InisCare-logo.png" style="height:30px;width:auto;object-fit:contain;">
+                    <div style="font-size:11px;font-weight:700;color:#005952;text-transform:uppercase;letter-spacing:0.5px;">National Clinical Framework &bull; Healthcare Assistant</div>
+                    <img src="InisCare-logo.png" style="height:32px;width:auto;object-fit:contain;">
                 </div>
-                <div style="${SEC_HEADER}font-size:12px;text-align:center;padding:4px;margin-top:0;margin-bottom:5px;">National Carer Competency Assessment (CCA)</div>
+                <div style="${SEC_HEADER}font-size:12.5px;text-align:center;padding:5px;margin-top:0;margin-bottom:6px;">National Carer Competency Assessment (CCA)</div>
 
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 6px;font-weight:bold;">Candidate’s Name:</td>
-                        <td style="${BASE}${BORDER}width:40%;padding:2px 6px;">${esc(candidateVal)}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:2px 6px;font-weight:bold;">Assessment Date:</td>
-                        <td style="${BASE}${BORDER}width:22%;padding:2px 6px;">${esc(getVal('ccaDateCompleted'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;font-size:10px;">Candidate’s Name:</td>
+                        <td style="${BASE}${BORDER}width:40%;padding:3px 6px;font-size:10px;">${esc(candidateVal)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3px 6px;font-weight:bold;font-size:10px;">Assessment Date:</td>
+                        <td style="${BASE}${BORDER}width:22%;padding:3px 6px;font-size:10px;">${esc(getVal('ccaDateCompleted'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-weight:bold;">Candidate’s Address:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 6px;">${esc(getVal('candidateAddress'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;font-size:10px;">Candidate’s Address:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3px 6px;font-size:10px;">${esc(getVal('candidateAddress'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-weight:bold;">Organisation:</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;">${esc(getVal('orgName'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-weight:bold;">Care Assessor:</td>
-                        <td style="${BASE}${BORDER}padding:2px 6px;">${esc(getVal('careAssessorName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;font-size:10px;">Organisation:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:10px;">${esc(getVal('orgName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;font-size:10px;">Care Assessor:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:10px;">${esc(getVal('careAssessorName'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 6px;font-weight:bold;">Clinical Assessor:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 6px;">${esc(getVal('clinicalAssessorName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;font-size:10px;">Clinical Assessor:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3px 6px;font-size:10px;">${esc(getVal('clinicalAssessorName'))}</td>
                     </tr>
                 </table>
 
-                <div style="background:#f8fafc;border:0.5px solid #cbd5e1;border-radius:2px;padding:4px 8px;margin-bottom:5px;font-size:8.5px;line-height:1.35;color:#334155;">
+                <div style="background:#f8fafc;border:0.5px solid #cbd5e1;border-radius:2px;padding:5px 9px;margin-bottom:6px;font-size:9px;line-height:1.4;color:#334155;">
                     <strong>Assessment Protocol:</strong> Insert a tick (&check;) in Column 2 when observed. Select <strong>Pass</strong> or <strong>No</strong> in Column 3 if the observed task meets required standards. If not to standard, document required corrective actions under Assessor Comments. Assessor must possess appropriate qualifications to assess candidates.
                 </div>
 
-                ${renderSectionTable(sections[0], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[1], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[2], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[3], '2.5px 5px', '5px')}
+                ${renderSectionTable(sections[0], '3.5px 7px', '7px')}
+                ${renderSectionTable(sections[1], '3.5px 7px', '7px')}
+                ${renderSectionTable(sections[2], '3.5px 7px', '7px')}
+                ${renderSectionTable(sections[3], '3.5px 7px', '7px')}
 
                 <div style="margin-top:auto;padding-top:5px;border-top:1px solid #cbd5e1;display:flex;justify-content:space-between;font-size:8.5px;color:#64748b;">
                     <span>InisCare &bull; National Carer Competency Assessment</span>
@@ -337,46 +337,46 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <!-- ================= PAGE 2: SECTIONS 5, 6, 7, 8, 9 + OUTCOME + DUAL SIGN-OFF ================= -->
-            <div style="width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:18px 30px 16px 30px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;position:relative;">
+            <div style="width:794px;height:1120px;min-height:1120px;max-height:1120px;padding:22px 34px 18px 34px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:flex-start;background:#fff;position:relative;">
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
-                    <div style="font-size:10.5px;font-weight:700;color:#005952;text-transform:uppercase;letter-spacing:0.5px;">Competency Evaluation &amp; Dual Certification (Continued)</div>
-                    <img src="InisCare-logo.png" style="height:28px;width:auto;object-fit:contain;">
+                    <div style="font-size:11px;font-weight:700;color:#005952;text-transform:uppercase;letter-spacing:0.5px;">Competency Evaluation &amp; Dual Certification (Continued)</div>
+                    <img src="InisCare-logo.png" style="height:30px;width:auto;object-fit:contain;">
                 </div>
 
-                ${renderSectionTable(sections[4], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[5], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[6], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[7], '2.5px 5px', '5px')}
-                ${renderSectionTable(sections[8], '2.5px 5px', '5px')}
+                ${renderSectionTable(sections[4], '3.5px 7px', '6px')}
+                ${renderSectionTable(sections[5], '3.5px 7px', '6px')}
+                ${renderSectionTable(sections[6], '3.5px 7px', '6px')}
+                ${renderSectionTable(sections[7], '3.5px 7px', '6px')}
+                ${renderSectionTable(sections[8], '3.5px 7px', '6px')}
 
-                <div style="${SEC_HEADER}margin-top:5px;margin-bottom:4px;">Overall Competency Outcome &amp; Assessor Sign-Off</div>
+                <div style="${SEC_HEADER}margin-top:4px;margin-bottom:4px;">Overall Competency Outcome &amp; Assessor Sign-Off</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:3px 6px;font-weight:bold;">Overall Result:</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;">${overallResult}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:3.5px 7px;font-weight:bold;font-size:10px;">Overall Result:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 7px;font-size:10px;">${overallResult}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Assessor Comments:</td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;font-size:8.5px;">${esc(getVal('overallAssessorComments')) || 'All criteria successfully observed and evaluated to national standards.'}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 7px;font-weight:bold;font-size:10px;">Assessor Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 7px;font-size:9.5px;">${esc(getVal('overallAssessorComments')) || 'All criteria successfully observed and evaluated to national standards.'}</td>
                     </tr>
                 </table>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-top:4px;">
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:50%;padding:3px 6px;text-align:left;">Care Assessor Sign-off</th>
-                        <th style="${BASE}${BORDER}width:50%;padding:3px 6px;text-align:left;">Clinical Assessor Sign-off</th>
+                        <th style="${BASE}${BORDER}width:50%;padding:3.5px 7px;text-align:left;font-size:10px;">Care Assessor Sign-off</th>
+                        <th style="${BASE}${BORDER}width:50%;padding:3.5px 7px;text-align:left;font-size:10px;">Clinical Assessor Sign-off</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:6px;">
+                        <td style="${BASE}${BORDER}padding:6px 8px;">
                             ${sigHtml(careSigUrl)}
-                            <div style="font-size:8.5px;margin-top:3px;border-top:1px dashed #cbd5e1;padding-top:3px;">
+                            <div style="font-size:9.5px;margin-top:3px;border-top:1px dashed #cbd5e1;padding-top:3px;">
                                 <strong>Name:</strong> ${esc(getVal('careAssessorPrint')) || esc(getVal('careAssessorName'))}<br>
                                 <strong>Date:</strong> ${esc(getVal('careAssessorDate'))}
                             </div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:6px;">
+                        <td style="${BASE}${BORDER}padding:6px 8px;">
                             ${sigHtml(clinicalSigUrl)}
-                            <div style="font-size:8.5px;margin-top:3px;border-top:1px dashed #cbd5e1;padding-top:3px;">
+                            <div style="font-size:9.5px;margin-top:3px;border-top:1px dashed #cbd5e1;padding-top:3px;">
                                 <strong>Name:</strong> ${esc(getVal('clinicalAssessorPrint')) || esc(getVal('clinicalAssessorName'))}<br>
                                 <strong>Date:</strong> ${esc(getVal('clinicalAssessorDate'))}
                             </div>
