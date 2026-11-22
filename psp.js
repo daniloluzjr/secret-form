@@ -1110,9 +1110,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <!-- ================= PAGE 5: HOME SAFETY RISK ASSESSMENT, CONSENT FORM & HOUSEKEEPING ================= -->
-            <div style="width:794px;min-height:1120px;padding:24px 34px;box-sizing:border-box;">
-                <div style="display:flex;justify-content:flex-end;margin-bottom:6px;">
-                    <img src="InisCare-logo.png" style="height:34px;width:auto;object-fit:contain;">
+            <div style="width:794px;min-height:1120px;padding:18px 34px 18px 34px;box-sizing:border-box;">
+                <div style="display:flex;justify-content:flex-end;margin-bottom:4px;">
+                    <img src="InisCare-logo.png" style="height:32px;width:auto;object-fit:contain;">
                 </div>
 
                 <div style="${SEC_HEADER}">6C. Home Safety Risk Assessment</div>
@@ -1330,23 +1330,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                 </table>
 
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:8px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Customer / NOK Signature</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">InisCare Representative Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:3px 6px;font-size:9px;font-weight:bold;">Customer / NOK Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:3px 6px;font-size:9px;font-weight:bold;">InisCare Representative Signature</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
-                            <div style="min-height:48px;display:flex;align-items:flex-end;">
-                                ${sigHtml(consentClientSigUrl, 48)}
+                        <td style="${BASE}${BORDER}padding:4px 6px;vertical-align:bottom;height:58px;box-sizing:border-box;">
+                            <div style="min-height:36px;display:flex;align-items:flex-end;">
+                                ${sigHtml(consentClientSigUrl, 36)}
                             </div>
-                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">Date: <strong>${esc(getVal('consentClientSigDate'))}</strong></div>
+                            <div style="font-size:8px;margin-top:2px;border-top:1px solid #e2e8f0;padding-top:2px;">Date: <strong>${esc(getVal('consentClientSigDate'))}</strong></div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
-                            <div style="min-height:48px;display:flex;align-items:flex-end;">
-                                ${sigHtml(consentRepSigUrl, 48)}
+                        <td style="${BASE}${BORDER}padding:4px 6px;vertical-align:bottom;height:58px;box-sizing:border-box;">
+                            <div style="min-height:36px;display:flex;align-items:flex-end;">
+                                ${sigHtml(consentRepSigUrl, 36)}
                             </div>
-                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">
+                            <div style="font-size:8px;margin-top:2px;border-top:1px solid #e2e8f0;padding-top:2px;">
                                 Name: <strong>${esc(getVal('consentRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('consentRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('consentRepDate'))}</strong>
@@ -1356,51 +1356,36 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${SEC_HEADER}">8. Housekeeping Scope Agreement</div>
-                <div style="${BASE}font-size:8.5px;margin-bottom:3px;line-height:1.25;color:#333;">
+                <div style="${BASE}font-size:8px;margin-bottom:3px;line-height:1.2;color:#333;">
                     InisCare staff are professional Healthcare Assistants dedicated to supporting safe independent living, not domestic cleaners.
                 </div>
 
-                <div style="display:flex;gap:6px;margin-bottom:6px;">
-                    <div style="flex:1;border:0.5px solid #86efac;background:#f0fdf4;padding:4px 6px;border-radius:2px;">
-                        <strong style="color:#166534;font-size:8.5px;">&#10003; Permitted Light Housekeeping Tasks:</strong>
-                        <ul style="margin:2px 0 0 12px;padding:0;font-size:8px;line-height:1.25;color:#166534;">
-                            <li>Hoovering rooms used by Customer (weekly / as needed)</li>
-                            <li>Washing up used dishes &amp; kitchen countertops</li>
-                            <li>Personal laundry (Customer clothing only)</li>
-                            <li>Mopping kitchen/bathroom floors</li>
-                            <li>Cleaning bathroom after use (shower, bath, toilet)</li>
-                            <li>Making bed, changing sheets &amp; emptying bins</li>
-                        </ul>
-                    </div>
-                    <div style="flex:1;border:0.5px solid #fca5a5;background:#fff5f5;padding:4px 6px;border-radius:2px;">
-                        <strong style="color:#991b1b;font-size:8.5px;">&#10007; Strictly Excluded Tasks:</strong>
-                        <ul style="margin:2px 0 0 12px;padding:0;font-size:8px;line-height:1.25;color:#991b1b;">
-                            <li>Gardening &amp; outdoor maintenance</li>
-                            <li>Deep cleaning (ovens, cupboards, windows, walls)</li>
-                            <li>Moving heavy furniture / ladders / cobwebs</li>
-                            <li>Painting, decorating &amp; private wardrobes</li>
-                            <li>Defrosting freezers / washing machine repair</li>
-                        </ul>
-                    </div>
+                <div style="border:0.5px solid #86efac;background:#f0fdf4;padding:3.5px 8px;border-radius:2px;margin-bottom:3px;font-size:8px;line-height:1.35;color:#166534;">
+                    <strong>&#10003; Permitted Light Housekeeping Tasks:</strong><br>
+                    Hoovering rooms used by Customer (weekly / as needed) &bull; Washing up used dishes &amp; kitchen countertops &bull; Personal laundry (Customer clothing only) &bull; Mopping kitchen/bathroom floors &bull; Cleaning bathroom after use (shower, bath, toilet) &bull; Making bed, changing sheets &amp; emptying bins
+                </div>
+                <div style="border:0.5px solid #fca5a5;background:#fff5f5;padding:3.5px 8px;border-radius:2px;margin-bottom:5px;font-size:8px;line-height:1.35;color:#991b1b;">
+                    <strong>&#10007; Strictly Excluded Tasks:</strong><br>
+                    Gardening &amp; outdoor maintenance &bull; Deep cleaning (ovens, cupboards, windows, walls) &bull; Moving heavy furniture / ladders / cobwebs &bull; Painting, decorating &amp; private wardrobes &bull; Defrosting freezers / washing machine repair
                 </div>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Signed Customer / NOK</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Signed InisCare Representative</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:3px 6px;font-size:9px;font-weight:bold;">Signed Customer / NOK</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:3px 6px;font-size:9px;font-weight:bold;">Signed InisCare Representative</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
-                            <div style="min-height:48px;display:flex;align-items:flex-end;">
-                                ${sigHtml(hkClientSigUrl, 48)}
+                        <td style="${BASE}${BORDER}padding:4px 6px;vertical-align:bottom;height:58px;box-sizing:border-box;">
+                            <div style="min-height:36px;display:flex;align-items:flex-end;">
+                                ${sigHtml(hkClientSigUrl, 36)}
                             </div>
-                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">Date: <strong>${esc(getVal('hkClientSigDate'))}</strong></div>
+                            <div style="font-size:8px;margin-top:2px;border-top:1px solid #e2e8f0;padding-top:2px;">Date: <strong>${esc(getVal('hkClientSigDate'))}</strong></div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
-                            <div style="min-height:48px;display:flex;align-items:flex-end;">
-                                ${sigHtml(hkRepSigUrl, 48)}
+                        <td style="${BASE}${BORDER}padding:4px 6px;vertical-align:bottom;height:58px;box-sizing:border-box;">
+                            <div style="min-height:36px;display:flex;align-items:flex-end;">
+                                ${sigHtml(hkRepSigUrl, 36)}
                             </div>
-                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">
+                            <div style="font-size:8px;margin-top:2px;border-top:1px solid #e2e8f0;padding-top:2px;">
                                 Name: <strong>${esc(getVal('hkRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('hkRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('hkRepDate'))}</strong>
