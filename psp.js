@@ -221,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return checked ? '&#10003;' : '';
     }
 
-    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:9.5px;line-height:1.3;color:#000;box-sizing:border-box;';
+    const BASE = 'font-family:Inter,Arial,sans-serif;font-size:10px;line-height:1.35;color:#000;box-sizing:border-box;';
     const YELLOW = 'background-color:#f9e493;';
     const BORDER = 'border:0.5px solid #444;';
-    const SEC_HEADER = 'background-color:#005952;color:#fff;font-family:Outfit,sans-serif;font-size:11.5px;font-weight:700;padding:3.5px 7px;margin-bottom:5px;border-radius:2px;';
+    const SEC_HEADER = 'background-color:#005952;color:#fff;font-family:Outfit,sans-serif;font-size:12px;font-weight:700;padding:4px 8px;margin-bottom:6px;border-radius:2px;';
 
     // Build the Multi-Page PDF Container (A4 Portrait, 794px per page, 9-Page Complete Clinical Dossier)
     async function buildPdfContainer() {
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function sigHtml(url) {
             return url
-                ? `<img src="${url}" style="height:36px;max-height:36px;width:auto;object-fit:contain;display:block;">`
+                ? `<img src="${url}" style="height:38px;max-height:38px;width:auto;object-fit:contain;display:block;">`
                 : `<span style="${BASE}color:#aaa;font-style:italic;">(Signed digitally)</span>`;
         }
 
@@ -262,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const r = getRadio(rName);
             const c = getVal(commId);
             const badge = r === 'Yes' ? '<strong style="color:#15803d;">Yes</strong>' : (r === 'No' ? '<span style="color:#555;">No</span>' : '-');
-            return `<div style="margin-bottom:1.5px;">&bull; ${label}: ${badge}${c ? ` <em>(${esc(c)})</em>` : ''}</div>`;
+            return `<div style="margin-bottom:2px;">&bull; ${label}: ${badge}${c ? ` <em>(${esc(c)})</em>` : ''}</div>`;
         }
 
         // Build Medication Rows
@@ -274,9 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (name || dose || freq) {
                 regMedRowsHtml += `
                 <tr>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(name)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(dose)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(freq)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(name)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(dose)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(freq)}</td>
                 </tr>`;
             }
         });
@@ -290,10 +290,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (name || reason || start || end) {
                 shortMedRowsHtml += `
                 <tr>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(name)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(reason)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(start)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(end)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(name)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(reason)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(start)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(end)}</td>
                 </tr>`;
             }
         });
@@ -330,9 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (s.time || s.duties || s.name === 'Morning' || s.name === 'Afternoon' || s.name === 'Evening') {
                 shiftRowsHtml += `
                 <tr>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;font-weight:bold;width:18%;">${s.name}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;width:24%;">${esc(s.time)}</td>
-                    <td style="${BASE}${BORDER}padding:2.5px 5px;width:58%;">${esc(s.duties)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;font-weight:bold;width:18%;">${s.name}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;width:24%;">${esc(s.time)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;width:58%;">${esc(s.duties)}</td>
                 </tr>`;
             }
         });
@@ -351,66 +351,66 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">1. Customer Identification &amp; Key Details</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:2.5px 5px;font-weight:bold;">Name:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:2.5px 5px;">${esc(getVal('custName'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;font-weight:bold;">Prefers to be called:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2.5px 5px;">${esc(getVal('custPrefName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;font-weight:bold;">Name:</td>
+                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">${esc(getVal('custName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;font-weight:bold;">Prefers to be called:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('custPrefName'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Address:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('custAddress'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">DOB:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('custDob'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Address:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custAddress'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">DOB:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custDob'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Telephone:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('custPhone'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Assessment Date:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('custAssessDate'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Telephone:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custPhone'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Assessment Date:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custAssessDate'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Reassessment Date:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('custReassessDate'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Reassessment Date:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custReassessDate'))}</td>
                     </tr>
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Other Contact Details &amp; Multidisciplinary Team</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:2.5px 5px;">Primary Contact:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:2.5px 5px;">${esc(getVal('primContactName'))} (${esc(getVal('primContactRel'))})</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:2.5px 5px;">Phone / Mobile:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:2.5px 5px;">Tel: ${esc(getVal('primContactPhone'))} &bull; Mob: ${esc(getVal('primContactMobile'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;">Primary Contact:</td>
+                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">${esc(getVal('primContactName'))} (${esc(getVal('primContactRel'))})</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;">Phone / Mobile:</td>
+                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">Tel: ${esc(getVal('primContactPhone'))} &bull; Mob: ${esc(getVal('primContactMobile'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Address &amp; Email:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Address &amp; Email:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">
                             Addr: ${esc(getVal('primContactAddr'))} &bull; Email: ${esc(getVal('primContactEmail'))}
                             ${getVal('primContactComm') ? `<br>Comments: ${esc(getVal('primContactComm'))}` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Second Contact:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('secContactName'))} (${esc(getVal('secContactRel'))})</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Phone / Mobile:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">Tel: ${esc(getVal('secContactPhone'))} &bull; Mob: ${esc(getVal('secContactMobile'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Second Contact:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('secContactName'))} (${esc(getVal('secContactRel'))})</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Phone / Mobile:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">Tel: ${esc(getVal('secContactPhone'))} &bull; Mob: ${esc(getVal('secContactMobile'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Address &amp; Email:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Address &amp; Email:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">
                             Addr: ${esc(getVal('secContactAddr'))} &bull; Email: ${esc(getVal('secContactEmail'))}
                             ${getVal('secContactComm') ? `<br>Comments: ${esc(getVal('secContactComm'))}` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">GP Details:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('gpName'))} &bull; ${esc(getVal('gpPhone'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">PHN Details:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('phnName'))} &bull; ${esc(getVal('phnPhone'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">GP Details:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('gpName'))} &bull; ${esc(getVal('gpPhone'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">PHN Details:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('phnName'))} &bull; ${esc(getVal('phnPhone'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Health Centre:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Health Centre:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">
                             ${esc(getVal('healthCentre'))} &bull; Number: ${esc(getVal('healthCentrePhone'))}
                             ${getVal('healthCentreComm') ? `&bull; Comments: ${esc(getVal('healthCentreComm'))}` : ''}
                         </td>
@@ -420,76 +420,76 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Property Access &amp; Living Arrangements</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;">Access Preference:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2.5px 5px;">${esc(getVal('accessPref'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;">Gate Code:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2.5px 5px;">${esc(getVal('gateCode'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;">Access Preference:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('accessPref'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;">Gate Code:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('gateCode'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Keybox Location:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('keyboxLoc'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Keybox Code:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('keyboxCode'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Keybox Location:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('keyboxLoc'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Keybox Code:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('keyboxCode'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Lock Door Leaving:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getRadio('lockDoor'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Alarm Code:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('alarmCode'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Lock Door Leaving:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getRadio('lockDoor'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Alarm Code:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('alarmCode'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Security Camera:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('secCamera'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;">Living Arrangements:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getRadio('livingWith') || 'Alone')}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Security Camera:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('secCamera'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Living Arrangements:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getRadio('livingWith') || 'Alone')}</td>
                     </tr>
                 </table>
 
-                <div style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Bio / Personal Profile:</div>
-                <div style="${BASE}${BORDER}padding:6px;min-height:65px;line-height:1.35;margin-bottom:6px;">${esc(getVal('custBio'))}</div>
+                <div style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Bio / Personal Profile:</div>
+                <div style="${BASE}${BORDER}padding:7px 8px;min-height:80px;line-height:1.4;margin-bottom:6px;">${esc(getVal('custBio'))}</div>
 
                 <div style="${SEC_HEADER}">2. Health Information &amp; Care Plan Summary</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:2.5px 5px;font-weight:bold;">Medical History:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('medHistory'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:3.5px 6px;font-weight:bold;">Medical History:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('medHistory'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">PM&amp;H Equipment:</td>
-                        <td style="${BASE}${BORDER}width:28%;padding:2.5px 5px;">${esc(getVal('pmhEquipment'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;font-weight:bold;">Walking Aids:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2.5px 5px;">${esc(getVal('walkingAids'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">PM&amp;H Equipment:</td>
+                        <td style="${BASE}${BORDER}width:28%;padding:3.5px 6px;">${esc(getVal('pmhEquipment'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;font-weight:bold;">Walking Aids:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('walkingAids'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Allergies:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('allergies'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Pets:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('pets'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Allergies:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('allergies'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Pets:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('pets'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Understands Service:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getRadio('understandsService'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">NOK Aware (if No):</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getRadio('nokAware'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Understands Service:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getRadio('understandsService'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">NOK Aware (if No):</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getRadio('nokAware'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Total Care Hours:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('careHoursWeek'))} / week</td>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Days of Care:</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(daysStr)}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Total Care Hours:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('careHoursWeek'))} / week</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Days of Care:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(daysStr)}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Carer Preference:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getRadio('carerPref'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Carer Preference:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getRadio('carerPref'))}</td>
                     </tr>
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Daily Visit Schedules &amp; Assigned Duties</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:18%;padding:2.5px 5px;text-align:left;">Shift</th>
-                        <th style="${BASE}${BORDER}width:24%;padding:2.5px 5px;text-align:left;">Preferred Time</th>
-                        <th style="${BASE}${BORDER}width:58%;padding:2.5px 5px;text-align:left;">Assigned Duties &amp; Care Activities</th>
+                        <th style="${BASE}${BORDER}width:18%;padding:3.5px 6px;text-align:left;">Shift</th>
+                        <th style="${BASE}${BORDER}width:24%;padding:3.5px 6px;text-align:left;">Preferred Time</th>
+                        <th style="${BASE}${BORDER}width:58%;padding:3.5px 6px;text-align:left;">Assigned Duties &amp; Care Activities</th>
                     </tr>
                     ${shiftRowsHtml}
                 </table>
@@ -504,44 +504,44 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div style="${SEC_HEADER}">3. Medication Record</div>
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;">Regularly Prescribed Medications</div>
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">Regularly Prescribed Medications</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:45%;padding:2.5px 5px;text-align:left;">Name of Tablet / Medication</th>
-                        <th style="${BASE}${BORDER}width:25%;padding:2.5px 5px;text-align:left;">Dose</th>
-                        <th style="${BASE}${BORDER}width:30%;padding:2.5px 5px;text-align:left;">Frequency / Timing</th>
+                        <th style="${BASE}${BORDER}width:45%;padding:3.5px 7px;text-align:left;">Name of Tablet / Medication</th>
+                        <th style="${BASE}${BORDER}width:25%;padding:3.5px 7px;text-align:left;">Dose</th>
+                        <th style="${BASE}${BORDER}width:30%;padding:3.5px 7px;text-align:left;">Frequency / Timing</th>
                     </tr>
-                    ${regMedRowsHtml || '<tr><td colspan="3" style="padding:3px;text-align:center;color:#777;">No medications listed</td></tr>'}
+                    ${regMedRowsHtml || '<tr><td colspan="3" style="padding:4px 7px;text-align:center;color:#777;">No medications listed</td></tr>'}
                 </table>
 
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;">Additional Short Term / PRN Medication</div>
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">Additional Short Term / PRN Medication</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:35%;padding:2.5px 5px;text-align:left;">Name of Tablet / Medicine</th>
-                        <th style="${BASE}${BORDER}width:30%;padding:2.5px 5px;text-align:left;">Reason for Prescription</th>
-                        <th style="${BASE}${BORDER}width:17%;padding:2.5px 5px;text-align:left;">Start Date</th>
-                        <th style="${BASE}${BORDER}width:18%;padding:2.5px 5px;text-align:left;">End Date</th>
+                        <th style="${BASE}${BORDER}width:35%;padding:3.5px 7px;text-align:left;">Name of Tablet / Medicine</th>
+                        <th style="${BASE}${BORDER}width:30%;padding:3.5px 7px;text-align:left;">Reason for Prescription</th>
+                        <th style="${BASE}${BORDER}width:17%;padding:3.5px 7px;text-align:left;">Start Date</th>
+                        <th style="${BASE}${BORDER}width:18%;padding:3.5px 7px;text-align:left;">End Date</th>
                     </tr>
-                    ${shortMedRowsHtml || '<tr><td colspan="4" style="padding:3px;text-align:center;color:#777;">No short term medications</td></tr>'}
+                    ${shortMedRowsHtml || '<tr><td colspan="4" style="padding:4px 7px;text-align:center;color:#777;">No short term medications</td></tr>'}
                 </table>
 
-                <div style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;margin-top:2px;">Medication Storage &amp; Compliance Notes:</div>
-                <div style="${BASE}${BORDER}padding:3px 6px;min-height:28px;margin-bottom:6px;">${esc(getVal('medComments')) || 'Standard blister pack / pharmacy compliance monitored.'}</div>
+                <div style="${BASE}${YELLOW}${BORDER}padding:3.5px 7px;font-weight:bold;margin-top:3px;">Medication Storage &amp; Compliance Notes:</div>
+                <div style="${BASE}${BORDER}padding:5px 8px;min-height:36px;margin-bottom:8px;line-height:1.35;">${esc(getVal('medComments')) || 'Standard blister pack / pharmacy compliance monitored.'}</div>
 
                 <div style="${SEC_HEADER}">4. Assessment of Activities of Daily Living (ADLs) &bull; Part 1</div>
 
                 <!-- 1. Communication -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">1. Communication &bull; Vision, Hearing, Speech &amp; Cognition</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3.5px 7px;text-align:left;">1. Communication &bull; Vision, Hearing, Speech &amp; Cognition</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Care Needs &amp; Goal:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlCommNeeds'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.8px 7px;font-weight:bold;">Care Needs &amp; Goal:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlCommNeeds'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Vision / Eyesight:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Vision / Eyesight:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Status: <strong>${esc(getRadio('visionStatus'))}</strong> &bull; 
                             Aids: ${checkBadge(getCheck('visAidNone'), 'None')} ${checkBadge(getCheck('visAidGlasses'), 'Glasses')} ${checkBadge(getCheck('visAidMag'), 'Magnifier')} ${checkBadge(getCheck('visCleanDaily'), 'Clean daily')} ${checkBadge(getCheck('visCleanOwn'), 'Cleans own')}<br>
                             Carer actions: ${checkBadge(getCheck('visActionRange'), 'Close range')} ${checkBadge(getCheck('visActionRead'), 'Read to customer')} ${checkBadge(getCheck('visActionWrite'), 'Assist writing')} ${checkBadge(getCheck('visActionPhone'), 'Assist phone')}
@@ -549,8 +549,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Hearing:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Hearing:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Status: <strong>${esc(getRadio('hearingStatus'))}</strong> &bull; 
                             Aids: ${checkBadge(getCheck('hearAidNone'), 'None')} ${checkBadge(getCheck('hearAidR'), 'R')} ${checkBadge(getCheck('hearAidL'), 'L')} ${checkBadge(getCheck('hearAidBoth'), 'Both')} ${checkBadge(getCheck('hearAdjVol'), 'Adjust vol')} ${checkBadge(getCheck('hearCheckBat'), 'Check batt')}<br>
                             Carer actions: ${checkBadge(getCheck('hearGainAtt'), 'Gain attention')} ${checkBadge(getCheck('hearSpeakLoud'), 'Speak slowly/clearly')} ${checkBadge(getCheck('hearMinNoise'), 'Minimise noise')} ${checkBadge(getCheck('hearAllowTime'), 'Allow time')} ${checkBadge(getCheck('hearStepByStep'), 'Step by step')}
@@ -558,8 +558,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Speech &amp; Language:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Speech &amp; Language:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Speech: <strong>${esc(getRadio('speechStatus'))}</strong> &bull; 
                             Primary Language: <strong>${esc(getRadio('primaryLang'))}${getVal('primaryLangSpec') ? ` (${esc(getVal('primaryLangSpec'))})` : ''}</strong> &bull; 
                             Cognition: <strong>${esc(getRadio('cogStatus'))}</strong><br>
@@ -568,23 +568,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlCommNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlCommNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 2. Mobility -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">2. Mobility &bull; Transfers &amp; Walking</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3.5px 7px;text-align:left;">2. Mobility &bull; Transfers &amp; Walking</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Care Needs &amp; Goal:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlMobNeeds'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.8px 7px;font-weight:bold;">Care Needs &amp; Goal:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlMobNeeds'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Mobility Status:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Mobility Status:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Assistance: ${checkBadge(getCheck('mob1Assist'), '1 to assist')} ${checkBadge(getCheck('mob2Assist'), '2 to assist')} ${checkBadge(getCheck('mobSupervise'), 'Supervise')} ${checkBadge(getCheck('mobProvideDir'), 'Provide direction')} ${checkBadge(getCheck('mobEncourage'), 'Encourage')} &bull; Physio: <strong>${esc(getRadio('mobPhysio'))}</strong><br>
                             Conditions: ${checkBadge(getCheck('mobHipRep'), 'Hip replacement')} ${checkBadge(getCheck('mobAmputee'), 'Amputee')} ${checkBadge(getCheck('mobStatusNone'), 'N/A')}<br>
                             Walking Aids: ${checkBadge(getCheck('mobStick'), 'Stick')} ${checkBadge(getCheck('mobFrame'), 'Zimmer frame')} ${checkBadge(getCheck('mobWalker'), 'Wheeled walker')} ${checkBadge(getCheck('mobWheelchair'), 'Wheelchair')} ${checkBadge(getCheck('mobAidNone'), 'None')}<br>
@@ -592,23 +592,23 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlMobNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlMobNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 3. Safe Environment -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">3. Maintaining a Safe Environment &bull; Safeguarding &amp; Home Safety</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3.5px 7px;text-align:left;">3. Maintaining a Safe Environment &bull; Safeguarding &amp; Home Safety</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Care Needs &amp; Goal:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlSafeNeeds'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.8px 7px;font-weight:bold;">Care Needs &amp; Goal:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlSafeNeeds'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Safeguarding &amp; Audit:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Safeguarding &amp; Audit:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Aware of Safeguarding Policy: <strong>${esc(getRadio('safePolicy'))}</strong> &bull; 
                             Aware of Complaints Policy: <strong>${esc(getRadio('complaintPolicy'))}</strong><br>
                             Home Safety RA Completed: <strong>${esc(getRadio('homeRaComplete'))}</strong> &bull; 
@@ -616,19 +616,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlSafeNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">${esc(getVal('adlSafeNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 4. Breathing & 5. Body Temperature -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">4. Breathing &amp; 5. Controlling Body Temperature</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3.5px 7px;text-align:left;">4. Breathing &amp; 5. Controlling Body Temperature</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Breathing Status:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.8px 7px;font-weight:bold;">Breathing Status:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Asthma / COPD: <strong>${esc(getRadio('hasCopd'))}</strong> &bull; 
                             Breathless on exertion/rest: <strong>${esc(getRadio('breathless'))}</strong> &bull; 
                             Oxygen required: <strong>${esc(getRadio('oxygenReq'))}</strong><br>
@@ -638,8 +638,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Body Temperature:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.8px 7px;font-weight:bold;">Body Temperature:</td>
+                        <td style="${BASE}${BORDER}padding:3.8px 7px;">
                             Heating controls set: <strong>${esc(getRadio('heatSet'))}</strong> &bull; 
                             HCA permitted to adjust controls: <strong>${esc(getRadio('heatPermit'))}</strong><br>
                             Heating instructions: ${esc(getVal('heatInstruct'))}
@@ -660,98 +660,98 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">4. Assessment of Activities of Daily Living (ADLs) &bull; Part 2</div>
 
                 <!-- 6. Elimination -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">6. Elimination &amp; Continence Care</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3px 6px;text-align:left;">6. Elimination &amp; Continence Care</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Urinary Status:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;">Urinary Status:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             <strong>${esc(getRadio('urinaryStatus'))}</strong>${getVal('uriOther') ? ` (${esc(getVal('uriOther'))})` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Bowel Status:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Bowel Status:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Status: <strong>${esc(getRadio('bowelStatus'))}</strong>${getVal('bowelOther') ? ` (${esc(getVal('bowelOther'))})` : ''} &bull; 
                             Pattern: ${esc(getVal('bowelPattern'))} &bull; 
                             Stoma Care: <strong>${esc(getRadio('stomaCare'))}</strong>${getVal('stomaSpecify') ? ` (${esc(getVal('stomaSpecify'))})` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Aids &amp; Preferences:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Aids &amp; Preferences:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Continence aids (Day): ${esc(getVal('contAidsDay'))} &bull; (Night): ${esc(getVal('contAidsNight'))}<br>
                             Toileting aids: ${checkBadge(getCheck('toilCommode'), 'Commode')} ${checkBadge(getCheck('toilUrinal'), 'Urinal')} ${checkBadge(getCheck('toilBedPan'), 'Bed pan')} ${checkBadge(getCheck('toilAidsNone'), 'N/A')}<br>
                             Routine &amp; Preferences: ${esc(getVal('toilPreferences'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlElimNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">${esc(getVal('adlElimNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 7. Pressure Area & Skin Care -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">7. Pressure Area &amp; Skin Care</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3px 6px;text-align:left;">7. Pressure Area &amp; Skin Care</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Skin Condition:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;">Skin Condition:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Condition: <strong>${esc(getRadio('skinCondition'))}</strong> &bull; 
                             Pressure areas intact: <strong>${esc(getRadio('pressureIntact'))}</strong>${getVal('pressureLocDesc') ? ` (${esc(getVal('pressureLocDesc'))})` : ''}<br>
                             Wounds / Breaks in skin: <strong>${esc(getRadio('woundsPresent'))}</strong>${getVal('woundsLocDesc') ? ` (${esc(getVal('woundsLocDesc'))})` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Relief &amp; Regime:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Relief &amp; Regime:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Pressure relief aids: ${esc(getVal('skinReliefAids'))} &bull; 
                             Repositioning regime: ${esc(getVal('skinRegime'))}<br>
                             Skin care requirements: ${esc(getVal('skinCareReqs'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlSkinNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">${esc(getVal('adlSkinNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 8. Medication Support -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">8. Medication Support &amp; Safe Administration</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3px 6px;text-align:left;">8. Medication Support &amp; Safe Administration</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Current Medications:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;">Current Medications:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Types: ${checkBadge(getCheck('medTablets'), 'Tablets')} ${checkBadge(getCheck('medCreams'), 'Creams')} ${checkBadge(getCheck('medEyedrops'), 'Eyedrops')} ${checkBadge(getCheck('medEardrops'), 'Eardrops')} ${checkBadge(getCheck('medInjections'), 'Injections')} ${checkBadge(getCheck('medNebulisers'), 'Nebulisers')}${getVal('medCurrentOther') ? ` (${esc(getVal('medCurrentOther'))})` : ''}<br>
                             Form: <strong>${esc(getRadio('medForm'))}</strong> &bull; 
                             Assistance Required: <strong>${esc(getRadio('medAssistLevel'))}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Blood Sugar Testing:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Blood Sugar Testing:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Testing: <strong>${esc(getRadio('bslTest'))}</strong>${getVal('bslFreq') ? ` &bull; Frequency: ${esc(getVal('bslFreq'))}` : ''}${getRadio('bslAssist') ? ` &bull; Level: ${esc(getRadio('bslAssist'))}` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlMedNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">${esc(getVal('adlMedNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 9. Personal Hygiene & Grooming -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">9. Personal Hygiene, Bathing, Grooming &amp; Expressing Sexuality</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3px 6px;text-align:left;">9. Personal Hygiene, Bathing, Grooming &amp; Expressing Sexuality</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Bathing &amp; Washing:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;">Bathing &amp; Washing:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Preference: <strong>${esc(getRadio('washPref'))}${getVal('washOtherSpec') ? ` (${esc(getVal('washOtherSpec'))})` : ''}</strong> &bull; 
                             Frequency: <strong>${esc(getRadio('washFreq'))}${getVal('freqOtherSpec') ? ` (${esc(getVal('freqOtherSpec'))})` : ''}</strong><br>
                             Transfer: <strong>${esc(getRadio('washTrans'))}${getVal('transOtherSpec') ? ` (${esc(getVal('transOtherSpec'))})` : ''}</strong> &bull; 
@@ -761,8 +761,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Grooming &amp; Dressing:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Grooming &amp; Dressing:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Shave: <strong>${esc(getRadio('groomShave'))}</strong>${getVal('groomShaveFreq') ? ` (${esc(getVal('groomShaveFreq'))})` : ''} &bull; 
                             Nails: <strong>${esc(getRadio('groomNails'))}${getVal('nailOtherSpec') ? ` (${esc(getVal('nailOtherSpec'))})` : ''}</strong><br>
                             Teeth / Dentures: <strong>${esc(getRadio('groomTeeth'))}</strong> &bull; 
@@ -771,8 +771,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Expressing Sexuality:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Expressing Sexuality:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Jewellery / Accessories: <strong>${esc(getRadio('sexAccessories'))}</strong> &bull; 
                             Nails painted: <strong>${esc(getRadio('sexNails'))}</strong> &bull; 
                             Hair styled: <strong>${esc(getRadio('sexHair'))}</strong> &bull; 
@@ -781,19 +781,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlHygieneNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">${esc(getVal('adlHygieneNotes'))}</td>
                     </tr>
                 </table>
 
                 <!-- 10. Nutrition, Hydration, Sleeping & End of Life -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:7px;">
                     <tr style="${YELLOW}">
-                        <th colspan="2" style="${BASE}${BORDER}padding:2.5px 5px;text-align:left;">10. Nutrition, Hydration, Sleeping, Social &amp; End of Life</th>
+                        <th colspan="2" style="${BASE}${BORDER}padding:3px 6px;text-align:left;">10. Nutrition, Hydration, Sleeping, Social &amp; End of Life</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Diet &amp; Preparation:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3px 6px;font-weight:bold;">Diet &amp; Preparation:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Food Allergies: <strong>${esc(getVal('foodAllergies')) || 'None'}</strong> &bull; 
                             Appetite: <strong>${esc(getRadio('appetite'))}</strong> &bull; 
                             Diet Type: <strong>${esc(getRadio('dietType'))}${getVal('dietOtherSpec') ? ` (${esc(getVal('dietOtherSpec'))})` : ''}</strong><br>
@@ -802,41 +802,41 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Fluids &amp; Meals:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Fluids &amp; Meals:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Fluids: <strong>${esc(getRadio('fluidCons'))}</strong> &bull; 
                             Drinking aids: ${checkBadge(getCheck('drinkCup'), 'Cup')} ${checkBadge(getCheck('drinkProtector'), 'Protector')}${getVal('drinkSpecialInst') ? ` (${esc(getVal('drinkSpecialInst'))})` : ''}<br>
                             Daily Meals: Breakfast: ${esc(getVal('mealBreakfast'))} &bull; Lunch: ${esc(getVal('mealLunch'))} &bull; Dinner: ${esc(getVal('mealDinner'))} &bull; Snacks: ${esc(getVal('mealSnacks'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Sleeping Routine:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Sleeping Routine:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Times: Rise: ${esc(getVal('sleepRiseTime'))} &bull; Bed: ${esc(getVal('sleepBedTime'))} &bull; Rest: ${esc(getVal('sleepRestTime'))}<br>
                             Room: ${checkBadge(getCheck('sleepLight'), 'Light')} ${checkBadge(getCheck('sleepDoorOpen'), 'Door open')} ${checkBadge(getCheck('sleepDoorClosed'), 'Door closed')} ${checkBadge(getCheck('sleepBedRail'), 'Bed rail')}${getVal('sleepRoomOther') ? ` (${esc(getVal('sleepRoomOther'))})` : ''}<br>
                             Night: ${checkBadge(getCheck('sleepNightWear'), 'Nightwear')} ${checkBadge(getCheck('sleepNightToilet'), 'Toilet routine')}${getVal('sleepNightOther') ? ` (${esc(getVal('sleepNightOther'))})` : ''} &bull; Sleep aids: ${esc(getVal('sleepAids'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Social &amp; Community:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">Social &amp; Community:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Visits: ${esc(getVal('socialVisits'))} &bull; Cultural/Spiritual: ${esc(getVal('culturalNeeds'))} &bull; Hobbies: ${esc(getVal('socialHobbies'))}<br>
                             Community services: ${checkBadge(getCheck('csHomeHelp'), 'Home help')} ${checkBadge(getCheck('csRespite'), 'Respite')} ${checkBadge(getCheck('csMeals'), 'Meals')} ${checkBadge(getCheck('csDayService'), 'Day service')} ${checkBadge(getCheck('csPhn'), 'PHN')} ${checkBadge(getCheck('csPrivate'), 'Private')} ${checkBadge(getCheck('csTherapy'), 'Therapy')} ${checkBadge(getCheck('csNone'), 'None')}${getVal('csOtherSpec') ? ` (${esc(getVal('csOtherSpec'))})` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">End of Life:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;font-weight:bold;">End of Life:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             Receiving Palliative Care: <strong>${esc(getRadio('palliativeCare'))}</strong> &bull; Care Notes: ${esc(getVal('palliativeNotes'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Additional Comments:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('adlNutriNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3px 6px;">Additional Comments:</td>
+                        <td style="${BASE}${BORDER}padding:3px 6px;">${esc(getVal('adlNutriNotes'))}</td>
                     </tr>
                 </table>
 
-                <div style="${BASE}border:0.5px solid #005952;padding:4px 6px;margin-bottom:6px;background:#f8fafc;display:flex;justify-content:space-between;align-items:center;">
+                <div style="${BASE}border:0.5px solid #005952;padding:5px 8px;margin-bottom:7px;background:#f8fafc;display:flex;justify-content:space-between;align-items:center;">
                     <div>
                         <strong>ADL Clinical Sign-off (Care Coordinator / Supervisor):</strong><br>
                         Name: <strong>${esc(getVal('adlAssessorName'))}</strong> &bull; Time: <strong>${esc(getVal('adlSigTime'))}</strong> &bull; Date: <strong>${esc(getVal('adlSigDate'))}</strong>
@@ -847,24 +847,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">5. About Me &bull; Person-Centred Life Story</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:20%;padding:2.5px 5px;text-align:left;">Area</th>
-                        <th style="${BASE}${BORDER}width:40%;padding:2.5px 5px;text-align:left;">Learning Outcomes</th>
-                        <th style="${BASE}${BORDER}width:40%;padding:2.5px 5px;text-align:left;">The Best Way to Support Me</th>
+                        <th style="${BASE}${BORDER}width:20%;padding:3.5px 6px;text-align:left;">Area</th>
+                        <th style="${BASE}${BORDER}width:40%;padding:3.5px 6px;text-align:left;">Learning Outcomes</th>
+                        <th style="${BASE}${BORDER}width:40%;padding:3.5px 6px;text-align:left;">The Best Way to Support Me</th>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">My Home Life</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutHomeOutcomes'))}</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutHomeLife'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">My Home Life</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutHomeOutcomes'))}</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutHomeLife'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">Friendships &amp; Social</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutFriendOutcomes'))}</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutFriendships'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Friendships &amp; Social</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutFriendOutcomes'))}</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutFriendships'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;">My Life Now &amp; Goals</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutLifeOutcomes'))}</td>
-                        <td style="${BASE}${BORDER}padding:2.5px 5px;">${esc(getVal('aboutLifeGoals'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">My Life Now &amp; Goals</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutLifeOutcomes'))}</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('aboutLifeGoals'))}</td>
                     </tr>
                 </table>
 
@@ -879,70 +879,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <div style="${SEC_HEADER}">6A. Person Moving &amp; Handling (PM&amp;H) Risk Assessment</div>
 
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;">Clinical &amp; Environmental PM&amp;H Audit Checklist</div>
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">Clinical &amp; Environmental PM&amp;H Audit Checklist</div>
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:2px 5px;font-weight:bold;">Current Mobility:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Current Mobility:</td>
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Stand indep: ${checkMark(getCheck('pmhStandInd'))} &bull; Walk indep: ${checkMark(getCheck('pmhWalkInd'))} &bull; Assistance: ${checkMark(getCheck('pmhAssistReq'))} ${getVal('pmhCarersNum') ? `(Carers: ${esc(getVal('pmhCarersNum'))})` : ''} &bull; Aids: ${checkMark(getCheck('pmhAidsUsed'))} ${getVal('pmhAidsInUse') ? `(${esc(getVal('pmhAidsInUse'))})` : ''}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Care Assistant:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Care Assistant:</td>
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Twisting: ${checkMark(getCheck('pmhTwist'))} &bull; Stooping: ${checkMark(getCheck('pmhStoop'))} &bull; Unstable posture: ${checkMark(getCheck('pmhPost'))} &bull; Strenuous: ${checkMark(getCheck('pmhStrenuous'))} &bull; Trained: ${checkMark(getCheck('pmhTrained'))} &bull; Alone: ${checkMark(getCheck('pmhAlone'))} &bull; Fit: ${checkMark(getCheck('pmhFit'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Environment:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Environment:</td>
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Uneven surfaces: ${checkMark(getCheck('pmhUneven'))} &bull; Floor variation: ${checkMark(getCheck('pmhFloorVar'))} &bull; Inadequate lighting: ${checkMark(getCheck('pmhLight'))} &bull; Bed/chair: ${checkMark(getCheck('pmhBedChair'))} &bull; Space: ${checkMark(getCheck('pmhSpace'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Customer Factors:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Customer Factors:</td>
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Medication: ${checkMark(getCheck('pmhMedRel'))} &bull; Understands: ${checkMark(getCheck('pmhUnderstand'))} &bull; Cooperative: ${checkMark(getCheck('pmhCoop'))} &bull; Bariatric: ${checkMark(getCheck('pmhBariatric'))} &bull; Equipment: ${checkMark(getCheck('pmhEquipAvail'))} ${getVal('pmhEquipInPlace') ? `(${esc(getVal('pmhEquipInPlace'))})` : ''} &bull; Fall risk: ${checkMark(getCheck('pmhFallRisk'))}
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Assessed Level:</td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Assessed Level:</td>
+                        <td style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             <strong>Handling Risk Level:</strong> ${esc(getRadio('pmhOverallLevel') || 'Low')}
                             ${getVal('pmhComments') ? ` &bull; <strong>Comments:</strong> ${esc(getVal('pmhComments'))}` : ''}
                         </td>
                     </tr>
                 </table>
 
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;">PM&amp;H Risk Management Action Plan</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;">PM&amp;H Risk Management Action Plan</div>
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Office: <strong>${esc(getVal('pmhOffice'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Source: <strong>${esc(getVal('pmhSource'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2px 5px;">Client: <strong>${esc(getVal('pmhCustName'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2px 5px;">Date: <strong>${esc(getVal('pmhDate'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Office: <strong>${esc(getVal('pmhOffice'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Source: <strong>${esc(getVal('pmhSource'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2.8px 6px;font-size:9.5px;">Client: <strong>${esc(getVal('pmhCustName'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2.8px 6px;font-size:9.5px;">Date: <strong>${esc(getVal('pmhDate'))}</strong></td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Hazard Description:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('pmhHazard'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Hazard Description:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('pmhHazard'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Existing Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('pmhExistingControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Existing Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('pmhExistingControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Additional Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('pmhAdditionalControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Additional Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('pmhAdditionalControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Owner &amp; Dates:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-size:9.5px;">Owner &amp; Dates:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Owner: <strong>${esc(getVal('pmhOwner'))}</strong> &bull; Due: <strong>${esc(getVal('pmhDueDate'))}</strong> &bull; Review: <strong>${esc(getVal('pmhReviewDate'))}</strong> &bull; Status: <strong>${esc(getRadio('pmhStatus') || 'Open')}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Calculated Rating:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;background:#f0fdf4;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Calculated Rating:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;background:#f0fdf4;font-size:9.5px;">
                             Likelihood: <strong>${esc(getVal('pmhLikelihood'))}</strong> &times; Impact: <strong>${esc(getVal('pmhImpact'))}</strong> = 
                             <strong style="color:#005952;font-size:11px;"> ${parseInt(getVal('pmhLikelihood')||1)*parseInt(getVal('pmhImpact')||1)}</strong>
                             (Overall Handling Level: <strong>${esc(getRadio('pmhOverallLevel') || 'Low')}</strong>)
@@ -951,7 +951,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-                    <div style="${BASE}font-size:8px;color:#555;width:65%;">
+                    <div style="${BASE}font-size:8.5px;color:#555;width:65%;">
                         InisCare have a duty of care to all staff and Customers. InisCare reserve the right to withdraw care if appropriate PM&H equipment is not available in the house.<br>
                         Signed Assessor: <strong>${esc(getVal('pmhPrintName'))}</strong> &bull; Date: <strong>${esc(getVal('pmhSigDate'))}</strong>
                     </div>
@@ -961,24 +961,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">6B. Falls Risk Assessment</div>
 
                 <!-- Falls History -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Previous Falls:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2px 5px;"><strong>${esc(getRadio('prevFalls'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Fear of Falling:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:2px 5px;"><strong>${esc(getRadio('fearFalling'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Previous Falls:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:2.8px 6px;font-size:9.5px;"><strong>${esc(getRadio('prevFalls'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Fear of Falling:</td>
+                        <td style="${BASE}${BORDER}width:30%;padding:2.8px 6px;font-size:9.5px;"><strong>${esc(getRadio('fearFalling'))}</strong></td>
                     </tr>
                     ${getVal('fallsHistoryNotes') ? `
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Falls History / Dates:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('fallsHistoryNotes'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Falls History / Dates:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('fallsHistoryNotes'))}</td>
                     </tr>` : ''}
                 </table>
 
                 <!-- Contributing Medical History (14 conditions) -->
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;color:#005952;">Medical History (Contributing to Falls)</div>
-                <div style="display:flex;gap:6px;margin-bottom:5px;font-size:8px;line-height:1.2;">
-                    <div style="flex:1;border:0.5px solid #ccc;padding:3px 5px;background:#fcfcfc;">
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;color:#005952;">Medical History (Contributing to Falls)</div>
+                <div style="display:flex;gap:6px;margin-bottom:6px;font-size:8.5px;line-height:1.25;">
+                    <div style="flex:1;border:0.5px solid #ccc;padding:4px 6px;background:#fcfcfc;">
                         ${mcItem('Visual impairment', 'fmVisual', 'fmVisualComm')}
                         ${mcItem('Cardiac arrhythmias', 'fmCardiac', 'fmCardiacComm')}
                         ${mcItem('Transient Ischaemic Attacks', 'fmTia', 'fmTiaComm')}
@@ -987,7 +987,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${mcItem('Muscle weakness', 'fmMuscle', 'fmMuscleComm')}
                         ${mcItem('Decreased peripheral sensation', 'fmSens', 'fmSensComm')}
                     </div>
-                    <div style="flex:1;border:0.5px solid #ccc;padding:3px 5px;background:#fcfcfc;">
+                    <div style="flex:1;border:0.5px solid #ccc;padding:4px 6px;background:#fcfcfc;">
                         ${mcItem('Osteoporosis', 'fmOsteo', 'fmOsteoComm')}
                         ${mcItem('Hypotension', 'fmHypo', 'fmHypoComm')}
                         ${mcItem('Incontinence / bowel urgency', 'fmIncont', 'fmIncontComm')}
@@ -997,13 +997,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${mcItem('Cognitive impairment', 'fmCognitive', 'fmCognitiveComm')}
                     </div>
                 </div>
-                ${getVal('fmOtherDesc') ? `<div style="${BASE}font-size:8px;margin-bottom:4px;"><strong>Other Medical:</strong> ${esc(getVal('fmOtherDesc'))}</div>` : ''}
+                ${getVal('fmOtherDesc') ? `<div style="${BASE}font-size:8.5px;margin-bottom:4px;"><strong>Other Medical:</strong> ${esc(getVal('fmOtherDesc'))}</div>` : ''}
 
                 <!-- Medication & Environmental -->
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;font-weight:bold;">Medications:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Medications:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             ${checkBadge(getCheck('fMedAnxiety'), 'Antianxiety')} 
                             ${checkBadge(getCheck('fMedNarcotic'), 'Narcotic')} 
                             ${checkBadge(getCheck('fMedAntidep'), 'Antidepressants')} 
@@ -1018,8 +1018,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Environment:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Environment:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Trip hazards: <strong>${esc(getRadio('feTrip'))}</strong>${getVal('feTripComm') ? ` (${esc(getVal('feTripComm'))})` : ''} &bull; 
                             Pets: <strong>${esc(getRadio('fePets'))}</strong>${getVal('fePetsComm') ? ` (${esc(getVal('fePetsComm'))})` : ''} &bull; 
                             Appropriate footwear: <strong>${esc(getRadio('feFootwear'))}</strong>${getVal('feFootwearComm') ? ` (${esc(getVal('feFootwearComm'))})` : ''}
@@ -1027,8 +1027,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Actions Taken &amp; Rating:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Actions Taken &amp; Rating:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Actions: ${esc(getVal('feActionsTaken')) || 'Risk assessed and preventative measures implemented.'}<br>
                             Falls Risk Rating: <strong>${esc(getRadio('fallsRatingOverall') || 'Low')} Risk</strong>
                             ${getVal('fallsRatingReason') ? ` &bull; <em>Reason: ${esc(getVal('fallsRatingReason'))}` : ''}
@@ -1036,35 +1036,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                 </table>
 
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;color:#005952;">Falls Risk Management Action Plan</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;color:#005952;">Falls Risk Management Action Plan</div>
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Office: <strong>${esc(getVal('fallsOffice'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Source: <strong>${esc(getVal('fallsSource'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2px 5px;">Client: <strong>${esc(getVal('fallsCustName'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2px 5px;">Date: <strong>${esc(getVal('fallsDate'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Office: <strong>${esc(getVal('fallsOffice'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.8px 6px;font-size:9.5px;">Source: <strong>${esc(getVal('fallsSource'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2.8px 6px;font-size:9.5px;">Client: <strong>${esc(getVal('fallsCustName'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2.8px 6px;font-size:9.5px;">Date: <strong>${esc(getVal('fallsDate'))}</strong></td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Hazard Description:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('fallsHazard'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Hazard Description:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('fallsHazard'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Existing Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('fallsExistingControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Existing Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('fallsExistingControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Additional Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('fallsAdditionalControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Additional Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">${esc(getVal('fallsAdditionalControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Owner &amp; Dates:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-size:9.5px;">Owner &amp; Dates:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;font-size:9.5px;">
                             Owner: <strong>${esc(getVal('fallsOwner'))}</strong> &bull; Due: <strong>${esc(getVal('fallsDueDate'))}</strong> &bull; Review: <strong>${esc(getVal('fallsReviewDate'))}</strong> &bull; Status: <strong>${esc(getRadio('fallsStatus') || 'Open')}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Calculated Rating:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;background:#fef3c7;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.8px 6px;font-weight:bold;font-size:9.5px;">Calculated Rating:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.8px 6px;background:#fef3c7;font-size:9.5px;">
                             Likelihood: <strong>${esc(getVal('fallsLikelihood'))}</strong> &times; Impact: <strong>${esc(getVal('fallsImpact'))}</strong> = 
                             <strong style="color:#b45309;font-size:11px;"> ${parseInt(getVal('fallsLikelihood')||1)*parseInt(getVal('fallsImpact')||1)}</strong>
                             (Falls Rating: <strong>${esc(getRadio('fallsRatingOverall') || 'Low')}</strong>)
@@ -1089,176 +1089,176 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}">6C. Home Safety Risk Assessment</div>
 
                 <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;color:#005952;">Home Safety Room-by-Room Inspection Checklist</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;font-size:8px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;font-size:8.5px;">
                     <tr style="background:#f1f5f9;font-weight:bold;">
-                        <th style="${BORDER}padding:1.5px 4px;text-align:left;width:35%;">Outside Area</th>
-                        <th style="${BORDER}padding:1.5px 4px;text-align:center;width:15%;">Y / N</th>
-                        <th style="${BORDER}padding:1.5px 4px;text-align:left;width:35%;">Entrance Hall</th>
-                        <th style="${BORDER}padding:1.5px 4px;text-align:center;width:15%;">Y / N</th>
+                        <th style="${BORDER}padding:2.2px 5px;text-align:left;width:35%;">Outside Area</th>
+                        <th style="${BORDER}padding:2.2px 5px;text-align:center;width:15%;">Y / N</th>
+                        <th style="${BORDER}padding:2.2px 5px;text-align:left;width:35%;">Entrance Hall</th>
+                        <th style="${BORDER}padding:2.2px 5px;text-align:center;width:15%;">Y / N</th>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Parking in close proximity</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsParking')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Lights working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsHallLights')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Parking in close proximity</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsParking')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Lights working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsHallLights')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Streetlights working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsStreetlights')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Door lock in working order</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsDoorLock')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Streetlights working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsStreetlights')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Door lock in working order</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsDoorLock')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Uneven paths</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsUnevenPaths')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Floor safe (mats/slippery/clutter)</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsHallFloor')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Uneven paths</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsUnevenPaths')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Floor safe (mats/slippery/clutter)</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsHallFloor')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">House alarm</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsHouseAlarm')}</td>
-                        <td colspan="2" style="${BORDER}background:#f1f5f9;font-weight:bold;padding:1.5px 4px;">Living Room</td>
+                        <td style="${BORDER}padding:2px 5px;">House alarm</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsHouseAlarm')}</td>
+                        <td colspan="2" style="${BORDER}background:#f1f5f9;font-weight:bold;padding:2px 5px;">Living Room</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Broken windows in house</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBrokenWin')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Floor safe (mats/slippery/clutter)</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsLivingFloor')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Broken windows in house</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBrokenWin')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Floor safe (mats/slippery/clutter)</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsLivingFloor')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Visitors visible prior to entry</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsVisitorsVisible')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Cables tidy</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsCablesTidy')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Visitors visible prior to entry</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsVisitorsVisible')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Cables tidy</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsCablesTidy')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Entrance safe (steps/railings)</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsEntranceSafe')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Plugs working &amp; safe</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsPlugsSafe')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Entrance safe (steps/railings)</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsEntranceSafe')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Plugs working &amp; safe</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsPlugsSafe')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Doorbell working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsDoorbell')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Lights working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsLivingLights')}</td>
-                    </tr>
-                    <tr style="background:#f1f5f9;font-weight:bold;">
-                        <td colspan="2" style="${BORDER}padding:1.5px 4px;">Kitchen</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Windows can be opened</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsLivingWin')}</td>
-                    </tr>
-                    <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">All appliances working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsKitchenAppl')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Favourite chair easy sit/stand</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsChairEasy')}</td>
-                    </tr>
-                    <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Plugs working &amp; safe</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsKitchenPlugs')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Table beside chair in easy reach</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsTableReach')}</td>
-                    </tr>
-                    <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Floor safe (mats/slippery/clutter)</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsKitchenFloor')}</td>
-                        <td colspan="2" style="${BORDER}background:#f1f5f9;font-weight:bold;padding:1.5px 4px;">Bedroom</td>
-                    </tr>
-                    <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Windows can be opened</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsKitchenWin')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Lights working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBedLights')}</td>
-                    </tr>
-                    <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Pots/dishes/cutlery stored safely</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsPotsStored')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Floor safe (mats/slippery/clutter)</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBedFloor')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Doorbell working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsDoorbell')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Lights working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsLivingLights')}</td>
                     </tr>
                     <tr style="background:#f1f5f9;font-weight:bold;">
-                        <td colspan="2" style="${BORDER}padding:1.5px 4px;">Stairway ${getCheck('hsStairNA') ? '(N/A - Single Storey)' : ''}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Cables safe &bull; Plugs safe</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBedCables')} / ${ynBadge('hsBedPlugs')}</td>
+                        <td colspan="2" style="${BORDER}padding:2px 5px;">Kitchen</td>
+                        <td style="${BORDER}padding:2px 5px;">Windows can be opened</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsLivingWin')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Stairlift insitu &bull; Banister secure</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsStairlift')} / ${ynBadge('hsBanister')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Phone &amp; torch beside bed</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBedPhone')} / ${ynBadge('hsBedTorch')}</td>
+                        <td style="${BORDER}padding:2px 5px;">All appliances working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsKitchenAppl')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Favourite chair easy sit/stand</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsChairEasy')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Stairs safe &bull; Lights working</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsStairsSafe')} / ${ynBadge('hsStairLights')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Bed easily accessible</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBedAccess')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Plugs working &amp; safe</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsKitchenPlugs')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Table beside chair in easy reach</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsTableReach')}</td>
+                    </tr>
+                    <tr>
+                        <td style="${BORDER}padding:2px 5px;">Floor safe (mats/slippery/clutter)</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsKitchenFloor')}</td>
+                        <td colspan="2" style="${BORDER}background:#f1f5f9;font-weight:bold;padding:2px 5px;">Bedroom</td>
+                    </tr>
+                    <tr>
+                        <td style="${BORDER}padding:2px 5px;">Windows can be opened</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsKitchenWin')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Lights working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBedLights')}</td>
+                    </tr>
+                    <tr>
+                        <td style="${BORDER}padding:2px 5px;">Pots/dishes/cutlery stored safely</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsPotsStored')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Floor safe (mats/slippery/clutter)</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBedFloor')}</td>
                     </tr>
                     <tr style="background:#f1f5f9;font-weight:bold;">
-                        <td colspan="2" style="${BORDER}padding:1.5px 4px;">Bathroom</td>
-                        <td colspan="2" style="${BORDER}padding:1.5px 4px;">General &amp; Fire Safety</td>
+                        <td colspan="2" style="${BORDER}padding:2px 5px;">Stairway ${getCheck('hsStairNA') ? '(N/A - Single Storey)' : ''}</td>
+                        <td style="${BORDER}padding:2px 5px;">Cables safe &bull; Plugs safe</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBedCables')} / ${ynBadge('hsBedPlugs')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Lights working &bull; Floor safe wet</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBathLights')} / ${ynBadge('hsBathFloor')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Smoke alarm &bull; Carbon monoxide</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsSmokeAlarm')} / ${ynBadge('hsCoAlarm')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Stairlift insitu &bull; Banister secure</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsStairlift')} / ${ynBadge('hsBanister')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Phone &amp; torch beside bed</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBedPhone')} / ${ynBadge('hsBedTorch')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Walk-in shower &bull; Bath hoist</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBathShower')} / ${ynBadge('hsBathHoist')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Fire equipment present</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsFireEquip')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Stairs safe &bull; Lights working</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsStairsSafe')} / ${ynBadge('hsStairLights')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Bed easily accessible</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBedAccess')}</td>
+                    </tr>
+                    <tr style="background:#f1f5f9;font-weight:bold;">
+                        <td colspan="2" style="${BORDER}padding:2px 5px;">Bathroom</td>
+                        <td colspan="2" style="${BORDER}padding:2px 5px;">General &amp; Fire Safety</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Windows open &bull; Transfer space</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsBathWin')} / ${ynBadge('hsBathTransfer')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Location of firefighting equip:</td>
-                        <td style="${BORDER}padding:1.5px 4px;">${esc(getVal('hsFireLoc')) || '-'}</td>
+                        <td style="${BORDER}padding:2px 5px;">Lights working &bull; Floor safe wet</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBathLights')} / ${ynBadge('hsBathFloor')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Smoke alarm &bull; Carbon monoxide</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsSmokeAlarm')} / ${ynBadge('hsCoAlarm')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Safety mat in bath &bull; Shower chair</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsSafetyMat')} / ${ynBadge('hsShowerChair')}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Free from odour &bull; Free from pests</td>
-                        <td style="${BORDER}padding:1.5px 4px;text-align:center;">${ynBadge('hsNoOdour')} / ${ynBadge('hsNoPests')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Walk-in shower &bull; Bath hoist</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBathShower')} / ${ynBadge('hsBathHoist')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Fire equipment present</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsFireEquip')}</td>
                     </tr>
                     <tr>
-                        <td style="${BORDER}padding:1.5px 4px;">Bathroom comments:</td>
-                        <td style="${BORDER}padding:1.5px 4px;">${esc(getVal('hsBathComments')) || '-'}</td>
-                        <td style="${BORDER}padding:1.5px 4px;">Post &amp; Bins accessible &bull; Fuse box:</td>
-                        <td style="${BORDER}padding:1.5px 4px;">${ynBadge('hsPostAccess')}/${ynBadge('hsBinsAccess')} &bull; ${esc(getVal('hsFuseBoxLoc')) || '-'}</td>
+                        <td style="${BORDER}padding:2px 5px;">Windows open &bull; Transfer space</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsBathWin')} / ${ynBadge('hsBathTransfer')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Location of firefighting equip:</td>
+                        <td style="${BORDER}padding:2px 5px;">${esc(getVal('hsFireLoc')) || '-'}</td>
+                    </tr>
+                    <tr>
+                        <td style="${BORDER}padding:2px 5px;">Safety mat in bath &bull; Shower chair</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsSafetyMat')} / ${ynBadge('hsShowerChair')}</td>
+                        <td style="${BORDER}padding:2px 5px;">Free from odour &bull; Free from pests</td>
+                        <td style="${BORDER}padding:2px 5px;text-align:center;">${ynBadge('hsNoOdour')} / ${ynBadge('hsNoPests')}</td>
+                    </tr>
+                    <tr>
+                        <td style="${BORDER}padding:2px 5px;">Bathroom comments:</td>
+                        <td style="${BORDER}padding:2px 5px;">${esc(getVal('hsBathComments')) || '-'}</td>
+                        <td style="${BORDER}padding:2px 5px;">Post &amp; Bins accessible &bull; Fuse box:</td>
+                        <td style="${BORDER}padding:2px 5px;">${ynBadge('hsPostAccess')}/${ynBadge('hsBinsAccess')} &bull; ${esc(getVal('hsFuseBoxLoc')) || '-'}</td>
                     </tr>
                 </table>
 
-                <div style="${BASE}font-weight:bold;margin:3px 0 2px 0;color:#005952;">Home Safety Risk Management Action Plan</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <div style="${BASE}font-weight:bold;margin:4px 0 3px 0;color:#005952;">Home Safety Risk Management Action Plan</div>
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Office: <strong>${esc(getVal('safetyOffice'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2px 5px;">Source: <strong>${esc(getVal('safetySource'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2px 5px;">Client: <strong>${esc(getVal('safetyCustName'))}</strong></td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2px 5px;">Date: <strong>${esc(getVal('safetyDate'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;font-size:9px;">Office: <strong>${esc(getVal('safetyOffice'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:2.5px 5px;font-size:9px;">Source: <strong>${esc(getVal('safetySource'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:35%;padding:2.5px 5px;font-size:9px;">Client: <strong>${esc(getVal('safetyCustName'))}</strong></td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:25%;padding:2.5px 5px;font-size:9px;">Date: <strong>${esc(getVal('safetyDate'))}</strong></td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Hazard Description:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('safetyHazard'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;font-size:9px;">Hazard Description:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">${esc(getVal('safetyHazard'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Existing Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('safetyExistingControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;font-size:9px;">Existing Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">${esc(getVal('safetyExistingControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Additional Controls:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">${esc(getVal('safetyAdditionalControls'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;font-size:9px;">Additional Controls:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">${esc(getVal('safetyAdditionalControls'))}</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;">Owner &amp; Dates:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-size:9px;">Owner &amp; Dates:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">
                             Owner: <strong>${esc(getVal('safetyOwner'))}</strong> &bull; Due: <strong>${esc(getVal('safetyDueDate'))}</strong> &bull; Review: <strong>${esc(getVal('safetyReviewDate'))}</strong> &bull; Status: <strong>${esc(getRadio('safetyStatus') || 'Open')}</strong>
                         </td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}padding:2px 5px;font-weight:bold;">Calculated Rating:</td>
-                        <td colspan="3" style="${BASE}${BORDER}padding:2px 5px;background:#f0fdf4;">
+                        <td style="${BASE}${YELLOW}${BORDER}padding:2.5px 5px;font-weight:bold;font-size:9px;">Calculated Rating:</td>
+                        <td colspan="3" style="${BASE}${BORDER}padding:2.5px 5px;background:#f0fdf4;font-size:9px;">
                             Likelihood: <strong>${esc(getVal('safetyLikelihood'))}</strong> &times; Impact: <strong>${esc(getVal('safetyImpact'))}</strong> = 
                             <strong style="color:#166534;font-size:11px;"> ${parseInt(getVal('safetyLikelihood')||1)*parseInt(getVal('safetyImpact')||1)}</strong>
                         </td>
@@ -1271,49 +1271,49 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div style="${SEC_HEADER}">7. Consent Form</div>
-                <div style="${BASE}font-size:8.5px;margin-bottom:3px;">
+                <div style="${BASE}font-size:9px;margin-bottom:3px;">
                     I, <strong>${esc(getVal('consentGiverName') || getVal('custName') || 'the undersigned')}</strong>, am giving my consent for the following:
                 </div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:5px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
                         <td style="${BASE}${BORDER}width:24px;text-align:center;">${checkMark(getCheck('cConsentCare'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Consent to care delivered by InisCare HCAs</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Consent to care delivered by InisCare HCAs</td>
                         <td style="${BASE}${BORDER}width:24px;text-align:center;">${checkMark(getCheck('cConsentHse'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Consent to info sharing (HSE, PHN, GP)</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Consent to info sharing (HSE, PHN, GP)</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentMeds'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Consent to medication prompts</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Consent to medication prompts</td>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentPlan'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Agree with care plan &amp; risk rating</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Agree with care plan &amp; risk rating</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentKeybox'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Keybox access (Code: ${esc(getVal('consentKeyboxVal'))})</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Keybox access (Code: ${esc(getVal('consentKeyboxVal'))})</td>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentMale'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Consent for male care assistants</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Consent for male care assistants</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentNok'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Discuss care with NOK: ${esc(getVal('consentNokVal'))}</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Discuss care with NOK: ${esc(getVal('consentNokVal'))}</td>
                         <td style="${BASE}${BORDER}text-align:center;">${checkMark(getCheck('cConsentBsl'))}</td>
-                        <td style="${BASE}${BORDER}padding:1.5px 5px;">Assist with blood sugar level testing</td>
+                        <td style="${BASE}${BORDER}padding:2.5px 5px;font-size:9px;">Assist with blood sugar level testing</td>
                     </tr>
                 </table>
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2px 5px;">Customer / NOK Signature</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2px 5px;">InisCare Representative Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Customer / NOK Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">InisCare Representative Signature</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             ${sigHtml(consentClientSigUrl)}
-                            <div style="font-size:8px;margin-top:1px;">Date: ${esc(getVal('consentClientSigDate'))}</div>
+                            <div style="font-size:8.5px;margin-top:2px;">Date: ${esc(getVal('consentClientSigDate'))}</div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             ${sigHtml(consentRepSigUrl)}
-                            <div style="font-size:8px;margin-top:1px;">
+                            <div style="font-size:8.5px;margin-top:2px;">
                                 Name: <strong>${esc(getVal('consentRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('consentRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('consentRepDate'))}</strong>
@@ -1323,14 +1323,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${SEC_HEADER}">8. Housekeeping Scope Agreement</div>
-                <div style="${BASE}font-size:8px;margin-bottom:3px;line-height:1.2;color:#333;">
+                <div style="${BASE}font-size:8.5px;margin-bottom:3px;line-height:1.25;color:#333;">
                     InisCare staff are professional Healthcare Assistants dedicated to supporting safe independent living, not domestic cleaners.
                 </div>
 
-                <div style="display:flex;gap:6px;margin-bottom:5px;">
-                    <div style="flex:1;border:0.5px solid #86efac;background:#f0fdf4;padding:3px 5px;border-radius:2px;">
+                <div style="display:flex;gap:6px;margin-bottom:6px;">
+                    <div style="flex:1;border:0.5px solid #86efac;background:#f0fdf4;padding:4px 6px;border-radius:2px;">
                         <strong style="color:#166534;font-size:8.5px;">&#10003; Permitted Light Housekeeping Tasks:</strong>
-                        <ul style="margin:1px 0 0 10px;padding:0;font-size:7.5px;line-height:1.2;color:#166534;">
+                        <ul style="margin:2px 0 0 12px;padding:0;font-size:8px;line-height:1.25;color:#166534;">
                             <li>Hoovering rooms used by Customer (weekly / as needed)</li>
                             <li>Washing up used dishes &amp; kitchen countertops</li>
                             <li>Personal laundry (Customer clothing only)</li>
@@ -1339,9 +1339,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             <li>Making bed, changing sheets &amp; emptying bins</li>
                         </ul>
                     </div>
-                    <div style="flex:1;border:0.5px solid #fca5a5;background:#fff5f5;padding:3px 5px;border-radius:2px;">
+                    <div style="flex:1;border:0.5px solid #fca5a5;background:#fff5f5;padding:4px 6px;border-radius:2px;">
                         <strong style="color:#991b1b;font-size:8.5px;">&#10007; Strictly Excluded Tasks:</strong>
-                        <ul style="margin:1px 0 0 10px;padding:0;font-size:7.5px;line-height:1.2;color:#991b1b;">
+                        <ul style="margin:2px 0 0 12px;padding:0;font-size:8px;line-height:1.25;color:#991b1b;">
                             <li>Gardening &amp; outdoor maintenance</li>
                             <li>Deep cleaning (ovens, cupboards, windows, walls)</li>
                             <li>Moving heavy furniture / ladders / cobwebs</li>
@@ -1353,17 +1353,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2px 5px;">Signed Customer / NOK</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2px 5px;">Signed InisCare Representative</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Signed Customer / NOK</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Signed InisCare Representative</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             ${sigHtml(hkClientSigUrl)}
-                            <div style="font-size:8px;margin-top:1px;">Date: ${esc(getVal('hkClientSigDate'))}</div>
+                            <div style="font-size:8.5px;margin-top:2px;">Date: ${esc(getVal('hkClientSigDate'))}</div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:2px 5px;">
+                        <td style="${BASE}${BORDER}padding:3px 6px;">
                             ${sigHtml(hkRepSigUrl)}
-                            <div style="font-size:8px;margin-top:1px;">
+                            <div style="font-size:8.5px;margin-top:2px;">
                                 Name: <strong>${esc(getVal('hkRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('hkRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('hkRepDate'))}</strong>
@@ -1384,6 +1384,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.zIndex = '-1000';
         container.innerHTML = pagesHtml;
         document.body.appendChild(container);
+
+        const imgs = container.querySelectorAll('img');
+        await Promise.all(Array.from(imgs).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(res => { img.onload = res; img.onerror = res; });
+        }));
+        await new Promise(res => setTimeout(res, 80));
+
         return container;
     }
 
