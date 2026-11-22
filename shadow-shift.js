@@ -309,13 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>`;
 
-                <div style="display:flex;justify-content:space-between;font-size:8.5px;color:#777;border-top:0.5px solid #ccc;padding-top:4px;">
-                    <span>InisCare Care Assistant Shadow Shift &bull; Confidential</span>
-                    <span>Official Record &bull; Page 1 of 1</span>
-                </div>
-            </div>
-        </div>`;
-
         const wrapper = document.createElement('div');
         wrapper.style.cssText = 'position:fixed;left:-9999px;top:-9999px;width:794px;overflow:hidden;pointer-events:none;opacity:0;';
         wrapper.innerHTML = html;

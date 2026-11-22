@@ -399,6 +399,14 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.zIndex = '-1000';
         container.innerHTML = html;
         document.body.appendChild(container);
+
+        const imgs = container.querySelectorAll('img');
+        await Promise.all(Array.from(imgs).map(img => {
+            if (img.complete) return Promise.resolve();
+            return new Promise(res => { img.onload = res; img.onerror = res; });
+        }));
+        await new Promise(res => setTimeout(res, 80));
+
         return container;
     }
 
@@ -465,11 +473,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } catch (err) {
                 console.error(err);
                 alert('An error occurred while generating the PDF: ' + err.message);
-                btnDownload.disabled = false;
-                btnDownload.innerHTML = originalText;
-            }
-        });
-    }
                 btnDownload.disabled = false;
                 btnDownload.innerHTML = originalText;
             }
