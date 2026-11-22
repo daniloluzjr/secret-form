@@ -240,9 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const hkClientSigUrl = (hkClientPad && !hkClientPad.isEmpty()) ? hkClientPad.toDataURL('image/png') : null;
         const hkRepSigUrl = (hkRepPad && !hkRepPad.isEmpty()) ? hkRepPad.toDataURL('image/png') : null;
 
-        function sigHtml(url) {
+        function sigHtml(url, maxH = 38) {
             return url
-                ? `<img src="${url}" style="height:38px;max-height:38px;width:auto;object-fit:contain;display:block;">`
+                ? `<img src="${url}" style="height:${maxH}px;max-height:${maxH}px;width:auto;object-fit:contain;display:block;">`
                 : `<span style="${BASE}color:#aaa;font-style:italic;">(Signed digitally)</span>`;
         }
 
@@ -330,9 +330,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (s.time || s.duties || s.name === 'Morning' || s.name === 'Afternoon' || s.name === 'Evening') {
                 shiftRowsHtml += `
                 <tr>
-                    <td style="${BASE}${BORDER}padding:3.5px 6px;font-weight:bold;width:18%;">${s.name}</td>
-                    <td style="${BASE}${BORDER}padding:3.5px 6px;width:24%;">${esc(s.time)}</td>
-                    <td style="${BASE}${BORDER}padding:3.5px 6px;width:58%;">${esc(s.duties)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;font-weight:bold;">${s.name}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(s.time)}</td>
+                    <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(s.duties)}</td>
                 </tr>`;
             }
         });
@@ -349,12 +349,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${SEC_HEADER}font-size:13.5px;text-align:center;padding:4px;margin-bottom:6px;">Personal Support Plan (PSP)</div>
 
                 <div style="${SEC_HEADER}">1. Customer Identification &amp; Key Details</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
+                    <colgroup>
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                    </colgroup>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;font-weight:bold;">Name:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">${esc(getVal('custName'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;font-weight:bold;">Prefers to be called:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('custPrefName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Name:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custName'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Prefers to be called:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('custPrefName'))}</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Address:</td>
@@ -375,12 +381,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Other Contact Details &amp; Multidisciplinary Team</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
+                    <colgroup>
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                    </colgroup>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;">Primary Contact:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">${esc(getVal('primContactName'))} (${esc(getVal('primContactRel'))})</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:18%;padding:3.5px 6px;">Phone / Mobile:</td>
-                        <td style="${BASE}${BORDER}width:32%;padding:3.5px 6px;">Tel: ${esc(getVal('primContactPhone'))} &bull; Mob: ${esc(getVal('primContactMobile'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Primary Contact:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('primContactName'))} (${esc(getVal('primContactRel'))})</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Phone / Mobile:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">Tel: ${esc(getVal('primContactPhone'))} &bull; Mob: ${esc(getVal('primContactMobile'))}</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Address &amp; Email:</td>
@@ -418,12 +430,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Property Access &amp; Living Arrangements</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
+                    <colgroup>
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                    </colgroup>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;">Access Preference:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('accessPref'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;">Gate Code:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('gateCode'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Access Preference:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('accessPref'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Gate Code:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('gateCode'))}</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;">Keybox Location:</td>
@@ -449,16 +467,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div style="${BASE}${BORDER}padding:7px 8px;min-height:80px;line-height:1.4;margin-bottom:6px;">${esc(getVal('custBio'))}</div>
 
                 <div style="${SEC_HEADER}">2. Health Information &amp; Care Plan Summary</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:6px;">
+                    <colgroup>
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                    </colgroup>
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:22%;padding:3.5px 6px;font-weight:bold;">Medical History:</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Medical History:</td>
                         <td colspan="3" style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('medHistory'))}</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">PM&amp;H Equipment:</td>
-                        <td style="${BASE}${BORDER}width:28%;padding:3.5px 6px;">${esc(getVal('pmhEquipment'))}</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:20%;padding:3.5px 6px;font-weight:bold;">Walking Aids:</td>
-                        <td style="${BASE}${BORDER}width:30%;padding:3.5px 6px;">${esc(getVal('walkingAids'))}</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('pmhEquipment'))}</td>
+                        <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Walking Aids:</td>
+                        <td style="${BASE}${BORDER}padding:3.5px 6px;">${esc(getVal('walkingAids'))}</td>
                     </tr>
                     <tr>
                         <td style="${BASE}${YELLOW}${BORDER}padding:3.5px 6px;font-weight:bold;">Allergies:</td>
@@ -485,11 +509,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </table>
 
                 <div style="${BASE}font-weight:bold;margin:4px 0 2px 0;color:#005952;">Daily Visit Schedules &amp; Assigned Duties</div>
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:8px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:8px;">
+                    <colgroup>
+                        <col style="width:20%;">
+                        <col style="width:30%;">
+                        <col style="width:50%;">
+                    </colgroup>
                     <tr style="${YELLOW}">
-                        <th style="${BASE}${BORDER}width:18%;padding:3.5px 6px;text-align:left;">Shift</th>
-                        <th style="${BASE}${BORDER}width:24%;padding:3.5px 6px;text-align:left;">Preferred Time</th>
-                        <th style="${BASE}${BORDER}width:58%;padding:3.5px 6px;text-align:left;">Assigned Duties &amp; Care Activities</th>
+                        <th style="${BASE}${BORDER}padding:3.5px 6px;text-align:left;">Shift</th>
+                        <th style="${BASE}${BORDER}padding:3.5px 6px;text-align:left;">Preferred Time</th>
+                        <th style="${BASE}${BORDER}padding:3.5px 6px;text-align:left;">Assigned Duties &amp; Care Activities</th>
                     </tr>
                     ${shiftRowsHtml}
                 </table>
@@ -1301,19 +1330,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </tr>
                 </table>
 
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;margin-bottom:6px;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;margin-bottom:8px;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Customer / NOK Signature</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">InisCare Representative Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Customer / NOK Signature</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">InisCare Representative Signature</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:3px 6px;">
-                            ${sigHtml(consentClientSigUrl)}
-                            <div style="font-size:8.5px;margin-top:2px;">Date: ${esc(getVal('consentClientSigDate'))}</div>
+                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
+                            <div style="min-height:48px;display:flex;align-items:flex-end;">
+                                ${sigHtml(consentClientSigUrl, 48)}
+                            </div>
+                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">Date: <strong>${esc(getVal('consentClientSigDate'))}</strong></div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;">
-                            ${sigHtml(consentRepSigUrl)}
-                            <div style="font-size:8.5px;margin-top:2px;">
+                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
+                            <div style="min-height:48px;display:flex;align-items:flex-end;">
+                                ${sigHtml(consentRepSigUrl, 48)}
+                            </div>
+                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">
                                 Name: <strong>${esc(getVal('consentRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('consentRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('consentRepDate'))}</strong>
@@ -1351,19 +1384,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;">
+                <table style="${BASE}${BORDER}width:100%;border-collapse:collapse;table-layout:fixed;">
                     <tr>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Signed Customer / NOK</td>
-                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:2.5px 5px;font-size:9px;">Signed InisCare Representative</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Signed Customer / NOK</td>
+                        <td style="${BASE}${YELLOW}${BORDER}width:50%;padding:4px 6px;font-size:9.5px;font-weight:bold;">Signed InisCare Representative</td>
                     </tr>
                     <tr>
-                        <td style="${BASE}${BORDER}padding:3px 6px;">
-                            ${sigHtml(hkClientSigUrl)}
-                            <div style="font-size:8.5px;margin-top:2px;">Date: ${esc(getVal('hkClientSigDate'))}</div>
+                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
+                            <div style="min-height:48px;display:flex;align-items:flex-end;">
+                                ${sigHtml(hkClientSigUrl, 48)}
+                            </div>
+                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">Date: <strong>${esc(getVal('hkClientSigDate'))}</strong></div>
                         </td>
-                        <td style="${BASE}${BORDER}padding:3px 6px;">
-                            ${sigHtml(hkRepSigUrl)}
-                            <div style="font-size:8.5px;margin-top:2px;">
+                        <td style="${BASE}${BORDER}padding:6px 8px;vertical-align:bottom;height:75px;box-sizing:border-box;">
+                            <div style="min-height:48px;display:flex;align-items:flex-end;">
+                                ${sigHtml(hkRepSigUrl, 48)}
+                            </div>
+                            <div style="font-size:8.5px;margin-top:4px;border-top:1px solid #e2e8f0;padding-top:3px;">
                                 Name: <strong>${esc(getVal('hkRepName'))}</strong> &bull; 
                                 Title: <strong>${esc(getVal('hkRepTitle'))}</strong> &bull; 
                                 Date: <strong>${esc(getVal('hkRepDate'))}</strong>
